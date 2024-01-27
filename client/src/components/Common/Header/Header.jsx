@@ -102,9 +102,6 @@ export const Header = () => {
                       <a className="dropdown-item" href="blog.html">
                         Blog
                       </a>
-                      <a className="dropdown-item" href="team.html">
-                        Team
-                      </a>
                       <a className="dropdown-item" href="testimonials.html">
                         Testimonials
                       </a>

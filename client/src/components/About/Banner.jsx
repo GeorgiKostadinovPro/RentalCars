@@ -1,3 +1,5 @@
+import '../Common/Banner.css'
+
 export const Banner = () => {
     return (
         <div className="page-heading header-text">
