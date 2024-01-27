@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 
-import { Path } from '../../../utilities/Path'
+import { Path } from '../../utilities/Path'
 
-import './Facts.css'
+import '../Common/Facts.css'
 
 export const Facts = () => {
     return (

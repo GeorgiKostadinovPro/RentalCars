@@ -1,3 +1,5 @@
+import '../Common/Facts.css'
+
 export const Facts = () => {
     return (
         <div className="fun-facts">

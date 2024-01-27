@@ -79,11 +79,6 @@ export const Header = () => {
                       Cars
                     </a>
                   </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="offers.html">
-                      Offers
-                    </a>
-                  </li>
                   <li className="nav-item dropdown">
                     <a
                       className="dropdown-toggle nav-link"
