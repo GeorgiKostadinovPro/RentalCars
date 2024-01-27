@@ -1,3 +1,9 @@
+import { Link } from 'react-router-dom'
+
+import { Path } from '../../utilities/Path'
+
+import '../Common/Facts.css'
+
 export const Facts = () => {
     return (
         <div className="fun-facts">
@@ -23,9 +29,9 @@ export const Facts = () => {
                       Whether you're embarking on a road trip, need a reliable vehicle for a business meeting, 
                       or simply seeking the freedom to explore a new city, we've got you covered.
                     </p>
-                    <a href="about.html" className="filled-button">
+                    <Link to={Path.about} className="filled-button">
                       Read More
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

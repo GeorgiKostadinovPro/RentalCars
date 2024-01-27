@@ -1,4 +1,4 @@
-import { Banner } from "./Banner"
+import { Banner } from "./Banner/Banner"
 import { Facts } from "./Facts";
 import { MoreInfo } from "./MoreInfo";
 import { Offers } from "./Offers";

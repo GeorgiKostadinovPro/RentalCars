@@ -8,7 +8,7 @@ export const Offers = () => {
                   <h2>
                     Our <em>Offers</em>
                   </h2>
-                  <span>These are our all times best 3 Offers!</span>
+                  <span>These are the newest offers by our users!</span>
                 </div>
               </div>
               <div className="col-md-4">
