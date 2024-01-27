@@ -12,7 +12,7 @@ export const Banner = () => {
                     for car rentals
                   </h4>
                   <p>
-                    Your journey starts here at RentalCars – where convenience meets quality. Let the adventure begin!"
+                    Your journey starts here at RentalCars – where convenience meets quality. Let the adventure begin!
                   </p>
                   <a href="contact.html" className="filled-button">
                     contact us
