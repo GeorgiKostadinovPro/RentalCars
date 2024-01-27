@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom"
 
-import { Path } from "../../utilities/Path"
+import { Path } from "../../../utilities/Path"
+
+import './Footer.css'
 
 export const Footer = () => {
     return (

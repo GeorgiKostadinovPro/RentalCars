@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
-import { Path } from '../../utilities/Path'
+import { Path } from '../../../utilities/Path'
+
+import './Header.css'
 
 export const Header = () => {
     return (
