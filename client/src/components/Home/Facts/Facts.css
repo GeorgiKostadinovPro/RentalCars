@@ -1,0 +1,56 @@
+.fun-facts {
+	margin-top: 140px;
+	background-image: url(../../../../public/assets/images/about-fullscreen-image-1-1920x600.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	padding: 140px 0px;
+	color: #fff;
+	position: relative;
+}
+
+.fun-facts .container {
+	position: relative;
+	z-index: 2;
+}
+
+.fun-facts:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index: 1;
+}
+
+.fun-facts span {
+	text-transform: uppercase;
+	font-size: 15px;
+	color: #fff;
+	letter-spacing: 1px;
+	margin-bottom: 10px;
+	display: block;
+}
+
+.fun-facts h2 {
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 35px;
+}
+
+.fun-facts em {
+	font-style: normal;
+	color: #a4c639;
+}
+
+.fun-facts p {
+	color: #fff;
+	margin-bottom: 40px;
+}
+
+.fun-facts .left-content {
+	margin-right: 45px;
+}

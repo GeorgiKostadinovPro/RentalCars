@@ -1,3 +1,5 @@
+import './Info.css'
+
 export const Info = () => {
     return (
         <div className="more-info about-info">
