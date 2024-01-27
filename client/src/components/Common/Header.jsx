@@ -94,9 +94,9 @@ export const Header = () => {
                       About
                     </a>
                     <div className="dropdown-menu">
-                      <a className="dropdown-item" href="about.html">
+                      <Link to={Path.about} className="dropdown-item">
                         About Us
-                      </a>
+                      </Link>
                       <a className="dropdown-item" href="blog.html">
                         Blog
                       </a>
