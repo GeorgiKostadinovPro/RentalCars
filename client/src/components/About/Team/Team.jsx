@@ -1,3 +1,5 @@
+import './Team.css'
+
 export const Team = () => {
     return (
       <div className="team" style={{ margin: 0 }}>

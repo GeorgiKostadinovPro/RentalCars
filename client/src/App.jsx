@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
-import { Footer } from "./components/Common/Footer";
-import { Header } from "./components/Common/Header";
+import { Header } from "./components/Common/Header/Header";
+import { Footer } from "./components/Common/Footer/Footer";
 import { Home } from "./components/Home/Home";
 import { Contact } from './components/Contact/Contact';
 import { About } from './components/About/About';
