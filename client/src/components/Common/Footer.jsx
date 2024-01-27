@@ -43,7 +43,9 @@ export const Footer = () => {
                 <h4>Additional Pages</h4>
                 <ul className="menu-list">
                   <li>
-                    <a href="#">About Us</a>
+                    <Link to={Path.about}>
+                      About Us
+                    </Link>
                   </li>
                   <li>
                     <a href="#">Blog</a>
