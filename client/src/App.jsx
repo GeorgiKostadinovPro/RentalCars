@@ -1,7 +1,15 @@
+import { Footer } from "./components/Common/Footer";
+import { Header } from "./components/Common/Header";
+import { Home } from "./components/Home/Home";
+
 function App() {
   return (
     <>
-      <h1>Hello RentalCars!</h1>
+      <Header />
+
+      <Home />
+      
+      <Footer />
     </>
   )
 }
