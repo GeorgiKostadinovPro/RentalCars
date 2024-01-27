@@ -5,21 +5,17 @@ export const Facts = () => {
             <div className="row">
               <div className="col-md-6">
                 <div className="left-content">
-                  <span>Lorem ipsum dolor sit amet</span>
+                  <span>Some interesting facts</span>
                   <h2>
-                    Modi esse sapiente tenetur{" "}
-                    <em>impedit laudantium laborum</em>
+                    Driving Success: {" "}
+                    <em>RentalCars in Numbers</em>
                   </h2>
                   <p>
-                    Pellentesque ultrices at turpis in vestibulum. Aenean
-                    pretium elit nec congue elementum. Nulla luctus laoreet
-                    porta. Maecenas at nisi tempus, porta metus vitae, faucibus
-                    augue.
+                    We are operating in the vibrant city of Sofia, providing convenient and accessible car rental solutions.
+                    Proudly serving and satisfying 1,280 clients who have chosen RentalCars for their journey, making their experiences memorable.
                     <br />
                     <br />
-                    Fusce et venenatis ex. Quisque varius, velit quis dictum
-                    sagittis, odio velit molestie nunc, ut posuere ante tortor
-                    ut neque.
+                    We have a high satisfaction rate with positive feedback, reflecting our dedication to customer happiness and service excellence.
                   </p>
                 </div>
               </div>
