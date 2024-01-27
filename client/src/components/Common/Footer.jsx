@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom"
+
+import { Path } from "../../utilities/Path"
+
 export const Footer = () => {
     return (
       <>
@@ -5,7 +9,7 @@ export const Footer = () => {
           <div className="container">
             <div className="row">
               <div className="col-md-3 footer-item">
-                <h4>Reantal Cars</h4>
+                <h4>Rental Cars</h4>
                 <p>
                     Choose from our wide range of vehicles, select the dates that suit you best, and get ready to hit the road with confidence. 
                 </p>
@@ -45,10 +49,9 @@ export const Footer = () => {
                     <a href="#">Blog</a>
                   </li>
                   <li>
-                    <a href="#">FAQ</a>
-                  </li>
-                  <li>
-                    <a href="#">Contact Us</a>
+                    <Link to={Path.contact}>
+                      Contact Us
+                    </Link>
                   </li>
                   <li>
                     <a href="#">Terms</a>

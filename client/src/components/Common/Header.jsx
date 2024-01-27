@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom"
+import { Path } from '../../utilities/Path'
+
 export const Header = () => {
     return (
       <>
@@ -46,11 +49,11 @@ export const Header = () => {
         <header className="">
           <nav className="navbar navbar-expand-lg">
             <div className="container">
-              <a className="navbar-brand" href="index.html">
+              <Link to={Path.home} className="navbar-brand">
                 <h2>
                   Rental Cars
                 </h2>
-              </a>
+              </Link>
               <button
                 className="navbar-toggler"
                 type="button"
@@ -64,11 +67,10 @@ export const Header = () => {
               </button>
               <div className="collapse navbar-collapse" id="navbarResponsive">
                 <ul className="navbar-nav ml-auto">
-                  <li className="nav-item active">
-                    <a className="nav-link" href="index.html">
-                      Home
-                      <span className="sr-only">(current)</span>
-                    </a>
+                  <li className="nav-item">
+                    <Link to={Path.home} className="nav-link">
+                       Home
+                    </Link>
                   </li>
                   <li className="nav-item">
                     <a className="nav-link" href="fleet.html">
@@ -104,18 +106,15 @@ export const Header = () => {
                       <a className="dropdown-item" href="testimonials.html">
                         Testimonials
                       </a>
-                      <a className="dropdown-item" href="faq.html">
-                        FAQ
-                      </a>
                       <a className="dropdown-item" href="terms.html">
                         Terms
                       </a>
                     </div>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="contact.html">
+                    <Link to={Path.contact} className="nav-link">
                       Contact Us
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
