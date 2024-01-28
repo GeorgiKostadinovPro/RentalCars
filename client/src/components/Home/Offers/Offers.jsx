@@ -1,3 +1,5 @@
+import './Offers.css'
+
 export const Offers = () => {
     return (
         <div className="services">
@@ -26,7 +28,7 @@ export const Offers = () => {
                       augue luctus dignissim. Nunc ornare leo tortor.
                     </p>
                     <a href="offers.html" className="filled-button">
-                      Book Now
+                      Details
                     </a>
                   </div>
                 </div>
@@ -47,7 +49,7 @@ export const Offers = () => {
                       augue luctus dignissim. Nunc ornare leo tortor.
                     </p>
                     <a href="offers.html" className="filled-button">
-                      Book Now
+                      Details
                     </a>
                   </div>
                 </div>
@@ -68,7 +70,7 @@ export const Offers = () => {
                       augue luctus dignissim. Nunc ornare leo tortor.
                     </p>
                     <a href="offers.html" className="filled-button">
-                      Book Now
+                      Details
                     </a>
                   </div>
                 </div>

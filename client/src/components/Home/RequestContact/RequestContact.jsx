@@ -1,3 +1,9 @@
+import { Link } from 'react-router-dom'
+
+import { Path } from '../../../utilities/Path';
+
+import './RequestContact.css'
+
 export const RequestContact = () => {
     return (
         <div className="request-form">
@@ -10,9 +16,9 @@ export const RequestContact = () => {
                 </span>
               </div>
               <div className="col-md-4">
-                <a href="contact.html" className="border-button">
+                <Link to={Path.contact} className="border-button">
                   Contact Us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

@@ -1,9 +1,8 @@
 import { Hero } from "./Hero/Hero"
 import { Facts } from "./Facts";
-import { MoreInfo } from "./MoreInfo";
-import { Offers } from "./Offers";
-import { RequestContact } from "./RequestContact";
-import { Testimonials } from "./Testimonials";
+import { BlogInfo } from "./BlogInfo";
+import { Offers } from "./Offers/Offers";
+import { RequestContact } from "./RequestContact/RequestContact";
 
 export const Home = () => {
     return (
@@ -16,9 +15,7 @@ export const Home = () => {
 
         <Facts />
 
-        <MoreInfo />
-        
-        <Testimonials />
+        <BlogInfo />
       </>
     );
 }

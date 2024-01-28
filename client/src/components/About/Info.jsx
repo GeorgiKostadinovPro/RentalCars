@@ -1,4 +1,4 @@
-import './Info.css'
+import '../Common/Info.css'
 
 export const Info = () => {
     return (

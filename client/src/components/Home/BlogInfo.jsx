@@ -1,6 +1,8 @@
-export const MoreInfo = () => {
+import '../Common/Info.css'
+
+export const BlogInfo = () => {
     return (
-        <div className="more-info">
+        <div className="more-info" style={{marginBottom: '140px'}}>
           <div className="container">
             <div className="section-heading">
               <h2>
