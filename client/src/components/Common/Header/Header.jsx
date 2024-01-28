@@ -107,6 +107,11 @@ export const Header = () => {
                       Contact Us
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link to={Path.login} className="nav-link">
+                      Login
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
