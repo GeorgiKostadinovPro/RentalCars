@@ -37,12 +37,14 @@ export const Footer = () => {
                 <h4>Our Car Army</h4>
                 <ul className="menu-list">
                   <li>
-                    <a href="#">Cars for rent</a>
+                    <Link to={Path.cars}>
+                      Cars for rent
+                    </Link>
                   </li>
                 </ul>
               </div>
               <div className="col-md-3 footer-item">
-                <h4>Additional Pages</h4>
+                <h4>Additional Info</h4>
                 <ul className="menu-list">
                   <li>
                     <Link to={Path.about}>
@@ -50,7 +52,9 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <a href="#">Blog</a>
+                    <Link to={Path.blog}>
+                      Blog
+                    </Link>
                   </li>
                   <li>
                     <Link to={Path.contact}>

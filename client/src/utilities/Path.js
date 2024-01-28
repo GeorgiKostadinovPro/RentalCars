@@ -1,8 +1,10 @@
 const Path = {
     home: '/',
+    cars: '/cars',
     about: '/about',
-    terms: '/about/terms',
-    contact: '/contact',
+    terms: '/terms',
+    blog: '/blog',
+    contact: '/contact'
 }
 
 export { Path }
