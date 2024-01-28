@@ -37,7 +37,9 @@ export const Footer = () => {
                 <h4>Our Car Army</h4>
                 <ul className="menu-list">
                   <li>
-                    <a href="#">Cars for rent</a>
+                    <Link to={Path.cars}>
+                      Cars for rent
+                    </Link>
                   </li>
                 </ul>
               </div>

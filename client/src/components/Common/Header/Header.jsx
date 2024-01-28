@@ -75,9 +75,9 @@ export const Header = () => {
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="fleet.html">
+                    <Link to={Path.cars} className="nav-link">
                       Cars
-                    </a>
+                    </Link>
                   </li>
                   <li className="nav-item dropdown">
                     <a
