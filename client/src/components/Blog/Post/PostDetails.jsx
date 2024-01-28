@@ -73,38 +73,13 @@ export const PostDetails = () => {
                   <h2>
                     Leave a <em>comment</em>
                   </h2>
-                  <span>Suspendisse a ante in neque iaculis lacinia</span>
+                  <span>Your comment will appear at the top of the page</span>
                 </div>
               </div>
               <div className="col-md-12">
                 <div className="contact-form">
                   <form id="contact" action="" method="get">
                     <div className="row">
-                      <div className="col-lg-6 col-md-12 col-sm-12">
-                        <fieldset>
-                          <input
-                            name="name"
-                            type="text"
-                            className="form-control"
-                            id="name"
-                            placeholder="Full Name"
-                            required=""
-                          />
-                        </fieldset>
-                      </div>
-                      <div className="col-lg-6 col-md-12 col-sm-12">
-                        <fieldset>
-                          <input
-                            name="email"
-                            type="text"
-                            className="form-control"
-                            id="email"
-                            pattern="[^ @]*@[^ @]*"
-                            placeholder="E-Mail Address"
-                            required=""
-                          />
-                        </fieldset>
-                      </div>
                       <div className="col-lg-12">
                         <fieldset>
                           <textarea
