@@ -1,4 +1,6 @@
 const Path = {
+    login: '/login',
+    register: '/register',
     home: '/',
     cars: '/cars',
     about: '/about',
