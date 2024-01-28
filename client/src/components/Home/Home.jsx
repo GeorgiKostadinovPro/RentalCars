@@ -1,4 +1,4 @@
-import { Banner } from "./Banner/Banner"
+import { Hero } from "./Hero/Hero"
 import { Facts } from "./Facts";
 import { MoreInfo } from "./MoreInfo";
 import { Offers } from "./Offers";
@@ -8,7 +8,7 @@ import { Testimonials } from "./Testimonials";
 export const Home = () => {
     return (
       <>
-        <Banner />
+        <Hero />
 
         <RequestContact />
         

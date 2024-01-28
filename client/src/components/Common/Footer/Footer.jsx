@@ -58,7 +58,9 @@ export const Footer = () => {
                     </Link>
                   </li>
                   <li>
-                    <a href="#">Terms</a>
+                    <Link to={Path.terms}>
+                      Terms
+                    </Link>
                   </li>
                 </ul>
               </div>

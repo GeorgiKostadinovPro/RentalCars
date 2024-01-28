@@ -1,7 +1,8 @@
 const Path = {
     home: '/',
     about: '/about',
-    contact: '/contact'
+    terms: '/about/terms',
+    contact: '/contact',
 }
 
 export { Path }

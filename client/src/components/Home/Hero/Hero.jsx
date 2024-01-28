@@ -1,6 +1,6 @@
-import './Banner.css'
+import './Hero.css'
 
-export const Banner = () => {
+export const Hero = () => {
     return (
         <div className="main-banner header-text" id="top">
           <div className="Modern-Slider">
