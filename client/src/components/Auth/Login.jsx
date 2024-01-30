@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { Path } from '../../utilities/Path'
+import * as authService from '../../services/authService'
+import { Path } from '../../utilities/Path' 
 
 import './AuthForms.css'
 
@@ -16,9 +17,13 @@ export const Login = () => {
     handleSubmit,
     formState: { errors } 
   } = useForm(defaultValues);
+  
+  const navigate = useNavigate();
 
-  const loginSubmitHandler = (data) => {
-    console.log(data);
+  const loginSubmitHandler = async (data) => {
+    await authService.login(data);
+
+    navigate(Path.home);
   };
 
   return (

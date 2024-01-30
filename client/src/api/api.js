@@ -1,4 +1,4 @@
-import { clearUserInfo } from "../utilities/auth";
+import { getUserInfo, clearUserInfo } from "../utilities/auth";
 
 const host = 'http://localhost:3030';
 
