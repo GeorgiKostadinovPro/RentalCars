@@ -37,9 +37,6 @@ export const Login = () => {
             id="input_submit"
             className="input_field"
           />
-          <span>
-            Forgot <a href="#">Password ?</a>
-          </span>
           <span id="create_account">
             <Link to={Path.register}>
               Create your account ➡ 
