@@ -4,6 +4,7 @@ const getUserInfo = () => {
 
 const setUserInfo = (userData) => {
     const userDataStr = JSON.stringify(userData);
+    
     sessionStorage.setItem('userData', userDataStr);
 }
 
