@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import * as authService from '../../services/authService'
+import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path' 
 
 import './AuthForms.css'
@@ -37,13 +38,7 @@ export const Login = () => {
           <div className="input_container">
             <i className="fas fa-envelope" />
             <input
-              {...register("email", {
-                required: "This field is required!",
-                pattern: {
-                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g,
-                  message: "This email is invalid!",
-                },
-              })}
+              {...register("email", Constants.email)}
               placeholder="Email"
               type="email"
               className="input_field"
@@ -63,17 +58,7 @@ export const Login = () => {
           <div className="input_container">
             <i className="fas fa-lock" />
             <input
-              {...register("password", {
-                required: "This field is required!",
-                pattern: {
-                  value: /[A-z]+[0-9]+\W+/g,
-                  message: "This password is invalid!",
-                },
-                minLength: {
-                  value: 5,
-                  message: "The minimal length is 5!",
-                },
-              })}
+              {...register("password", Constants.password)}
               placeholder="Password"
               type="password"
               className="input_field"
