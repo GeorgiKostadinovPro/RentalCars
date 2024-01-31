@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 
 import { Link } from 'react-router-dom';
 import { Path } from '../../../utilities/Path'
@@ -12,7 +12,12 @@ import './Hero.css'
 export const Hero = () => {
     return (
       <>
-        <Swiper navigation={true} loop={true} modules={[Navigation]} className="mySwiper">
+        <Swiper 
+          navigation={true} 
+          loop={true} 
+          autoplay={{delay: 5000, disableOnInteraction: false}} 
+          modules={[Navigation, Autoplay]} 
+          className="mySwiper">
           <SwiperSlide>
             <div className="main-banner header-text" id="top">
               <div className="Modern-Slider">

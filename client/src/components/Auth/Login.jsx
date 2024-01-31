@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import * as authService from '../../services/authService'
+import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path' 
 
 import './AuthForms.css'
@@ -33,60 +34,54 @@ export const Login = () => {
       </div>
       <form id="form_right" onSubmit={handleSubmit(loginSubmitHandler)}>
         <h1>Login</h1>
+        <div>
           <div className="input_container">
             <i className="fas fa-envelope" />
-            <input 
-              {...register('email', 
-                {
-                  required: 'This field is required!', 
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g,
-                    message: 'This email is invalid!'
-                  }
-                })}
+            <input
+              {...register("email", Constants.email)}
               placeholder="Email"
               type="email"
               className="input_field"
-              autoComplete='email'
+              autoComplete="email"
             />
+          </div>
+          <span
+            style={{
+              display: errors.email?.message ? "block" : "none",
+              color: "red",
+            }}
+          >
+            {errors.email?.message}
+          </span>
         </div>
-        <span style={{ display: errors.email?.message ? 'block' : 'none', color: 'red' }}>
-          {errors.email?.message}
-        </span>
-        <div className="input_container">
+        <div>
+          <div className="input_container">
             <i className="fas fa-lock" />
             <input
-              {...register('password', 
-                {
-                  required: 'This field is required!', 
-                  pattern: {
-                    value: /[A-z]+[0-9]+\W+/g,
-                    message: 'This password is invalid!'
-                  },
-                  minLength: {
-                    value: 5,
-                    message: 'The minimal length is 5!'
-                  }
-                })}
+              {...register("password", Constants.password)}
               placeholder="Password"
               type="password"
               className="input_field"
-              autoComplete='password'
+              autoComplete="password"
             />
+          </div>
+          <span
+            style={{
+              display: errors.password?.message ? "block" : "none",
+              color: "red",
+            }}
+          >
+            {errors.password?.message}
+          </span>
         </div>
-        <span style={{ display: errors.password?.message ? 'block' : 'none', color: 'red' }}>
-          {errors.password?.message}
-        </span>
         <input
-            type="submit"
-            defaultValue="Login"
-            id="input_submit"
-            className="input_field"
-          />
+          type="submit"
+          defaultValue="Login"
+          id="input_submit"
+          className="input_field"
+        />
         <span id="create_account">
-          <Link to={Path.register}>
-              Create your account ➡ 
-          </Link>
+          <Link to={Path.register}>Create your account ➡</Link>
         </span>
       </form>
     </div>

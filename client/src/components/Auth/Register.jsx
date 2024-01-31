@@ -1,39 +1,104 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+
+import * as authService from '../../services/authService'
+import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path'
 
 import './AuthForms.css'
 
+const defaultValues = {
+  email: '',
+  password: '',
+  confirmPassword: ''
+};
+
 export const Register = () => {
+  const { 
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }  
+  } = useForm(defaultValues);
+
+  const navigate = useNavigate();
+
+  const registerSubmitHandler = async (data) => {
+    await authService.register(data);
+
+    navigate(Path.home);
+  };
+
   return (
     <div id="form_wrapper">
-      <div id="form_right">
+      <form id="form_right" onSubmit={handleSubmit(registerSubmitHandler)}>
         <h1>Register</h1>
-        <div className="input_container">
-          <i className="fas fa-user" />
-          <input
-            placeholder="Username"
-            type="username"
-            name="Username"
-            className="input_field"
-          />
+        <div>
+          <div className="input_container">
+            <i className="fas fa-envelope" />
+            <input
+              {...register("email", Constants.email)}
+              placeholder="Email"
+              type="email"
+              className="input_field"
+              autoComplete="email"
+            />
+          </div>
+          <span
+            style={{
+              display: errors.email?.message ? "block" : "none",
+              color: "red",
+            }}
+          >
+            {errors.email?.message}
+          </span>
         </div>
-        <div className="input_container">
-          <i className="fas fa-envelope" />
-          <input
-            placeholder="Email"
-            type="email"
-            name="Email"
-            className="input_field"
-          />
+        <div>
+          <div className="input_container">
+            <i className="fas fa-lock" />
+            <input
+              {...register("password", Constants.password)}
+              placeholder="Password"
+              type="password"
+              className="input_field"
+              autoComplete="password"
+            />
+          </div>
+          <span
+            style={{
+              display: errors.password?.message ? "block" : "none",
+              color: "red",
+            }}
+          >
+            {errors.password?.message}
+          </span>
         </div>
-        <div className="input_container">
-          <i className="fas fa-lock" />
-          <input
-            placeholder="Password"
-            type="password"
-            name="Password"
-            className="input_field"
-          />
+        <div>
+          <div className="input_container">
+            <i className="fas fa-repeat"></i>
+            <input
+              {...register("confirmPassword", {
+                ...Constants.password,
+                validate: (confirmPassword) => {
+                  if (watch("password") != confirmPassword) {
+                    return "Your passwords do NOT match!";
+                  }
+                },
+              })}
+              placeholder="Confirm Password"
+              type="password"
+              className="input_field"
+              autoComplete="confirm-password"
+            />
+          </div>
+          <span
+            style={{
+              display: errors.confirmPassword?.message ? "block" : "none",
+              color: "red",
+            }}
+          >
+            {errors.confirmPassword?.message}
+          </span>
         </div>
         <input
           type="submit"
@@ -42,11 +107,9 @@ export const Register = () => {
           className="input_field"
         />
         <span id="create_account">
-          <Link to={Path.login}>
-            Already have an account ➡ 
-          </Link>
+          <Link to={Path.login}>Already have an account ➡</Link>
         </span>
-      </div>
+      </form>
       <div id="form_left">
         <img src="../../../../public/assets/images/login.jpg" />
       </div>
