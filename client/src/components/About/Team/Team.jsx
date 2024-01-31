@@ -10,7 +10,7 @@ export const Team = () => {
                 <h2>
                   Our team <em>members</em>
                 </h2>
-                <span>A team of professionals proved themeselves along the way</span>
+                <span>A team of professionals proved themselves along the way</span>
               </div>
             </div>
             <div className="col-md-4">
