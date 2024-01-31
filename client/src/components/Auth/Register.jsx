@@ -1,7 +1,8 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import * as authService from '../../services/authService'
+import { AuthContext } from '../../contexts/AuthContext'
 import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path'
 
@@ -14,20 +15,14 @@ const defaultValues = {
 };
 
 export const Register = () => {
+  const { registerSubmitHandler } = useContext(AuthContext);
+
   const { 
     register,
     handleSubmit,
     watch,
     formState: { errors }  
   } = useForm(defaultValues);
-
-  const navigate = useNavigate();
-
-  const registerSubmitHandler = async (data) => {
-    await authService.register(data);
-
-    navigate(Path.home);
-  };
 
   return (
     <div id="form_wrapper">

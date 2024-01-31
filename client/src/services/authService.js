@@ -1,5 +1,5 @@
 import { requestFactory } from '../api/api'
-import { clearUserInfo, setUserInfo } from '../utilities/auth';
+import { clearUserInfo, setUserInfo } from '../utilities/auth'
 
 const request = requestFactory();
 
@@ -15,8 +15,8 @@ const login = async (userData) => {
     setUserInfo({ _id, email, accessToken });
 }
 
-const logout = async () => {
-    await request.get('/users/logout');
+const logout = () => {
+    request.get('/users/logout');
 
     clearUserInfo();
 }
