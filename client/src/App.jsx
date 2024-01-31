@@ -15,6 +15,8 @@ import { About } from './components/About/About';
 import { Blog } from './components/Blog/Blog';
 import { Terms } from './components/Terms/Terms';
 import { PostDetails } from './components/Blog/Post/PostDetails';
+import { AuthProvider } from './contexts/AuthContext';
+import { Logout } from './components/Auth/Logout';
 
 function App() {
   const location = useLocation();
@@ -25,24 +27,26 @@ function App() {
 
   return (
     <>
-      {shouldRenderHeaderAndFooter && <Header />}
+      <AuthProvider>
+        {shouldRenderHeaderAndFooter && <Header />}
 
-      <Routes>  
-        <Route path={Path.login} element={ <Login /> } />
-        <Route path={Path.register} element={ <Register />} />
+        <Routes>
+          <Route path={Path.login} element={<Login />} />
+          <Route path={Path.register} element={<Register />} />
+          <Route path={Path.logout} element={<Logout />} />
 
-        <Route path={Path.home} element={ <Home /> } />
-        <Route path={Path.cars} element={ <Cars /> } />
-        <Route path={Path.about} element={ <About/> } />
-        <Route path={Path.blog} element={ <Blog /> } />
-        <Route path={Path.terms} element={ <Terms/> } />
-        <Route path={Path.contact} element={ <Contact /> } />
-        <Route path={Path.postDetails} element={ <PostDetails/> } />
-      </Routes>
+          <Route path={Path.home} element={<Home />} />
+          <Route path={Path.cars} element={<Cars />} />
+          <Route path={Path.about} element={<About />} />
+          <Route path={Path.blog} element={<Blog />} />
+          <Route path={Path.terms} element={<Terms />} />
+          <Route path={Path.contact} element={<Contact />} />
+        </Routes>
 
-      {shouldRenderHeaderAndFooter && <Footer />}
+        {shouldRenderHeaderAndFooter && <Footer />}
+      </AuthProvider>
     </>
-  )
+  );
 }
 
 export default App
