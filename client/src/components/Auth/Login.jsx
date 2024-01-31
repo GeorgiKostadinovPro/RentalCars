@@ -36,14 +36,13 @@ export const Login = () => {
           <div className="input_container">
             <i className="fas fa-envelope" />
             <input 
-              {...register('email', 
-                {
-                  required: 'This field is required!', 
-                  pattern: {
-                    value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g,
-                    message: 'This email is invalid!'
-                  }
-                })}
+              {...register('email', {
+                required: 'This field is required!', 
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g,
+                  message: 'This email is invalid!'
+                }
+              })}
               placeholder="Email"
               type="email"
               className="input_field"
@@ -56,18 +55,17 @@ export const Login = () => {
         <div className="input_container">
             <i className="fas fa-lock" />
             <input
-              {...register('password', 
-                {
-                  required: 'This field is required!', 
-                  pattern: {
-                    value: /[A-z]+[0-9]+\W+/g,
-                    message: 'This password is invalid!'
-                  },
-                  minLength: {
-                    value: 5,
-                    message: 'The minimal length is 5!'
-                  }
-                })}
+              {...register('password', {
+                required: 'This field is required!', 
+                pattern: {
+                  value: /[A-z]+[0-9]+\W+/g,
+                  message: 'This password is invalid!'
+                },
+                minLength: {
+                  value: 5,
+                  message: 'The minimal length is 5!'
+                }
+              })}
               placeholder="Password"
               type="password"
               className="input_field"
