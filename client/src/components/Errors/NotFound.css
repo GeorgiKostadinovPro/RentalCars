@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.not-found {
+  width: 100%;
+  background-color: #22232E;
+  padding: 5em 0 3em;
+}
+
+.not-found a{
+  text-decoration: none;
+}
+.not-found ul{
+  list-style: disc;
+  color: #e0ffff;
+}
+
+.not-found .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 20px;
+}
+.not-found .container img {
+  width: 420px;
+}
+.not-found .text {
+  display: block;
+  padding: 40px 40px;
+  width: 450px;
+}
+.not-found .text h1 {
+  color: #00c2cb;
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.not-found .text p {
+  font-size: 15px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  line-height: 1.5rem;
+  margin-bottom: 15px;
+}
+.not-found .text .input-box{
+  position: relative;
+  display: flex;
+  width: 100%;
+}
+.not-found .input-box input{
+  width: 85%;
+  height: 40px;
+  padding: 5px 15px;
+  font-family: 'Jost',sans-serif;
+  font-size: 16px;
+  color: #22232e;
+  border-radius: 5px 0px 0px 5px;
+  border: 2px solid #42455a;
+  outline: none;
+}
+.not-found .input-box button{
+  display: flex;
+  width: 15%;
+  border: 1px solid #004958;
+  border-radius: 0px 5px 5px 0px;
+  background: #004958;
+  color: #e0ffff;
+  font-size: 22px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;  
+}
+.not-found .menu{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  margin-left: 30px;
+}
+.not-found .menu li a{
+  display: flex;
+  font-size: 1rem;
+  color: #00c2cb;
+  transition: 0.1s;
+}
+@media screen and (max-width:600px) {
+  .not-found .container{
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .not-found .text,.image{
+    width: 100%;
+  } 
+  .not-found .container{
+    min-width: 200px;
+    padding: 40px 0px;
+  }
+  .not-found .text{
+    display: block;
+    width: 100%;
+    padding: 20px 40px;
+  }
+  .not-found .image{
+    display: flex;
+    width: 200px;
+    align-self: center;
+    justify-content: center;
+    margin: auto;
+  }
+}
