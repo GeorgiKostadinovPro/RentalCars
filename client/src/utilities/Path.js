@@ -9,7 +9,8 @@ const Path = {
     terms: '/terms',
     blog: '/blog',
     postDetails: '/post',
-    contact: '/contact'
+    contact: '/contact',
+    notFound: '*'
 }
 
 export { Path }

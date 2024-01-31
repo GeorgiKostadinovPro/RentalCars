@@ -5,8 +5,10 @@ import { Path } from './utilities/Path';
 import { Header } from "./components/Common/Header/Header";
 import { Footer } from "./components/Common/Footer/Footer";
 
-import { Login } from './components/Auth/Login';
 import { Register } from './components/Auth/Register';
+import { Login } from './components/Auth/Login';
+import { Logout } from './components/Auth/Logout';
+import { Profile } from './components/User/Profile';
 
 import { Home } from "./components/Home/Home";
 import { Cars } from './components/Cars/Cars';
@@ -14,9 +16,8 @@ import { Contact } from './components/Contact/Contact';
 import { About } from './components/About/About';
 import { Blog } from './components/Blog/Blog';
 import { Terms } from './components/Terms/Terms';
-import { PostDetails } from './components/Blog/Post/PostDetails';
 import { AuthProvider } from './contexts/AuthContext';
-import { Logout } from './components/Auth/Logout';
+import { NotFound } from './components/Errors/NotFound';
 
 function App() {
   const location = useLocation();
@@ -31,9 +32,10 @@ function App() {
         {shouldRenderHeaderAndFooter && <Header />}
 
         <Routes>
-          <Route path={Path.login} element={<Login />} />
           <Route path={Path.register} element={<Register />} />
+          <Route path={Path.login} element={<Login />} />
           <Route path={Path.logout} element={<Logout />} />
+          <Route path={Path.profile} element={<Profile />} />
 
           <Route path={Path.home} element={<Home />} />
           <Route path={Path.cars} element={<Cars />} />
@@ -41,6 +43,8 @@ function App() {
           <Route path={Path.blog} element={<Blog />} />
           <Route path={Path.terms} element={<Terms />} />
           <Route path={Path.contact} element={<Contact />} />
+
+          <Route path={Path.notFound} element={<NotFound />} />
         </Routes>
 
         {shouldRenderHeaderAndFooter && <Footer />}
