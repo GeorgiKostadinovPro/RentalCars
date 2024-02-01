@@ -1,8 +1,7 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { AuthContext } from '../../contexts/AuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path' 
 
@@ -14,7 +13,7 @@ const defaultValues = {
 };
 
 export const Login = () => {
-  const { loginSubmitHandler } = useContext(AuthContext);
+  const { loginSubmitHandler } = useAuthContext();
 
   const { 
     register, 

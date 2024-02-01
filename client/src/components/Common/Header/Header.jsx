@@ -1,15 +1,14 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom"
 
 import { Path } from '../../../utilities/Path'
-import { AuthContext } from "../../../contexts/AuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext";
 
 import { SubHeader } from "./SubHeader/SubHeader";
 
 import './Header.css'
 
 export const Header = () => {
-  const { isUserAuthenticated } = useContext(AuthContext);
+  const { isUserAuthenticated } = useAuthContext();
 
   return (
     <>

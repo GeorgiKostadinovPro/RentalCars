@@ -1,9 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 
-import { AuthContext } from "../../contexts/AuthContext";
+import { useAuthContext } from "../../hooks/useAuthContext";
 
 export const Logout = () => {
-    const { logoutSubmitHandler } = useContext(AuthContext);
+    const { logoutSubmitHandler } = useAuthContext();
 
     useEffect(() => {
         logoutSubmitHandler();
