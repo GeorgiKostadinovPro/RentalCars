@@ -1,8 +1,7 @@
-import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { AuthContext } from '../../contexts/AuthContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 import { Constants } from '../../utilities/constants'
 import { Path } from '../../utilities/Path'
 
@@ -15,7 +14,7 @@ const defaultValues = {
 };
 
 export const Register = () => {
-  const { registerSubmitHandler } = useContext(AuthContext);
+  const { registerSubmitHandler } = useAuthContext();
 
   const { 
     register,
