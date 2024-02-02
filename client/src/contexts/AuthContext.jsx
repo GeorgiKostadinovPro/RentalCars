@@ -2,6 +2,7 @@ import { createContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../services/authService'
+import { useAuthStorage } from '../hooks/useAuthStorage';
 import { Path } from '../utilities/Path';
 
 export const AuthContext = createContext();
@@ -9,14 +10,12 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const navigate = useNavigate();
 
-    const [user, setUser] = useState({});
+    const [user, setUser] = useAuthStorage({});
 
     const registerSubmitHandler = async (data) => {
         const result = await authService.register(data);
 
         setUser(result);
-
-        localStorage.setItem('userData', JSON.stringify(result));
     
         navigate(Path.home);
     };
@@ -25,8 +24,6 @@ export const AuthProvider = ({ children }) => {
         const result = await authService.login(data);
     
         setUser(result);
-
-        localStorage.setItem('userData', JSON.stringify(result));
 
         navigate(Path.home);
     };
