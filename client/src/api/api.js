@@ -1,5 +1,3 @@
-import { getUserInfo, clearUserInfo } from "../utilities/auth";
-
 const host = 'http://localhost:3030';
 
 const request = async (method, url, data) => {
@@ -13,7 +11,7 @@ const request = async (method, url, data) => {
         options.body = JSON.stringify(data);
     }
 
-    const user = getUserInfo();
+    const user = JSON.parse(localStorage.getItem('userData'));
 
     if (user) {
         options.headers['X-Authorization'] = user.accessToken;
@@ -29,9 +27,9 @@ const request = async (method, url, data) => {
         const result = response.json();
 
         if (!response.ok) {
-            if (response.status === 403) {
-                clearUserInfo();
-            }
+            // if (response.status === 403) {
+                
+            // }
 
             throw new Error(result.message);
         }

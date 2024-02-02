@@ -1,24 +1,21 @@
 import { requestFactory } from '../api/api'
-import { clearUserInfo, setUserInfo } from '../utilities/auth'
 
 const request = requestFactory();
 
 const register = async (userData) => {
-    const { _id, email, accessToken } = await request.post('/users/register', userData);
+    const result = await request.post('/users/register', userData);
 
-    setUserInfo({ _id, email, accessToken });
+    return result;
 };
 
 const login = async (userData) => {
-    const { _id, email, accessToken} = await request.post('/users/login', userData);
+    const result = await request.post('/users/login', userData);
 
-    setUserInfo({ _id, email, accessToken });
+    return result;
 }
 
 const logout = () => {
     request.get('/users/logout');
-
-    clearUserInfo();
 }
 
 export {
