@@ -4,6 +4,16 @@ const baseUrl = '/data/cars';
 
 const request = requestFactory();
 
+const getAll = async () => {
+    const query = new URLSearchParams({
+        select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery'
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+}
+
 const getOffers = async () => {
     const query = new URLSearchParams({
         select: '_id,make,model,pricePerDay,description,gallery'
@@ -14,4 +24,4 @@ const getOffers = async () => {
     return result;
 }  
 
-export { getOffers }
+export { getAll, getOffers }
