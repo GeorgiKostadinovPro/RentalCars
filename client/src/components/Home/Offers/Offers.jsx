@@ -20,7 +20,7 @@ export const Offers = () => {
     }, []);
 
     return (
-        <div className="services">
+        <div className="offers">
           <div className="container">
             <div className="row">
               <div className="col-md-12">

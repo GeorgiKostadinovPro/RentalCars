@@ -1,61 +1,72 @@
-.services {
+.offers {
 	margin-top: 140px;
 }
 
-.service-item img {
+.offers .service-item {
+	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+	transition: transform 0.4s;
+}
+
+.offers .service-item:hover {
+	transform: scale(1.05);
+}
+
+.offers .service-item img {
 	width: 100%;
+	height: auto;
 	overflow: hidden;
 }
 
-.service-item .down-content {
+.offers .service-item .down-content {
 	background-color: #f7f7f7;
 	padding: 30px;
 }
 
-.service-item .down-content h4 {
+.offers .service-item .down-content h4 {
 	font-size: 20px;
 	font-weight: 700;
 	letter-spacing: 0.25px;
 	margin-bottom: 15px;
 }
 
-.service-item .down-content p {
+.offers .service-item .down-content p {
 	margin-bottom: 20px;
 }
 
-.page-link:hover,
-.page-link {
+.offers.page-link:hover,
+.offers .page-link {
 	color: #a4c639;
 }
 
-.btn-primary {
+.offers .btn-primary {
 	border-color: #a4c639;
 	background-color: #a4c639;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary:active:focus{
+.offers .btn-primary:hover,
+.offers .btn-primary:focus,
+.offers .btn-primary:active,
+.offers .btn-primary:active:focus{
 	opacity: 0.6;
 	border-color: #a4c639;
 	background-color: #a4c639;
 }
 
-.count-area-content {
+.offers .count-area-content {
 	text-align: center;
 	background-color: rgba(250,250,250,0.1);
 	padding: 25px 30px 35px 30px;
 	margin: 15px 0px;
 }
 
-.count-digit {
+.offers .count-digit {
     margin: 5px 0px;
     color: #a4c639;
     font-weight: 700;
     font-size: 36px;
 }
-.count-title {
+
+.offers .count-title {
     font-size: 20px;
     font-weight: 600;
     color: #fff;
