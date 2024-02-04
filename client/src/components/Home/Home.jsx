@@ -1,7 +1,7 @@
 import { Hero } from "./Hero/Hero"
 import { Facts } from "./Facts";
 import { BlogInfo } from "./BlogInfo";
-import { Offers } from "./Offers/Offers";
+import { Services } from "./Services/Services";
 import { RequestContact } from "./RequestContact/RequestContact";
 
 export const Home = () => {
@@ -11,7 +11,7 @@ export const Home = () => {
 
         <RequestContact />
         
-        <Offers />
+        <Services />
 
         <Facts />
 

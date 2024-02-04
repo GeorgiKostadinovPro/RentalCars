@@ -3,18 +3,14 @@
 }
 
 .offers .service-item {
+	display: flex;
+	flex-direction: column;
 	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
 	transition: transform 0.4s;
 }
 
 .offers .service-item:hover {
 	transform: scale(1.05);
-}
-
-.offers .service-item img {
-	width: 100%;
-	height: auto;
-	overflow: hidden;
 }
 
 .offers .service-item .down-content {
