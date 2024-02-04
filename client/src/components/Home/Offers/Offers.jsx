@@ -1,6 +1,24 @@
+import { useEffect, useState } from 'react'
+import { Offer } from './Offer'
+
+import * as carService from '../../../services/carService'
+
 import './Offers.css'
 
 export const Offers = () => {
+    const [offers, setOffers] = useState([]);
+
+    useEffect(() => {
+      carService
+          .getOffers()
+          .then(result => {
+            setOffers(result);
+          })
+          .catch(error => {
+            console.log(error.message);
+          });
+    }, []);
+
     return (
         <div className="services">
           <div className="container">
@@ -13,69 +31,10 @@ export const Offers = () => {
                   <span>These are the newest offers by our users!</span>
                 </div>
               </div>
-              <div className="col-md-4">
-                <div className="service-item">
-                  <img src="assets/images/offer-1-720x480.jpg" alt="" />
-                  <div className="down-content">
-                    <h4>Odio libero vel autem atque consequuntur</h4>
-                    <div style={{ marginBottom: 10 }}>
-                      <span>
-                        from <sup>$</sup>120 per weekend
-                      </span>
-                    </div>
-                    <p>
-                      Sed tincidunt dictum lobortis. Aenean tempus diam vel
-                      augue luctus dignissim. Nunc ornare leo tortor.
-                    </p>
-                    <a href="offers.html" className="filled-button">
-                      Details
-                    </a>
-                  </div>
-                </div>
-                <br />
-              </div>
-              <div className="col-md-4">
-                <div className="service-item">
-                  <img src="assets/images/offer-2-720x480.jpg" alt="" />
-                  <div className="down-content">
-                    <h4>Odio libero vel autem atque consequuntur</h4>
-                    <div style={{ marginBottom: 10 }}>
-                      <span>
-                        from <sup>$</sup>120 per weekend
-                      </span>
-                    </div>
-                    <p>
-                      Sed tincidunt dictum lobortis. Aenean tempus diam vel
-                      augue luctus dignissim. Nunc ornare leo tortor.
-                    </p>
-                    <a href="offers.html" className="filled-button">
-                      Details
-                    </a>
-                  </div>
-                </div>
-                <br />
-              </div>
-              <div className="col-md-4">
-                <div className="service-item">
-                  <img src="assets/images/offer-3-720x480.jpg" alt="" />
-                  <div className="down-content">
-                    <h4>Libero eveniet sint nemo beatae</h4>
-                    <div style={{ marginBottom: 10 }}>
-                      <span>
-                        from <sup>$</sup>120 per weekend
-                      </span>
-                    </div>
-                    <p>
-                      Sed tincidunt dictum lobortis. Aenean tempus diam vel
-                      augue luctus dignissim. Nunc ornare leo tortor.
-                    </p>
-                    <a href="offers.html" className="filled-button">
-                      Details
-                    </a>
-                  </div>
-                </div>
-                <br />
-              </div>
+              
+              {offers.length > 0 && offers.map(offer => (
+                <Offer key={offer._id} {...offer} />
+              ))}
             </div>
           </div>
         </div>
