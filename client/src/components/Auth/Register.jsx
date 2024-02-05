@@ -21,7 +21,7 @@ export const Register = () => {
     handleSubmit,
     watch,
     formState: { errors }  
-  } = useForm(defaultValues);
+  } = useForm({defaultValues, mode: 'onChange'});
 
   return (
     <div id="form_wrapper">

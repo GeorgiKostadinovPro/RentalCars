@@ -19,7 +19,7 @@ export const Login = () => {
     register, 
     handleSubmit,
     formState: { errors } 
-  } = useForm(defaultValues);
+  } = useForm({defaultValues, mode: 'onChange'});
 
   return (
     <div id="form_wrapper">
