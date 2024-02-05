@@ -13,6 +13,7 @@ export const Cars = () => {
   const [cars, setCars] = useState([]);
   const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [searchCriteria, setSearchCriteria] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,7 +21,7 @@ export const Cars = () => {
       const take = Constants.pagination.pageSize;
 
       try {
-        const result = await carService.getAll(skip, take);
+        const result = await carService.getAll(searchCriteria, skip, take);
 
         setCars(result);
       } catch (error) {
@@ -29,12 +30,12 @@ export const Cars = () => {
     };
 
     fetchData();
-  }, [currPage]);
+  }, [searchCriteria, currPage]);
 
   useEffect(() => {
     const getTotalSize = async () => {
       try {
-        const result = await carService.getCarsCount();
+        const result = await carService.getCarsCount(searchCriteria);
 
         setTotalPages(Math.ceil(result / Constants.pagination.pageSize));
       } catch (error) {
@@ -43,7 +44,12 @@ export const Cars = () => {
     };
 
     getTotalSize();
-  }, []);
+  }, [searchCriteria]); 
+  
+  const handleSearchSubmit = (criteria) => {
+    setSearchCriteria(criteria);
+    setCurrPage(1);
+  }
 
   const handlePageChange = (newPage) => {
     setCurrPage(newPage);
@@ -62,7 +68,7 @@ export const Cars = () => {
         </div>
       </div>
 
-      <Search />
+      <Search handleSearchSubmit={handleSearchSubmit} />
 
       <div className="cars">
         <div className="container">
