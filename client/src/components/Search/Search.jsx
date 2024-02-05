@@ -11,21 +11,17 @@ const defaultValues = {
     pricePerDay: ''
 };
 
-export const Search = () => {
+export const Search = ({ handleSearchSubmit }) => {
     const {
         register,
         handleSubmit,
         formState: {errors}
     } = useForm(defaultValues);
 
-    const searchSubmitHandler = (data) => {
-        console.log(data);
-    };
-
     return (
       <div className="search">
         <div className="container">
-          <form onSubmit={handleSubmit(searchSubmitHandler)}>
+          <form onSubmit={handleSubmit(handleSearchSubmit)}>
             <div className="right-content">
               <div className="select-item">
                 <p>Select Year</p>
