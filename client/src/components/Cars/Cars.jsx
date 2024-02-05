@@ -1,24 +1,52 @@
 import { useEffect, useState } from 'react'
-import { Pagination } from '../Common/Pagination'
-import { Car } from './Car'
 
-import * as carService from '../../services/carService'   
+import * as carService from '../../services/carService'
+
+import { Pagination } from '../Pagination/Pagination'
+import { Car } from './Car'   
+import { Constants } from '../../utilities/constants'
 
 import './Cars.css'
 
 export const Cars = () => {
   const [cars, setCars] = useState([]);
+  const [currPage, setCurrPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    carService
-      .getAll()
-      .then(result => {
-        setCars(result)
-      })
-      .catch(error => {
+    const fetchData = async () => {
+      const skip = (currPage - 1) * Constants.pagination.pageSize;
+      const take = Constants.pagination.pageSize;
+
+      try {
+        const result = await carService.getAll(skip, take);
+
+        setCars(result);
+      } catch (error) {
         console.log(error.message);
-      });
+      }
+    };
+
+    fetchData();
+  }, [currPage]);
+
+  useEffect(() => {
+    const getTotalSize = async () => {
+      try {
+        const result = await carService.getCarsCount();
+
+        setTotalPages(Math.ceil(result / Constants.pagination.pageSize));
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    getTotalSize();
   }, []);
+
+  const handlePageChange = (newPage) => {
+    setCurrPage(newPage);
+  };
     
   return (
     <>
@@ -43,7 +71,12 @@ export const Cars = () => {
           </div>
           <br />
           <br />
-            <Pagination />
+
+            <Pagination 
+              currPage={currPage} 
+              totalPages={totalPages} 
+              handlePageChange={handlePageChange} />
+
           <br />
           <br />
           <br />
