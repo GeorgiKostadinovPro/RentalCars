@@ -17,7 +17,11 @@ const getAll = async (skip = 0, take = 3) => {
 }
 
 const getCarsCount = async () => {
-    const result = await request.get(`${baseUrl}`);
+    const query = new URLSearchParams({
+        select: '_id'
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
 
     return result?.length;
 }
