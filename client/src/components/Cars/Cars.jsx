@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 
 import * as carService from '../../services/carService'
 
-import { Pagination } from '../Pagination/Pagination'
 import { Car } from './Car'   
+import { Search } from '../Search/Search'
+import { Pagination } from '../Pagination/Pagination'
 import { Constants } from '../../utilities/constants'
 
 import './Cars.css'
@@ -60,6 +61,9 @@ export const Cars = () => {
           </div>
         </div>
       </div>
+
+      <Search />
+
       <div className="cars">
         <div className="container">
           <div className="row">
