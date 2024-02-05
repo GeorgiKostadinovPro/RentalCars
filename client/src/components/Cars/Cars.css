@@ -2,6 +2,15 @@
 	margin-top: 140px;
 }
 
+.cars .service-item {
+	box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+	transition: transform 0.4s;
+}
+
+.cars .service-item:hover {
+	transform: scale(1.02);
+}
+
 .cars .service-item img {
 	width: 100%;
 	overflow: hidden;

@@ -16,6 +16,9 @@ const Constants = {
           value: 5,
           message: "The minimal length is 5!",
         },
+    },
+    pagination: {
+      pageSize: 3
     }
 };
 

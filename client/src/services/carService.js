@@ -4,9 +4,11 @@ const baseUrl = '/data/cars';
 
 const request = requestFactory();
 
-const getAll = async () => {
+const getAll = async (skip = 0, take = 3) => {
     const query = new URLSearchParams({
-        select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery'
+        select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
+        offset: skip,
+        pageSize: take
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
@@ -14,4 +16,10 @@ const getAll = async () => {
     return result;
 }
 
-export { getAll }
+const getCarsCount = async () => {
+    const result = await request.get(`${baseUrl}`);
+
+    return result?.length;
+}
+
+export { getAll, getCarsCount }
