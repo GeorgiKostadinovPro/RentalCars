@@ -11,35 +11,40 @@ const getAll = async (
     skip = 0, 
     take = Constants.pagination.pageSize
 ) => {
-    const query = new URLSearchParams({
+    const mainQuery = new URLSearchParams({
         select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
         offset: skip,
         pageSize: take
     });
 
     if (filterCriteria.searchInput) {
-        query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+        mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
-    // if (filterCriteria.sortCriteria) {
-    //     const sort = filterCriteria.sortOrder 
-    //                 ? `${filterCriteria.sortCriteria} ${filterCriteria.sortOrder}`
-    //                 : filterCriteria.sortCriteria;
+    let sortQuery = 'sortBy=';
 
-    //     query.set('sortBy', sort);
-    // }
+    if (filterCriteria.sortCriteria) {
+        const sort = filterCriteria.sortOrder 
+                    ? `${filterCriteria.sortCriteria} ${filterCriteria.sortOrder}`
+                    : filterCriteria.sortCriteria;      
+        
+        sortQuery += encodeURIComponent(sort);
+    }
 
-    const result = await request.get(`${baseUrl}?${query}`);
+    const result = await request.get(`${baseUrl}?${mainQuery}&${sortQuery}`);
 
     return result;
 }
 
-const getCarsCount = async (searchCriteria) => {
+const getCarsCount = async (filterCriteria) => {
 
     const query = new URLSearchParams({
-        select: '_id'
+        select: '_id',
     });
 
+    if (filterCriteria.searchInput) {
+        mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+    }
 
     const result = await request.get(`${baseUrl}?${query}`);
 
