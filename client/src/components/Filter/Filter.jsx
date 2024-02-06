@@ -3,12 +3,10 @@ import { useForm } from 'react-hook-form'
 import './Filter.css'
 
 const defaultValues = {
-    year: '',
-    make: '',
-    fuelType: '',
-    bodyStyle: '',
-    transmission: '',
-    pricePerDay: ''
+  searchInput: '',
+  searchCriteria: '',
+  sortCriteria: '',
+  sortOrder: ''
 };
 
 export const Filter = ({ handleFilterSubmit }) => {
@@ -27,12 +25,13 @@ export const Filter = ({ handleFilterSubmit }) => {
                 <p>Search</p>
                 <div className="search-content">
                   <input
+                    {...register("searchInput")}
                     type="text"
                     className="select-box"
                     placeholder="Type anything..."
                   />
 
-                  <select {...register("make")} className="select-box">
+                  <select {...register("searchCriteria")} className="select-box">
                     <option value="make">Make</option>
                     <option value="model">Model</option>
                     <option value="year">Year</option>
@@ -46,7 +45,7 @@ export const Filter = ({ handleFilterSubmit }) => {
               <div className="sort-section">
                 <p>Sort</p>
                 <div className="sort-content">
-                  <select {...register("fuelType")} className="select-box">
+                  <select {...register("sortCriteria")} className="select-box">
                     <option value="make">Make</option>
                     <option value="model">Model</option>
                     <option value="year">Year</option>
@@ -55,7 +54,7 @@ export const Filter = ({ handleFilterSubmit }) => {
                     <option value="transmission">Transmission</option>
                   </select>
 
-                  <select {...register("bodyStyle")} className="select-box">
+                  <select {...register("sortOrder")} className="select-box">
                     <option value="">Ascending</option>
                     <option value="desc">Descending</option>
                   </select>

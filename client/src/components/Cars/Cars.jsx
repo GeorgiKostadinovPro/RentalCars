@@ -47,12 +47,13 @@ export const Cars = () => {
   }, [filterCriteria]); 
   
   const handleFilterSubmit = (criteria) => {
-    setFilterCriteria(criteria);
-    setCurrPage(1);
+    console.log(criteria);
   }
 
   const handlePageChange = (newPage) => {
-    setCurrPage(newPage);
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrPage(newPage);
+    }
   };
     
   return (
