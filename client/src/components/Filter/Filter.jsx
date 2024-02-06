@@ -62,7 +62,7 @@ export const Filter = ({ handleFilterSubmit }) => {
               </div>
             </div>
             <div className="right-content">
-              <button type="submit">Search</button>
+              <button type="submit">Apply</button>
             </div>
           </form>
         </div>

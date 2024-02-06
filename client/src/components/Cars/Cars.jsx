@@ -47,7 +47,7 @@ export const Cars = () => {
   }, [filterCriteria]); 
   
   const handleFilterSubmit = (criteria) => {
-    console.log(criteria);
+    setFilterCriteria(criteria);
   }
 
   const handlePageChange = (newPage) => {

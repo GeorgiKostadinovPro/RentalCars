@@ -1,6 +1,5 @@
 import { requestFactory } from "../api/api"
 
-import { searchUrlBuilder } from "../utilities/searchUrlBuilder";
 import { Constants } from "../utilities/constants";
 
 const baseUrl = '/data/cars';
@@ -8,22 +7,27 @@ const baseUrl = '/data/cars';
 const request = requestFactory();
 
 const getAll = async (
-    searchCriteria, 
+    filterCriteria, 
     skip = 0, 
     take = Constants.pagination.pageSize
 ) => {
-
-    const searchUrl = searchUrlBuilder(searchCriteria);
-    
     const query = new URLSearchParams({
         select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
         offset: skip,
         pageSize: take
     });
-    
-    if (searchUrl) {
-        query.append('where', searchUrl);
+
+    if (filterCriteria.searchInput) {
+        query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
+
+    // if (filterCriteria.sortCriteria) {
+    //     const sort = filterCriteria.sortOrder 
+    //                 ? `${filterCriteria.sortCriteria} ${filterCriteria.sortOrder}`
+    //                 : filterCriteria.sortCriteria;
+
+    //     query.set('sortBy', sort);
+    // }
 
     const result = await request.get(`${baseUrl}?${query}`);
 
@@ -31,15 +35,11 @@ const getAll = async (
 }
 
 const getCarsCount = async (searchCriteria) => {
-    const searchUrl = searchUrlBuilder(searchCriteria);
 
     const query = new URLSearchParams({
         select: '_id'
     });
 
-    if (searchUrl) {
-        query.append('where', searchUrl);
-    }
 
     const result = await request.get(`${baseUrl}?${query}`);
 
