@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import * as carService from '../../services/carService'
 
 import { Car } from './Car'   
-import { Search } from '../Search/Search'
+import { Filter } from '../Filter/Filter'
 import { Pagination } from '../Pagination/Pagination'
 import { Constants } from '../../utilities/constants'
 
@@ -13,7 +13,7 @@ export const Cars = () => {
   const [cars, setCars] = useState([]);
   const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [searchCriteria, setSearchCriteria] = useState({});
+  const [filterCriteria, setFilterCriteria] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +21,7 @@ export const Cars = () => {
       const take = Constants.pagination.pageSize;
 
       try {
-        const result = await carService.getAll(searchCriteria, skip, take);
+        const result = await carService.getAll(filterCriteria, skip, take);
 
         setCars(result);
       } catch (error) {
@@ -30,12 +30,12 @@ export const Cars = () => {
     };
 
     fetchData();
-  }, [searchCriteria, currPage]);
+  }, [filterCriteria, currPage]);
 
   useEffect(() => {
     const getTotalSize = async () => {
       try {
-        const result = await carService.getCarsCount(searchCriteria);
+        const result = await carService.getCarsCount(filterCriteria);
 
         setTotalPages(Math.ceil(result / Constants.pagination.pageSize));
       } catch (error) {
@@ -44,15 +44,16 @@ export const Cars = () => {
     };
 
     getTotalSize();
-  }, [searchCriteria]); 
+  }, [filterCriteria]); 
   
-  const handleSearchSubmit = (criteria) => {
-    setSearchCriteria(criteria);
-    setCurrPage(1);
+  const handleFilterSubmit = (criteria) => {
+    setFilterCriteria(criteria);
   }
 
   const handlePageChange = (newPage) => {
-    setCurrPage(newPage);
+    if (newPage >= 1 && newPage <= totalPages) {
+      setCurrPage(newPage);
+    }
   };
     
   return (
@@ -68,7 +69,7 @@ export const Cars = () => {
         </div>
       </div>
 
-      <Search handleSearchSubmit={handleSearchSubmit} />
+      <Filter handleFilterSubmit={handleFilterSubmit} />
 
       <div className="cars">
         <div className="container">
