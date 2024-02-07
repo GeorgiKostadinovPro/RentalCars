@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 
 import * as carService from '../../services/carService'
+import { RentForm } from "../RentForm/RentForm"
 
 import './CarDetails.css'
 
@@ -47,33 +48,8 @@ export const CarDetails = () => {
 
           <div className="right-container">
             <h2>Rent Now</h2>
-            <form action="">
-                <div className="input-content">
-                    <label htmlFor="">Full Name</label>
-                    <input type="text" placeholder="Enter your full name"/>
-                </div>
-                <div className="input-content">
-                    <label htmlFor="">Email Address</label>
-                    <input type="text" placeholder="Enter your email"/>
-                </div>
-                <div className="input-content">
-                    <label htmlFor="">Pick-up Date</label>
-                    <input type="date" />
-                </div>
-                <div className="input-content">
-                    <label htmlFor="">Pick-up Time</label>
-                    <input type="time" />
-                </div>
-                <div className="input-content">
-                    <label htmlFor="">Returning Time</label>
-                    <input type="date" />
-                </div>
-                <div className="input-content">
-                    <label htmlFor="">Returning Time</label>
-                    <input type="time" />
-                </div>
-                <input className="rent-btn" type="submit" value="Rent"/>
-            </form>
+            
+            <RentForm />
           </div>
         </div>
       </>
