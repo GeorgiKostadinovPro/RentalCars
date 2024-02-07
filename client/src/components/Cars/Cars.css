@@ -71,3 +71,8 @@
     color: #fff;
     letter-spacing: 0.5px;
 }
+
+.cars .container .row h3 {
+	margin: 0 auto 2em;
+	text-align: center;
+}

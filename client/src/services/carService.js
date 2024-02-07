@@ -43,7 +43,7 @@ const getCarsCount = async (filterCriteria) => {
     });
 
     if (filterCriteria.searchInput) {
-        mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+        query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
     const result = await request.get(`${baseUrl}?${query}`);
