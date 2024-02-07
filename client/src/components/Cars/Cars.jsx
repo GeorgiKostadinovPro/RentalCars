@@ -16,7 +16,7 @@ export const Cars = () => {
   const [filterCriteria, setFilterCriteria] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getAllCars = async () => {
       const skip = (currPage - 1) * Constants.pagination.pageSize;
       const take = Constants.pagination.pageSize;
 
@@ -29,7 +29,7 @@ export const Cars = () => {
       }
     };
 
-    fetchData();
+    getAllCars();
   }, [filterCriteria, currPage]);
 
   useEffect(() => {

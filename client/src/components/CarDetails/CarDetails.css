@@ -1,0 +1,82 @@
+.car-details-summary-p {
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.car-details-summary-p strong {
+    font-weight: normal;
+    color: #A4C639;
+}
+
+.car-details {
+    max-width: 1400px;
+    margin: 140px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5em;
+}
+
+.car-details .left-container {
+    width: 60em;
+    flex: 1 1 auto;
+    border: 1px solid black
+}
+
+.car-details .right-container {
+    width: 25em;
+    padding: 1em;
+    flex: 1 1 auto;
+    background-color: #F8F9FA;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+}
+
+.car-details .right-container h2 {
+    margin: 0 0 1em 0;
+    font-family: 'Protest Riot', sans-serif;
+    text-transform: uppercase;
+}
+
+.car-details .right-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.car-details .right-container form .input-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-details .right-container form .input-content  {
+    font-size: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.car-details .right-container form .input-content input {
+    padding: 0.5em 1em;
+    flex: 1 1 auto;
+    color: #878E9C;
+    border: none;
+    border-radius: 0.2em;
+}
+
+.car-details .right-container form .rent-btn {
+    width: 50%;
+    padding: 0.5em 1em;
+    flex: 1 0 auto;
+    align-self: center;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #212529;
+    color: #ffffff;
+    font-family: 'Protest Riot', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.car-details .right-container form .rent-btn:hover {
+    background-color: #A4C639;
+}
