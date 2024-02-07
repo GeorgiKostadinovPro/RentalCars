@@ -12,6 +12,9 @@
 .car-details .right-container form .input-content  {
     font-size: 1em;
     font-weight: bold;
+}
+
+.car-details .right-container form .input-content label {
     text-transform: uppercase;
 }
 

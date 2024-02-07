@@ -17,6 +17,21 @@ const Constants = {
           message: "The minimal length is 5!",
         },
     },
+    fullName: {
+      required: "This field is required!",
+      pattern: {
+        value: /^[A-z]{3,} [A-z]{3,}$/g,
+        message: "This full name is invalid"
+      }
+    },
+    rent: {
+      pickUpDateAndTime: {
+        required: "This field is required!"
+      },
+      returningDateAndTime: {
+        required: "This field is required!"
+      }
+    },
     pagination: {
       pageSize: 3
     }

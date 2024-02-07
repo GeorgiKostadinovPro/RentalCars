@@ -17,13 +17,14 @@
 }
 
 .car-details .left-container {
-    width: 60em;
+    max-width: 60em;
+    min-width: 20em;
     flex: 1 1 auto;
-    border: 1px solid black
+    border: 1px solid black;
 }
 
 .car-details .right-container {
-    width: 25em;
+    max-width: 25em;
     padding: 1em;
     flex: 1 1 auto;
     background-color: #F8F9FA;
@@ -34,4 +35,10 @@
     margin: 0 0 1em 0;
     font-family: 'Protest Riot', sans-serif;
     text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .car-details {
+        justify-content: center;
+    }
 }
