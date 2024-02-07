@@ -43,7 +43,7 @@ const getCarsCount = async (filterCriteria) => {
     });
 
     if (filterCriteria.searchInput) {
-        mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+        query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
     const result = await request.get(`${baseUrl}?${query}`);
@@ -51,4 +51,10 @@ const getCarsCount = async (filterCriteria) => {
     return result?.length;
 }
 
-export { getAll, getCarsCount }
+const getById = async (id) => {
+    const result = await request.get(`${baseUrl}/${id}`);
+    
+    return result;
+};
+
+export { getAll, getCarsCount, getById }

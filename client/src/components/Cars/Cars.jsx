@@ -16,7 +16,7 @@ export const Cars = () => {
   const [filterCriteria, setFilterCriteria] = useState({});
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getAllCars = async () => {
       const skip = (currPage - 1) * Constants.pagination.pageSize;
       const take = Constants.pagination.pageSize;
 
@@ -29,7 +29,7 @@ export const Cars = () => {
       }
     };
 
-    fetchData();
+    getAllCars();
   }, [filterCriteria, currPage]);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export const Cars = () => {
     };
 
     getTotalSize();
-  }, [filterCriteria]); 
+  }, [filterCriteria]);
   
   const handleFilterSubmit = (criteria) => {
     setFilterCriteria(criteria);
@@ -75,9 +75,13 @@ export const Cars = () => {
         <div className="container">
           <div className="row">
 
-            {cars.length > 0 && cars.map(car => (
-              <Car key={car._id} {...car}/>
-            ))}
+            {
+              cars.length > 0 
+              ? cars.map(car => (
+                  <Car key={car._id} {...car}/>
+                ))
+              : <h3>No cars were found</h3>
+            }
 
           </div>
           <br />

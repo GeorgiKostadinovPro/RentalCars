@@ -8,7 +8,6 @@ const Path = {
     about: '/about',
     terms: '/terms',
     blog: '/blog',
-    postDetails: '/post',
     contact: '/contact',
     notFound: '*'
 }

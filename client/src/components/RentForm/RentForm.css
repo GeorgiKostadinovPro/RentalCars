@@ -1,0 +1,47 @@
+.car-details .right-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.car-details .right-container form .input-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.car-details .right-container form .input-content  {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.car-details .right-container form .input-content label {
+    text-transform: uppercase;
+}
+
+.car-details .right-container form .input-content input {
+    padding: 0.5em 1em;
+    flex: 1 1 auto;
+    color: #878E9C;
+    border: none;
+    border-radius: 0.2em;
+}
+
+.car-details .right-container form .rent-btn {
+    width: 50%;
+    padding: 0.5em 1em;
+    flex: 1 0 auto;
+    align-self: center;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #212529;
+    color: #ffffff;
+    font-family: 'Protest Riot', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.car-details .right-container form .rent-btn:hover {
+    background-color: #A4C639;
+}

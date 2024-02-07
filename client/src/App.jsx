@@ -18,6 +18,7 @@ import { Blog } from './components/Blog/Blog';
 import { Terms } from './components/Terms/Terms';
 import { AuthProvider } from './contexts/AuthContext';
 import { NotFound } from './components/Errors/NotFound';
+import { CarDetails } from './components/CarDetails/CarDetails';
 
 function App() {
   const location = useLocation();
@@ -39,6 +40,7 @@ function App() {
 
           <Route path={Path.home} element={<Home />} />
           <Route path={Path.cars} element={<Cars />} />
+          <Route path='/cars/:carId/details' element={<CarDetails />} />
           <Route path={Path.about} element={<About />} />
           <Route path={Path.blog} element={<Blog />} />
           <Route path={Path.terms} element={<Terms />} />

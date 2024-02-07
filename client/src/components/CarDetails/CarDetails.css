@@ -1,0 +1,44 @@
+.car-details-summary-p {
+    font-size: 2em;
+    color: #ffffff;
+}
+
+.car-details-summary-p strong {
+    font-weight: normal;
+    color: #A4C639;
+}
+
+.car-details {
+    max-width: 1400px;
+    margin: 140px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5em;
+}
+
+.car-details .left-container {
+    max-width: 60em;
+    min-width: 20em;
+    flex: 1 1 auto;
+    border: 1px solid black;
+}
+
+.car-details .right-container {
+    max-width: 25em;
+    padding: 1em;
+    flex: 1 1 auto;
+    background-color: #F8F9FA;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+}
+
+.car-details .right-container h2 {
+    margin: 0 0 1em 0;
+    font-family: 'Protest Riot', sans-serif;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+    .car-details {
+        justify-content: center;
+    }
+}
