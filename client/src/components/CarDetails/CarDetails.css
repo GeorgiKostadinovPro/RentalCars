@@ -16,15 +16,9 @@
     gap: 2.5em;
 }
 
-.car-details .left-container {
-    max-width: 60em;
-    min-width: 20em;
-    flex: 1 1 auto;
-    border: 1px solid black;
-}
-
 .car-details .right-container {
     max-width: 25em;
+    height: 570.4px;
     padding: 1em;
     flex: 1 1 auto;
     background-color: #F8F9FA;
@@ -37,7 +31,82 @@
     text-transform: uppercase;
 }
 
-@media screen and (max-width: 768px) {
+.car-details .left-container {
+    max-width: 60em;
+    min-width: 20em;
+    flex: 1 1 auto;
+}
+
+.car-details .left-container .car-gallery-slider {
+    height: 570.4px;
+}
+
+.car-details .left-container .gallery-slide img {
+    width: 100%;
+    height: 570.4px;
+    display: flex;
+}
+
+.car-details .left-container .car-introduction {
+    font-family: 'Protest Riot', sans-serif;
+}
+
+.car-details .left-container .car-introduction,
+.car-details .left-container .car-overview,
+.car-details .left-container .car-description {
+    margin: 2em 0 0 0;
+    padding: 1em 1em;
+}
+
+.car-details .left-container .car-introduction h2,
+.car-details .left-container .car-overview h2,
+.car-details .left-container .car-description h2
+{
+    margin: 0 0 0.5em 0;
+}
+
+.car-details .left-container .car-introduction p {
+    font-size: 1.5em;
+}
+
+.car-details .left-container .car-overview h2,
+.car-details .left-container .car-description h2 {
+    font-family: 'Protest Riot', sans-serif;
+}
+
+.car-details .car-overview .car-information {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5em;
+}
+
+.car-details .car-overview .car-information article {
+    width: 10em;
+    min-width: 5em;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    font-size: 1.2em;
+}
+
+.car-details .car-overview .car-information article p {
+    font-size: 0.9em;
+}
+
+.car-details .car-overview .car-information i {
+    padding: 0.7em;
+    font-size: 1.5em;
+    color: #000;
+    border: 0.07em solid #d7d6d6;
+    border-radius: 0.2em;
+}
+
+.car-details .left-container .car-description p {
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 1300px) {
     .car-details {
         justify-content: center;
     }

@@ -77,7 +77,7 @@ export const Register = () => {
                   if (watch("password") != confirmPassword) {
                     return "Your passwords do NOT match!";
                   }
-                },
+                }
               })}
               placeholder="Confirm Password"
               type="password"

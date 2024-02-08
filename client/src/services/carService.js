@@ -21,17 +21,17 @@ const getAll = async (
         mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
-    let sortQuery = 'sortBy=';
+    let sortQuery;
 
     if (filterCriteria.sortCriteria) {
         const sort = filterCriteria.sortOrder 
                     ? `${filterCriteria.sortCriteria} ${filterCriteria.sortOrder}`
                     : filterCriteria.sortCriteria;      
         
-        sortQuery += encodeURIComponent(sort);
+        sortQuery = '&sortBy=' + encodeURIComponent(sort);
     }
 
-    const result = await request.get(`${baseUrl}?${mainQuery}&${sortQuery}`);
+    const result = await request.get(`${baseUrl}?${mainQuery}${sortQuery ? sortQuery : ''}`);
 
     return result;
 }
