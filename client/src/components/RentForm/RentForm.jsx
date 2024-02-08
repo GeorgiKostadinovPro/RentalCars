@@ -15,6 +15,7 @@ export const RentForm = () => {
     const {
       register,
       handleSubmit,
+      watch,
       formState: {errors}
     } = useForm({ defaultValues, mode: 'onChange' });
 
@@ -59,7 +60,16 @@ export const RentForm = () => {
         <div className="input-content">
           <label htmlFor="pickUpDateAndTime">Pick-up ( Date and Time )</label>
           <input
-            {...register("pickUpDateAndTime", Constants.rent.pickUpDateAndTime)}
+            {...register("pickUpDateAndTime", {
+              ...Constants.rent.pickUpDateAndTime,
+              validate: (pickUpDateAndTime) => {
+                const currDateTime = new Date();
+
+                if (Date.parse(pickUpDateAndTime) <= currDateTime) {
+                  return "Invalid pick-up date and time!"
+                }
+              }
+            })}
             type="datetime-local"
           />
           <span
@@ -74,7 +84,14 @@ export const RentForm = () => {
         <div className="input-content">
           <label htmlFor="pickUpTime">Returning ( Date and Time )</label>
           <input
-            {...register("returningDateAndTime", Constants.rent.returningDateAndTime)}
+            {...register("returningDateAndTime", {
+              ...Constants.rent.returningDateAndTime,
+              validate: (returningDateAndTime) => {
+                if (watch("pickUpDateAndTime") >= returningDateAndTime) {
+                  return "Invalid returning date and time!";
+                }
+              },
+            })}
             type="datetime-local"
           />
           <span
