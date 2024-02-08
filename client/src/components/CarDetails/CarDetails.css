@@ -35,7 +35,6 @@
     max-width: 60em;
     min-width: 20em;
     flex: 1 1 auto;
-    border: 1px solid black;
 }
 
 .car-details .left-container .car-gallery-slider {
@@ -107,7 +106,7 @@
     font-size: 1.2em;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
     .car-details {
         justify-content: center;
     }
