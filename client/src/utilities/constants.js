@@ -36,8 +36,15 @@ const Constants = {
       carsPageSize: 3,
       reviewsPageSize: 1
     },
-    rating: {
-      maxRating: 5
+    reviews: {
+      maxRating: 5,
+      message: {
+        required: "A valid message is required!",
+        minLength: {
+          value: 5,
+          message: "The message should be at least 5 symbols long!"
+        }
+      }
     }
 };
 

@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 
-import { Constants } from '../../utilities/constants';
+import { Constants } from '../../utilities/constants'
 
 import './RentForm.css'
 
