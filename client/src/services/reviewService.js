@@ -1,13 +1,15 @@
 import { requestFactory } from "../api/api"
 
-const request = requestFactory();
-
 const baseUrl = '/data/reviews';
 
-const getAllByCarId = async (carId) => {
+const request = requestFactory();
+
+const getAllByCarId = async (carId, skip, take) => {
     const query = new URLSearchParams({
         where: `carId="${carId}"`,
-        load: `author=_ownerId:users`
+        load: `author=_ownerId:users`,
+        offset: skip,
+        pageSize: take
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
@@ -15,4 +17,14 @@ const getAllByCarId = async (carId) => {
     return result;
 }
 
-export { getAllByCarId }
+const getReviewsCountByCarId = async (carId) => {
+    const query = new URLSearchParams({
+        where: `carId="${carId}"`
+    });
+
+    const result = request.get(`${baseUrl}?${query}&count`);
+
+    return result;
+}
+
+export { getAllByCarId, getReviewsCountByCarId }

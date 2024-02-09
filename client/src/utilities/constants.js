@@ -33,7 +33,8 @@ const Constants = {
       }
     },
     pagination: {
-      pageSize: 3
+      carsPageSize: 3,
+      reviewsPageSize: 1
     },
     rating: {
       maxRating: 5

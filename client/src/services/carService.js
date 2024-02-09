@@ -11,6 +11,7 @@ const getAll = async (
     skip = 0, 
     take = Constants.pagination.pageSize
 ) => {
+    
     const mainQuery = new URLSearchParams({
         select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
         offset: skip,
@@ -38,17 +39,15 @@ const getAll = async (
 
 const getCarsCount = async (filterCriteria) => {
 
-    const query = new URLSearchParams({
-        select: '_id',
-    });
+    const query = new URLSearchParams();
 
     if (filterCriteria.searchInput) {
         query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
-    const result = await request.get(`${baseUrl}?${query}`);
+    const result = await request.get(`${baseUrl}?${query}&count`);
 
-    return result?.length;
+    return result;
 }
 
 const getById = async (id) => {

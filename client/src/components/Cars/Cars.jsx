@@ -17,8 +17,8 @@ export const Cars = () => {
 
   useEffect(() => {
     const getAllCars = async () => {
-      const skip = (currPage - 1) * Constants.pagination.pageSize;
-      const take = Constants.pagination.pageSize;
+      const skip = (currPage - 1) * Constants.pagination.carsPageSize;
+      const take = Constants.pagination.carsPageSize;
 
       try {
         const result = await carService.getAll(filterCriteria, skip, take);
@@ -37,7 +37,7 @@ export const Cars = () => {
       try {
         const result = await carService.getCarsCount(filterCriteria);
 
-        setTotalPages(Math.ceil(result / Constants.pagination.pageSize));
+        setTotalPages(Math.ceil(result / Constants.pagination.carsPageSize));
       } catch (error) {
         console.log(error.message);
       }
@@ -74,12 +74,15 @@ export const Cars = () => {
       <div className="cars">
         <div className="container">
           <div className="row">
+
             {cars && cars.length > 0 ? (
               cars.map((car) => <Car key={car._id} {...car} />)
             ) : (
               <h3>No cars were found</h3>
             )}
+
           </div>
+          
           <br />
           <br />
           
