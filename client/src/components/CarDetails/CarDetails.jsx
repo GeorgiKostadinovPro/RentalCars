@@ -168,7 +168,10 @@ export const CarDetails = () => {
                   <i className="fa-solid fa-location-dot"></i>
                   <div className="text-content">
                     <strong>Location</strong>
-                    <p>{carDetails.location?.country}, {carDetails.location?.city}</p>
+                    <p>
+                      {carDetails.location?.country},{" "}
+                      {carDetails.location?.city}
+                    </p>
                   </div>
                 </article>
               </div>
@@ -179,6 +182,26 @@ export const CarDetails = () => {
             <div className="car-description">
               <h2>Car Description</h2>
               <p>{carDetails.description}</p>
+            </div>
+
+            <hr />
+
+            <div className="car-owner">
+              <h2>Car Owner</h2>
+              <div className="owner-info">
+                <img
+                  src={
+                    carDetails.author?.profilePictureUrl
+                      ? carDetails.author?.profilePictureUrl
+                      : "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
+                  }
+                  alt=""
+                />
+                <div className="onwer-content">
+                  <p>Username: {carDetails.author?.username}</p>
+                  <p>Email: {carDetails.author?.email}</p>
+                </div>
+              </div>
             </div>
 
             <hr />

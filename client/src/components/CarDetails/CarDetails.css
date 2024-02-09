@@ -53,14 +53,16 @@
 
 .car-details .left-container .car-introduction,
 .car-details .left-container .car-overview,
-.car-details .left-container .car-description {
+.car-details .left-container .car-description,
+.car-details .left-container .car-owner {
     margin: 2em 0 0 0;
     padding: 1em 1em;
 }
 
 .car-details .left-container .car-introduction h2,
 .car-details .left-container .car-overview h2,
-.car-details .left-container .car-description h2
+.car-details .left-container .car-description h2,
+.car-details .left-container .car-owner h2
 {
     margin: 0 0 0.5em 0;
 }
@@ -70,7 +72,8 @@
 }
 
 .car-details .left-container .car-overview h2,
-.car-details .left-container .car-description h2 {
+.car-details .left-container .car-description h2,
+.car-details .left-container .car-owner h2 {
     font-family: 'Protest Riot', sans-serif;
 }
 
@@ -104,6 +107,21 @@
 
 .car-details .left-container .car-description p {
     font-size: 1.2em;
+}
+
+.car-details .left-container .car-owner .owner-info {
+    display: flex;
+    gap: 2em;
+}
+
+.car-details .left-container .car-owner .owner-info img {
+    max-width: 8em;
+    height: auto;
+    display: flex;
+}
+
+.car-details .left-container .car-owner .owner-info p {
+    font-size: 1.5em;
 }
 
 @media screen and (max-width: 1300px) {

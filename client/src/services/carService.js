@@ -52,7 +52,11 @@ const getCarsCount = async (filterCriteria) => {
 }
 
 const getById = async (id) => {
-    const result = await request.get(`${baseUrl}/${id}`);
+    const query = new URLSearchParams({
+        load: 'author=_ownerId:users'
+    });
+
+    const result = await request.get(`${baseUrl}/${id}?${query}`);
     
     return result;
 };
