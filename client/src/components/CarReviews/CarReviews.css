@@ -3,6 +3,11 @@
     padding: 1em 1em;
 }
 
+.car-reviews .no-reviews-p {
+    text-align: center;
+    font-size: 1.2em;
+}
+
 .car-reviews h2 {
     margin: 0 0 0.5em 0;
     font-family: 'Protest Riot', sans-serif;

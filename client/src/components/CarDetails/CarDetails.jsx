@@ -183,7 +183,7 @@ export const CarDetails = () => {
 
             <hr />
 
-            <CarReviews />
+            <CarReviews carId={carId} />
           </div>
 
           <div className="right-container">

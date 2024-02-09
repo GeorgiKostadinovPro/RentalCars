@@ -34,6 +34,9 @@ const Constants = {
     },
     pagination: {
       pageSize: 3
+    },
+    rating: {
+      maxRating: 5
     }
 };
 

@@ -1,6 +1,6 @@
 import { requestFactory } from "../api/api"
 
-import { Constants } from "../utilities/constants";
+import { Constants } from "../utilities/constants"
 
 const baseUrl = '/data/cars';
 
