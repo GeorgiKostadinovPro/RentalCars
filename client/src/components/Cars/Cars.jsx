@@ -74,23 +74,22 @@ export const Cars = () => {
       <div className="cars">
         <div className="container">
           <div className="row">
-
-            {
-              cars.length > 0 
-              ? cars.map(car => (
-                  <Car key={car._id} {...car}/>
-                ))
-              : <h3>No cars were found</h3>
-            }
-
+            {cars && cars.length > 0 ? (
+              cars.map((car) => <Car key={car._id} {...car} />)
+            ) : (
+              <h3>No cars were found</h3>
+            )}
           </div>
           <br />
           <br />
-
-            <Pagination 
-              currPage={currPage} 
-              totalPages={totalPages} 
-              handlePageChange={handlePageChange} />
+          
+          {cars && cars.length > 0 && (
+            <Pagination
+              currPage={currPage}
+              totalPages={totalPages}
+              handlePageChange={handlePageChange}
+            />
+          )}
 
           <br />
           <br />
