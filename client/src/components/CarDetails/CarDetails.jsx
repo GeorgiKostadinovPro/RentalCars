@@ -7,6 +7,7 @@ import { Navigation, Autoplay } from 'swiper/modules'
 import * as carService from '../../services/carService'
 import { RentForm } from "../RentForm/RentForm"
 import { CarReviews } from "../CarReviews/CarReviews"
+import { CreateReview } from "../CreateReview/CreateReview"
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -207,6 +208,10 @@ export const CarDetails = () => {
             <hr />
 
             <CarReviews carId={carId} />
+
+            <hr />
+
+            <CreateReview />
           </div>
 
           <div className="right-container">

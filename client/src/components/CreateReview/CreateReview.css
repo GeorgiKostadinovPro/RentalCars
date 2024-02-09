@@ -1,0 +1,65 @@
+.create-review {
+    max-width: 30em;
+    margin: 2em 0 0 0;
+    padding: 1em;
+    background-color: #F8F9FA;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+}
+
+.create-review h2 {
+    margin: 0 0 0.5em 0;
+    font-family: 'Protest Riot', sans-serif;
+}
+
+.create-review .set-rating {
+    margin: 0 0 1em 0;
+    display: flex;
+    gap: 0.5em;
+}
+
+.create-review .set-rating span {
+    font-size: 1.5em;
+}
+
+.create-review .set-rating span.checked {
+    color: orange;
+}
+
+.create-review .set-message {
+    margin: 0 0 1em 0;
+}
+
+.create-review .set-message textarea {
+    padding: 1em;
+    border-radius: 0.5em;
+    resize: none;
+    outline: none;
+    border: none;
+}
+
+.create-review .btn-group {
+    display: flex;
+    gap: 2em;
+}
+
+.create-review .btn-group button {
+    padding: 0.5em 1em;
+    color: #ffffff;
+    background-color: #212529;
+    font-family: 'Protest Riot', sans-serif;
+    text-transform: uppercase;
+    border-radius: 0.5em;
+    border: none;
+    transition: 0.4s;
+}
+
+.create-review .btn-group button:hover {
+    background-color: #A4C639;
+}
+
+@media screen and (max-width: 1300px) {
+    .create-review {
+        align-self: center;
+    }
+}
