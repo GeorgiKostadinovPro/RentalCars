@@ -9,6 +9,11 @@
 }
 
 .car-reviews h2 {
-    margin: 0 0 0.5em 0;
     font-family: 'Protest Riot', sans-serif;
+}
+
+.car-reviews .rating-p {
+    margin: 0 0 1em 0;
+    font-family: 'Protest Riot', sans-serif;
+    font-size: 1.2em;
 }

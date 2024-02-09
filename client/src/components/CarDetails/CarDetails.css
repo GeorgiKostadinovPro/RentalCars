@@ -18,8 +18,9 @@
 
 .car-details .right-container {
     max-width: 25em;
-    height: 570.4px;
+    min-height: 570.4px;
     padding: 1em;
+    align-self: flex-start;
     flex: 1 1 auto;
     background-color: #F8F9FA;
     box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
@@ -56,7 +57,7 @@
 .car-details .left-container .car-description,
 .car-details .left-container .car-owner {
     margin: 2em 0 0 0;
-    padding: 1em 1em;
+    padding: 1em;
 }
 
 .car-details .left-container .car-introduction h2,

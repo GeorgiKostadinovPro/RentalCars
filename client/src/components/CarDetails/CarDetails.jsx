@@ -79,7 +79,6 @@ export const CarDetails = () => {
               </h2>
               <p>Year of manufacture: {carDetails.year}</p>
               <p>Price per Day: ${carDetails.pricePerDay}</p>
-              <p>Rating: 4.4 / 5 (220 reviews)</p>
             </div>
 
             <hr />
@@ -207,6 +206,7 @@ export const CarDetails = () => {
             <hr />
 
             <CarReviews carId={carId} />
+
           </div>
 
           <div className="right-container">

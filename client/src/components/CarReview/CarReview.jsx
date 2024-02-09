@@ -5,7 +5,7 @@ import './CarReview.css'
 
 export const CarReview = ({
   rating,
-  content,
+  message,
   _createdOn,
   author
 }) => {
@@ -25,15 +25,15 @@ export const CarReview = ({
             <span>{dateFormatter(_createdOn)}</span>
           </h5>
           <p className="review-stars">
-            {[...Array(Constants.rating.maxRating).keys()].map((rate) => {
-              return rate + 1 <= rating ? (
-                <span className="fa fa-star checked"></span>
+            {[...Array(Constants.reviews.maxRating)].map((rate, i) => {
+              return i + 1 <= rating ? (
+                <span key={i} className="fa fa-star checked"></span>
               ) : (
-                <span className="fa fa-star"></span>
+                <span key={i} className="fa fa-star"></span>
               );
             })}
           </p>
-          <p>{content}</p>
+          <p>{message}</p>
         </div>
       </div>
     );

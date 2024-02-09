@@ -48,7 +48,7 @@ export const Cars = () => {
   
   const handleFilterSubmit = (criteria) => {
     setFilterCriteria(criteria);
-  }
+  };
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
