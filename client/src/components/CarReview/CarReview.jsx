@@ -27,9 +27,9 @@ export const CarReview = ({
           <p className="review-stars">
             {[...Array(Constants.rating.maxRating).keys()].map((rate) => {
               return rate + 1 <= rating ? (
-                <span className="fa fa-star checked"></span>
+                <span key={rate} className="fa fa-star checked"></span>
               ) : (
-                <span className="fa fa-star"></span>
+                <span key={rate} className="fa fa-star"></span>
               );
             })}
           </p>

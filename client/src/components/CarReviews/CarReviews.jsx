@@ -55,7 +55,7 @@ export const CarReviews = ({ carId }) => {
       <h2>Reviews</h2>
 
       {reviews && reviews.length > 0 ? (
-        reviews.map((review) => <CarReview {...review} />)
+        reviews.map((review) => <CarReview key={review._id} {...review} />)
       ) : (
         <p className="no-reviews-p">No reviews yet.</p>
       )}

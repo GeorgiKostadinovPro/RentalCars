@@ -1,6 +1,15 @@
+.pagination .page-item .page-link {
+    color: #A4C639;
+}
+
 .pagination .page-item.active .page-link {
     background-color: #A4C639;
+    color: #ffffff;
     border: none;
     outline: none;
     box-shadow: none;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
 }
