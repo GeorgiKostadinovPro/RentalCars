@@ -1,6 +1,6 @@
 import { Banner } from "./Banner";
 import { Info } from "./Info/Info";
-import { Form } from "./Form/Form";
+import { ContactForm } from "./ContactForm/ContactForm";
 
 export const Contact = () => {
     return (
@@ -9,7 +9,7 @@ export const Contact = () => {
 
         <Info />
 
-        <Form />
+        <ContactForm />
       </>
     );
 }
