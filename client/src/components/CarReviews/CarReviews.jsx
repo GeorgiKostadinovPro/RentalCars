@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as reviewService from '../../services/reviewService'
 import { Constants } from '../../utilities/constants'
@@ -10,11 +10,14 @@ import { Pagination } from '../Pagination/Pagination'
 import './CarReviews.css'
 
 export const CarReviews = ({ carId }) => {
-  const [reviews, setReviews] = useState([]);
-  const [allReviewsCount, setAllReviewsCount] = useState(1);
-  const [averageRating, setAverageRating] = useState(0);
+  const [reviewsPaginated, setReviewsPaginated] = useState([]);
+  const [allReviewsCount, setAllReviewsCount] = useState(0);
+  const [avgRating, setAvgRating] = useState(0);
+
   const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const [state, updateState] = useState({});
 
   useEffect(() => {
     const getCarReviews = async () => {
@@ -24,37 +27,33 @@ export const CarReviews = ({ carId }) => {
 
         const result = await reviewService.getAllByCarId(carId, skip, take);
 
-        setReviews(result);
+        setReviewsPaginated(result);
       } catch (error) {
         console.log(error.message);
       }
     };
 
     getCarReviews();
-  }, [currPage]);
+  }, [currPage, state]);
 
   useEffect(() => {
     const getTotalSize = async () => {
       try {
-        const result = await reviewService.getReviewsCountByCarId(carId);
+        const count = await reviewService.getReviewsCountByCarId(carId);
 
-        setAllReviewsCount(result);
-        setTotalPages(Math.ceil(result / Constants.pagination.reviewsPageSize));
+        setAllReviewsCount(count);
+        setTotalPages(Math.ceil(count / Constants.pagination.reviewsPageSize));
 
-        const ratings = await reviewService.getReviewsRatingByCarId(carId);
+        const average = await reviewService.getAverageRatingByCarId(carId);
 
-        const sum = ratings.reduce((acc, value) => {
-          return acc + value.rating;
-         }, 0);
-
-        setAverageRating(sum / 4);
+        setAvgRating(average);
       } catch (error) {
         console.log(error.message);
       }
     };
 
     getTotalSize();
-  }, []);
+  }, [state]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -64,11 +63,9 @@ export const CarReviews = ({ carId }) => {
 
   const createReviewSubmitHandler = async (data) => {
     try {
-      await reviewService.createReview(data);
+      await reviewService.createReview({ ...data, carId });
 
-      setAllReviewsCount(state => state + 1);
-
-      console.log(allReviewsCount);
+      updateState(state => ({ ...state }));
     } catch (error) {
       console.log(error.message);
     }
@@ -80,12 +77,12 @@ export const CarReviews = ({ carId }) => {
         <h2>Reviews</h2>
         {allReviewsCount > 0 && (
           <p className="rating-p">
-            Rating: {averageRating} / 5 ({allReviewsCount} reviews)
+            Rating: {avgRating} / 5 ({allReviewsCount} reviews)
           </p>
         )}
 
-        {reviews && reviews.length > 0 ? (
-          reviews.map((review) => <CarReview key={review._id} {...review} />)
+        {reviewsPaginated && reviewsPaginated.length > 0 ? (
+          reviewsPaginated.map((review) => <CarReview key={review._id} {...review} />)
         ) : (
           <p className="no-reviews-p">No reviews yet.</p>
         )}
@@ -93,7 +90,7 @@ export const CarReviews = ({ carId }) => {
         <br />
         <br />
 
-        {reviews && reviews.length > 0 && (
+        {reviewsPaginated && reviewsPaginated.length > 0 && (
           <Pagination
             currPage={currPage}
             totalPages={totalPages}

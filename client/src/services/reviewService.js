@@ -22,20 +22,22 @@ const getReviewsCountByCarId = async (carId) => {
         where: `carId="${carId}"`
     });
 
-    const result = request.get(`${baseUrl}?${query}&count`);
+    const result = await request.get(`${baseUrl}?${query}&count`);
 
     return result;
 }
 
-const getReviewsRatingByCarId = async (carId) => {
+const getAverageRatingByCarId = async (carId) => {
     const query = new URLSearchParams({
         where: `carId="${carId}"`,
         select: 'rating'
     });
 
-    const result = request.get(`${baseUrl}?${query}`);
+    const data = await request.get(`${baseUrl}?${query}`);
 
-    return result;
+    const averageRating = data.reduce((acc, value) => acc + value.rating, 0) / data.length;
+
+    return averageRating.toFixed(2);
 }
 
 const createReview = async (data) => {
@@ -46,7 +48,7 @@ const createReview = async (data) => {
 
 export { 
     getAllByCarId,
-    getReviewsCountByCarId, 
-    getReviewsRatingByCarId,
+    getReviewsCountByCarId,
+    getAverageRatingByCarId,
     createReview
 }
