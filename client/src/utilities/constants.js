@@ -45,6 +45,22 @@ const Constants = {
           message: "The message should be at least 5 symbols long!"
         }
       }
+    },
+    contact: {
+      subject: {
+        required: "Please write a valid subject!",
+        minLength: {
+          value: 10,
+          message: "Please type at least 10 symbols!"
+        }
+      },
+      message: {
+        required: "Please write a valid message!",
+        minLength: {
+          value: 100,
+          message: "The subject must be at least 100 symbols long!"
+        }
+      }
     }
 };
 
