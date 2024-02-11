@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import * as reviewService from '../../services/reviewService'
 import { Constants } from '../../utilities/constants'
@@ -11,8 +11,13 @@ import './CarReviews.css'
 
 export const CarReviews = ({ carId }) => {
   const [reviewsPaginated, setReviewsPaginated] = useState([]);
+  const [allReviewsCount, setAllReviewsCount] = useState(0);
+  const [avgRating, setAvgRating] = useState(0);
+
   const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
+  const [state, updateState] = useState({});
 
   useEffect(() => {
     const getCarReviews = async () => {
@@ -29,23 +34,26 @@ export const CarReviews = ({ carId }) => {
     };
 
     getCarReviews();
-  }, [currPage]);
+  }, [currPage, state]);
 
   useEffect(() => {
     const getTotalSize = async () => {
       try {
-        const result = await reviewService.getAllByCarId(carId);
+        const count = await reviewService.getReviewsCountByCarId(carId);
 
-        const count = result.length;
-
+        setAllReviewsCount(count);
         setTotalPages(Math.ceil(count / Constants.pagination.reviewsPageSize));
+
+        const average = await reviewService.getAverageRatingByCarId(carId);
+
+        setAvgRating(average);
       } catch (error) {
         console.log(error.message);
       }
     };
 
     getTotalSize();
-  }, []);
+  }, [state]);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {
@@ -56,6 +64,8 @@ export const CarReviews = ({ carId }) => {
   const createReviewSubmitHandler = async (data) => {
     try {
       await reviewService.createReview({ ...data, carId });
+
+      updateState(state => ({ ...state }));
     } catch (error) {
       console.log(error.message);
     }
@@ -65,11 +75,11 @@ export const CarReviews = ({ carId }) => {
     <>
       <div className="car-reviews">
         <h2>Reviews</h2>
-        {/* {allReviewsCount > 0 && (
+        {allReviewsCount > 0 && (
           <p className="rating-p">
-            Rating: {averageRating ? averageRating : 0} / 5 ({allReviewsCount ? allReviewsCount : 0} reviews)
+            Rating: {avgRating} / 5 ({allReviewsCount} reviews)
           </p>
-        )} */}
+        )}
 
         {reviewsPaginated && reviewsPaginated.length > 0 ? (
           reviewsPaginated.map((review) => <CarReview key={review._id} {...review} />)
