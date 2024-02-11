@@ -7,33 +7,15 @@ const request = requestFactory();
 const getAllByCarId = async (carId, skip, take) => {
     const query = new URLSearchParams({
         where: `carId="${carId}"`,
-        load: `author=_ownerId:users`,
-        offset: skip,
-        pageSize: take
+        load: `author=_ownerId:users`
     });
+
+    if (skip != undefined && take !== undefined) {
+        query.set('offset', skip);
+        query.set('pageSize', take);
+    }
 
     const result = await request.get(`${baseUrl}?${query}`);
-
-    return result;
-}
-
-const getReviewsCountByCarId = async (carId) => {
-    const query = new URLSearchParams({
-        where: `carId="${carId}"`
-    });
-
-    const result = request.get(`${baseUrl}?${query}&count`);
-
-    return result;
-}
-
-const getReviewsRatingByCarId = async (carId) => {
-    const query = new URLSearchParams({
-        where: `carId="${carId}"`,
-        select: 'rating'
-    });
-
-    const result = request.get(`${baseUrl}?${query}`);
 
     return result;
 }
@@ -46,7 +28,5 @@ const createReview = async (data) => {
 
 export { 
     getAllByCarId,
-    getReviewsCountByCarId, 
-    getReviewsRatingByCarId,
     createReview
 }
