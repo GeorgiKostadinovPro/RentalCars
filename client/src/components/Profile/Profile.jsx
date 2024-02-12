@@ -1,6 +1,26 @@
+import { Link, useLocation } from 'react-router-dom'
+
+import { Path } from '../../utilities/Path'
+
 import './Profile.css'
+import { UserInfo } from './UserInfo/UserInfo';
+import { UserCreatedCars } from './UserCreatedCars/UserCreatedCars';
+import { FavouriteCars } from './FavouriteCars/FavouriteCars';
 
 export const Profile = () => {
+    const { pathname } = useLocation();
+
+    const renderComponent = () => {
+      switch (pathname) {
+        case '/profile':
+          return <UserInfo />;
+        case '/profile/myCars':
+          return <UserCreatedCars />;
+        case '/profile/favouriteCars':
+          return <FavouriteCars />;
+      }
+    }
+
     return (
       <>
         <div className="page-heading header-text">
@@ -14,44 +34,21 @@ export const Profile = () => {
           </div>
         </div>
 
-        <div className="profile-container">
-          <div className="side-menu">
-            <img
-              src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
-              alt=""
-            />
-
-            <ul>
-              <li><a href="">Home</a></li>
-              <li><a href="">Created Cars</a></li>
-              <li><a href="">Rented Cars</a></li>
-              <li><a href="">Logout</a></li>
-            </ul>
-
-          </div>
-          <div className="profile-content">
-            <h2>Your Personal Info</h2>
-
-            <div className="text">
-              <p>Username</p>
-              <p>Peter</p>
-            </div>
-
-            <hr />
-
-            <div className="text">
-              <p>Email</p>
-              <p>peter@abv.bg</p>
-            </div>
-
-            <hr />
-
-            <div className="text">
-              <p>Phone</p>
-              <p>+359879454529</p>
-            </div>
-          </div>
+        <div className="profile-nav-bar">
+          <ul>
+            <li>
+              <Link to={Path.home}>Home</Link>
+            </li>
+            <li>
+              <Link to={Path.allUserCars}>My Cars</Link>
+            </li>
+            <li>
+              <Link to={Path.favouriteCars}>My Favourites</Link>
+            </li>
+          </ul>
         </div>
+
+        {renderComponent()}
       </>
     );
 }

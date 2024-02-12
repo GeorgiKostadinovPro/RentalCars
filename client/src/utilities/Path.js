@@ -1,8 +1,10 @@
 const Path = {
-    login: '/login',
     register: '/register',
+    login: '/login',
     logout: '/logout',
     profile: '/profile',
+    allUserCars: '/profile/myCars',
+    favouriteCars: '/profile/favouriteCars',
     home: '/',
     cars: '/cars',
     about: '/about',

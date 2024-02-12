@@ -1,46 +1,25 @@
-.profile-container {
-    margin: 7em 0;
+.profile-nav-bar {
+    margin: 0 0 2em 0;
+    padding: 2em;
+    background-color: #232323;
+    box-shadow: 0 1em 1em -10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-nav-bar ul {
     display: flex;
     justify-content: center;
     gap: 2em;
+    font-size: 1.2em;
 }
 
-.profile-container .side-menu {
-    width: 15em;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: 1px solid black;
+.profile-nav-bar ul li {
+    transition: 0.4s;
 }
 
-.profile-container .profile-content {
-    padding: 2em;
-    width: 40em;
-    border: 1px solid red;
+.profile-nav-bar ul li:hover {
+    transform: scale(1.05);
 }
 
-.profile-container .side-menu img {
-    width: 10em;
-    height: auto;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: none;
-}
-
-.profile-container .profile-content h2 {
-    margin: 0 0 1em 0;
-    font-family: 'Protest Riot', sans-serif;
-}
-
-.profile-container .profile-content .text {
-    max-width: 25em;
-    padding: 0.5em 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.profile-container .profile-content .text p {
-    font-size: 1.5em;
+.profile-nav-bar ul li a {
+    color: #ffffff;
 }

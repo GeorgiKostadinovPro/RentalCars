@@ -16,7 +16,7 @@
 }
 
 #form_wrapper {
-    width: 1000px;
+    max-width: 1000px;
     height: 600px;
     margin: 2em auto;
     background-color: var(--form_bg);
