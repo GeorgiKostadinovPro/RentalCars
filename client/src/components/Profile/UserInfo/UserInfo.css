@@ -1,0 +1,41 @@
+.user-info {
+    margin: 0 0 2em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.user-info-wrapper {
+    padding: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.5);
+    transition: 0.4s ease-in-out;
+}
+
+.user-info-wrapper:hover {
+    transform: scale(1.05);
+}
+
+.user-info img {
+    width: 10em;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.user-info .main-content h2 {
+    font-family: 'Protest Riot', sans-serif;
+}
+
+.user-info .main-content p {
+    font-size: 1.2em;
+}
+
+@media screen and (max-width: 500px) {
+    .user-info-wrapper {
+        justify-content: center;
+    }
+}
