@@ -37,7 +37,7 @@ export const Profile = () => {
         <div className="profile-nav-bar">
           <ul>
             <li>
-              <Link to={Path.home}>Home</Link>
+              <Link to={Path.profile}>Info</Link>
             </li>
             <li>
               <Link to={Path.allUserCars}>My Cars</Link>

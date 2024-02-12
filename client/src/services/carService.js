@@ -60,4 +60,15 @@ const getById = async (id) => {
     return result;
 };
 
-export { getAll, getCarsCount, getById }
+
+const getByUserId = async (userId) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${userId}"`
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+}
+
+export { getAll, getCarsCount, getById, getByUserId }
