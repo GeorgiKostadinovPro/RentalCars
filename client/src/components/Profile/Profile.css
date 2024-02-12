@@ -1,0 +1,46 @@
+.profile-container {
+    margin: 7em 0;
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+}
+
+.profile-container .side-menu {
+    width: 15em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.profile-container .profile-content {
+    padding: 2em;
+    width: 40em;
+    border: 1px solid red;
+}
+
+.profile-container .side-menu img {
+    width: 10em;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: none;
+}
+
+.profile-container .profile-content h2 {
+    margin: 0 0 1em 0;
+    font-family: 'Protest Riot', sans-serif;
+}
+
+.profile-container .profile-content .text {
+    max-width: 25em;
+    padding: 0.5em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.profile-container .profile-content .text p {
+    font-size: 1.5em;
+}
