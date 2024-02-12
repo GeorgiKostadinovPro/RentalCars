@@ -1,0 +1,25 @@
+.profile-nav-bar {
+    margin: 0 0 2em 0;
+    padding: 2em;
+    background-color: #232323;
+    box-shadow: 0 1em 1em -10px rgba(0, 0, 0, 0.5);
+}
+
+.profile-nav-bar ul {
+    display: flex;
+    justify-content: center;
+    gap: 2em;
+    font-size: 1.2em;
+}
+
+.profile-nav-bar ul li {
+    transition: 0.4s;
+}
+
+.profile-nav-bar ul li:hover {
+    transform: scale(1.05);
+}
+
+.profile-nav-bar ul li a {
+    color: #ffffff;
+}

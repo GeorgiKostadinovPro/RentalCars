@@ -46,7 +46,8 @@ export const AuthProvider = ({ children }) => {
         registerSubmitHandler,
         loginSubmitHandler,
         logoutSubmitHandler,
-        isUserAuthenticated
+        isUserAuthenticated,
+        userId: user._id
     };
 
     return (

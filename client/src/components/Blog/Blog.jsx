@@ -1,4 +1,3 @@
-import '../Common/Banner.css'
 import './Blog.css'
 
 export const Blog = () => {
