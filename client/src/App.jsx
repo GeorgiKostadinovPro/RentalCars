@@ -8,7 +8,7 @@ import { Footer } from "./components/Common/Footer/Footer";
 import { Register } from './components/Auth/Register';
 import { Login } from './components/Auth/Login';
 import { Logout } from './components/Auth/Logout';
-import { Profile } from './components/User/Profile';
+import { Profile } from './components/Profile/Profile';
 
 import { Home } from "./components/Home/Home";
 import { Cars } from './components/Cars/Cars';

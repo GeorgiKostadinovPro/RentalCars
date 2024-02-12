@@ -1,11 +1,18 @@
-import { Banner } from './Banner';
-
 import './Terms.css'
 
 export const Terms = () => {
     return (
       <>
-        <Banner />
+        <div className="page-heading header-text">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12">
+                <h1>Terms</h1>
+                <span>Read about our terms and privacy</span>
+              </div>
+            </div>
+          </div>
+        </div>
         
         <div className="more-info about-info">
           <div className="container">
