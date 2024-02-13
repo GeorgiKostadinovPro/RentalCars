@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-
-import './UserCreatedCars.css'
-import { SingleCar } from './SingleCar'
+import { SingleCarRow } from './SingleCarRow'
 
 export const UserCreatedCars = () => {
   const [userCars, setUserCars] = useState([]);
@@ -88,7 +86,7 @@ export const UserCreatedCars = () => {
               <tbody>
                 {userCars && userCars.length > 0 ? (
                   userCars.map((car, i) => (
-                    <SingleCar
+                    <SingleCarRow
                       key={car._id}
                       index={i + 1}
                       car={car}
@@ -112,10 +110,10 @@ export const UserCreatedCars = () => {
         </Modal.Header>
         <Modal.Body>This action cannot be undone.</Modal.Body>
         <Modal.Footer>
-          <Button variant="danger" onClick={handleClose}>
+          <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="secondary" onClick={deleteCarHandler}>
+          <Button variant="danger" onClick={deleteCarHandler}>
             Delete
           </Button>
         </Modal.Footer>

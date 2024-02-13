@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { Path } from '../../../utilities/Path'
 import { dateFormatter } from "../../../utilities/dateFormatter"
 
-export const SingleCar = ({
+export const FavouriteCarRow = ({
     index, 
+    id,
     car,
-    setCarIdToDeleteHandler
+    setFavIdToDeleteHandler
 }) => {
     return (
       <tr>
@@ -15,15 +16,13 @@ export const SingleCar = ({
         <td>{car.model}</td>
         <td>{car.year}</td>
         <td>{dateFormatter(car._createdOn)}</td>
-        <td>
+        <td style={{ width: '100px' }}>
           <Link to={Path.carDetails(car._id)} className="details">
             <i className="fa-solid fa-circle-info"></i>
           </Link>
-          <Link className="edit">
-            <i className="fa-solid fa-pen"></i>
-          </Link>
+
           <a
-            onClick={() => setCarIdToDeleteHandler(car._id)}
+            onClick={() => setFavIdToDeleteHandler(id)}
             type="submit"
             className="delete"
           >
