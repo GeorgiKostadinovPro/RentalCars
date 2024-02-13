@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { Path } from '../../utilities/Path'
+
 export const Car = ({
     _id,
     make,
@@ -37,7 +39,7 @@ export const Car = ({
             </p>
 
             <Link
-              to={`/cars/${_id}/details`}
+              to={Path.carDetails(_id)}
               data-toggle="modal"
               data-target="#exampleModal"
               className="filled-button"

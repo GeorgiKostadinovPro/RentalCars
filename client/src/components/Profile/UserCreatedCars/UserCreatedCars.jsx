@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react'
 
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+import { SingleCar } from './SingleCar'
 
 import './UserCreatedCars.css'
-import { SingleCar } from './SingleCar'
 
 export const UserCreatedCars = () => {
   const [userCars, setUserCars] = useState([]);
@@ -43,7 +43,8 @@ export const UserCreatedCars = () => {
                     className="btn btn-success"
                     data-toggle="modal"
                   >
-                    <i class="fa-solid fa-plus"></i> <span>Add New Car</span>
+                    <i className="fa-solid fa-plus"></i>{" "}
+                    <span>Add New Car</span>
                   </a>
                 </div>
               </div>
@@ -61,9 +62,13 @@ export const UserCreatedCars = () => {
               </thead>
               <tbody>
                 {userCars && userCars.length > 0 ? (
-                  userCars.map((car, i) => <SingleCar key={car._id} index={i + 1} car={car} />)
+                  userCars.map((car, i) => (
+                    <SingleCar key={car._id} index={i + 1} car={car} />
+                  ))
                 ) : (
-                  <tr className="no-cars-yet-p">No cars added yet.</tr>
+                  <tr className="no-cars-yet-p">
+                    <td>No cars added yet.</td>
+                  </tr>
                 )}
               </tbody>
             </table>
