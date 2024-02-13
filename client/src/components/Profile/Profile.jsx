@@ -12,11 +12,11 @@ export const Profile = () => {
 
     const renderComponent = () => {
       switch (pathname) {
-        case '/profile':
+        case Path.profile:
           return <UserInfo />;
-        case '/profile/myCars':
+        case Path.allUserCars:
           return <UserCreatedCars />;
-        case '/profile/favouriteCars':
+        case Path.favouriteCars:
           return <FavouriteCars />;
       }
     }

@@ -43,7 +43,7 @@ export const UserCreatedCars = () => {
                     className="btn btn-success"
                     data-toggle="modal"
                   >
-                    <i className="material-icons"></i> <span>Add New Car</span>
+                    <i class="fa-solid fa-plus"></i> <span>Add New Car</span>
                   </a>
                 </div>
               </div>
