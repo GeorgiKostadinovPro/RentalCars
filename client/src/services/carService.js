@@ -60,7 +60,6 @@ const getById = async (id) => {
     return result;
 };
 
-
 const getByUserId = async (userId) => {
     const query = new URLSearchParams({
         where: `_ownerId="${userId}"`
@@ -71,4 +70,14 @@ const getByUserId = async (userId) => {
     return result;
 }
 
-export { getAll, getCarsCount, getById, getByUserId }
+const deleteCar = async (carId) => {
+    await request.delete(`${baseUrl}/${carId}`);
+}
+
+export { 
+    getAll, 
+    getCarsCount, 
+    getById, 
+    getByUserId, 
+    deleteCar 
+}

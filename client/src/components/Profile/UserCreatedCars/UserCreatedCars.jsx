@@ -2,12 +2,13 @@ import { useEffect, useState } from 'react'
 
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import { SingleCar } from './SingleCar'
 
 import './UserCreatedCars.css'
+import { SingleCar } from './SingleCar'
 
 export const UserCreatedCars = () => {
   const [userCars, setUserCars] = useState([]);
+  const [carIdToDelete, setCarIdToDelete] = useState(null);
 
   const { userId } = useAuthContext();
 
@@ -23,7 +24,13 @@ export const UserCreatedCars = () => {
     };
 
     getUserCars();
-  }, []); 
+  }, []);
+  
+  const setCarIdToDeleteHandler = (id) => {
+    if (id) {
+      setCarIdToDelete(id);
+    }
+  }
 
   return (
     <>
@@ -43,8 +50,7 @@ export const UserCreatedCars = () => {
                     className="btn btn-success"
                     data-toggle="modal"
                   >
-                    <i className="fa-solid fa-plus"></i>{" "}
-                    <span>Add New Car</span>
+                    <i className="fa-solid fa-plus"></i> <span>Add New Car</span>
                   </a>
                 </div>
               </div>
@@ -63,7 +69,12 @@ export const UserCreatedCars = () => {
               <tbody>
                 {userCars && userCars.length > 0 ? (
                   userCars.map((car, i) => (
-                    <SingleCar key={car._id} index={i + 1} car={car} />
+                    <SingleCar
+                      key={car._id}
+                      index={i + 1}
+                      car={car}
+                      setCarIdToDeleteHandler={setCarIdToDeleteHandler}
+                    />
                   ))
                 ) : (
                   <tr className="no-cars-yet-p">
@@ -76,45 +87,7 @@ export const UserCreatedCars = () => {
         </div>
       </div>
 
-      {/* Delete Modal HTML */}
-      <div id="deleteEmployeeModal" className="modal fade">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <form>
-              <div className="modal-header">
-                <h4 className="modal-title">Delete Employee</h4>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-hidden="true"
-                >
-                  ×
-                </button>
-              </div>
-              <div className="modal-body">
-                <p>Are you sure you want to delete these Records?</p>
-                <p className="text-warning">
-                  <small>This action cannot be undone.</small>
-                </p>
-              </div>
-              <div className="modal-footer">
-                <input
-                  type="button"
-                  className="btn btn-default"
-                  data-dismiss="modal"
-                  defaultValue="Cancel"
-                />
-                <input
-                  type="submit"
-                  className="btn btn-danger"
-                  defaultValue="Delete"
-                />
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
+      {carIdToDelete && <h1>Delete car is done</h1>}
     </>
   );
 }

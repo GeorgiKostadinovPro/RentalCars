@@ -125,35 +125,55 @@ table.table .avatar {
 	font-size: 13px;
 } 
 
-.modal .modal-dialog {
-	max-width: 400px;
-}
-.modal .modal-header, .modal .modal-body, .modal .modal-footer {
-	padding: 20px 30px;
-}
-.modal .modal-content {
-	border-radius: 3px;
-	font-size: 14px;
-}
-.modal .modal-footer {
-	background: #ecf0f1;
-	border-radius: 0 0 3px 3px;
-}
-.modal .modal-title {
-	display: inline-block;
-}
-.modal .form-control {
-	border-radius: 2px;
-	box-shadow: none;
-	border-color: #dddddd;
-}
-.modal textarea.form-control {
-	resize: vertical;
-}
-.modal .btn {
-	border-radius: 2px;
-	min-width: 100px;
-}	
-.modal form label {
-	font-weight: normal;
-}	
+.btn {
+    background: #2a87a5;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: inherit;
+    font-weight: bold;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+  }
+  
+  .backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+  }
+  
+  .modal {
+    width: 45rem;
+    position: absolute;
+    max-height: 90vh;
+    margin: auto;
+    border-radius: 20px;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 25%);
+    z-index: 30;
+    margin-top: 50px;
+  }
+  
+  @media (min-width: 930px) {
+    .modal {
+      width: 45rem;
+      left: calc(50% - 20rem);
+      border-radius: 14px;
+    }
+  }

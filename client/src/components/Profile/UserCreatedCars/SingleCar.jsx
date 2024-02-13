@@ -5,7 +5,8 @@ import { dateFormatter } from "../../../utilities/dateFormatter"
 
 export const SingleCar = ({
     index, 
-    car
+    car,
+    setCarIdToDeleteHandler
 }) => {
     return (
       <tr>
@@ -21,7 +22,11 @@ export const SingleCar = ({
           <Link className="edit">
             <i className="fa-solid fa-pen"></i>
           </Link>
-          <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+          <a
+            onClick={() => setCarIdToDeleteHandler(car._id)}
+            type="submit"
+            className="delete"
+          >
             <i className="fa-solid fa-trash"></i>
           </a>
         </td>
