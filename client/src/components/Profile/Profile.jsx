@@ -2,21 +2,22 @@ import { Link, useLocation } from 'react-router-dom'
 
 import { Path } from '../../utilities/Path'
 
-import './Profile.css'
 import { UserInfo } from './UserInfo/UserInfo';
 import { UserCreatedCars } from './UserCreatedCars/UserCreatedCars';
 import { FavouriteCars } from './FavouriteCars/FavouriteCars';
+
+import './Profile.css'
 
 export const Profile = () => {
     const { pathname } = useLocation();
 
     const renderComponent = () => {
       switch (pathname) {
-        case '/profile':
+        case Path.profile:
           return <UserInfo />;
-        case '/profile/myCars':
+        case Path.allUserCars:
           return <UserCreatedCars />;
-        case '/profile/favouriteCars':
+        case Path.favouriteCars:
           return <FavouriteCars />;
       }
     }
