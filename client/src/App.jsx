@@ -20,6 +20,8 @@ import { AuthProvider } from './contexts/AuthContext';
 import { NotFound } from './components/Errors/NotFound';
 import { CarDetails } from './components/CarDetails/CarDetails';
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 function App() {
   const location = useLocation();
 

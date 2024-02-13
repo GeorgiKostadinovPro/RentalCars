@@ -1,5 +1,8 @@
 import { useEffect, useState } from 'react'
 
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 
@@ -30,7 +33,23 @@ export const UserCreatedCars = () => {
     if (id) {
       setCarIdToDelete(id);
     }
-  }
+  };
+
+  const handleClose = () => {
+    setCarIdToDelete(null);
+  };
+
+  const deleteCarHandler = async () => {
+    try {
+      await carService.deleteCar(carIdToDelete);
+
+      setUserCars(cars => cars.filter(c => c._id !== carIdToDelete));
+      
+      setCarIdToDelete(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -87,7 +106,20 @@ export const UserCreatedCars = () => {
         </div>
       </div>
 
-      {carIdToDelete && <h1>Delete car is done</h1>}
+      <Modal show={carIdToDelete} onHide={handleClose} style={{ marginTop: '100px' }}>
+        <Modal.Header closeButton>
+          <Modal.Title>Are you sure?</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>This action cannot be undone.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="secondary" onClick={deleteCarHandler}>
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
