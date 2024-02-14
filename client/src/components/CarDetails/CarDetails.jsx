@@ -5,8 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 
 import * as carService from '../../services/carService'
+import * as favouriteService from '../../services/favouriteService'
 import { RentForm } from "../RentForm/RentForm"
 import { CarReviews } from "../CarReviews/CarReviews"
+import { useAuthContext } from "../../hooks/useAuthContext"
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -14,22 +16,51 @@ import 'swiper/css/navigation'
 import './CarDetails.css'
 
 export const CarDetails = () => {
+    const { userId } = useAuthContext();
+
     const { carId } = useParams();
     const [carDetails, setCarDetails] = useState({});
+    const [favourite, setFavourite] = useState(null);
 
     useEffect(() => {
         const getCarDetails = async () => {
-            try {
-                const carDetails = await carService.getById(carId);
+          try {
+            const carDetails = await carService.getById(carId);
 
-                setCarDetails(carDetails);
-            } catch (error) {
-                console.log(error.message);
+            setCarDetails(carDetails);
+
+            const fav = await favouriteService.getFavourite(userId, carId);
+
+            if (fav) {
+              setFavourite(fav);
             }
-        };
+          } catch (error) {
+            console.log(error.message);
+          }
+      };
 
-        getCarDetails();
+      getCarDetails();
     }, [carId]);
+
+    const addFavouriteSubmitHandler = async () => {
+      try {
+        const result = await favouriteService.createFavourite(carId);
+
+        setFavourite(result);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
+    const removeFavouriteSubmitHandler = async () => {
+      try {
+        await favouriteService.deleteFavourite(favourite._id);
+
+        setFavourite(null);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
 
     return (
       <>
@@ -74,11 +105,36 @@ export const CarDetails = () => {
             </div>
 
             <div className="car-introduction">
-              <h2>
-                {carDetails.make} {carDetails.model}
-              </h2>
-              <p>Year of manufacture: {carDetails.year}</p>
-              <p>Price per Day: ${carDetails.pricePerDay}</p>
+              <div>
+                <h2>
+                  {carDetails.make} {carDetails.model}
+                </h2>
+                <p>Year of manufacture: {carDetails.year}</p>
+                <p>Price per Day: ${carDetails.pricePerDay}</p>
+              </div>
+              <div>
+                {favourite ? (
+                  <a
+                    onClick={() => removeFavouriteSubmitHandler()}
+                    type="submit"
+                    className="fav-btn"
+                  >
+                    <i
+                      className="fa-solid fa-heart"
+                      style={{ color: "#ce1515" }}
+                    ></i>
+                    Remove from Favoutires
+                  </a>
+                ) : (
+                  <a
+                    onClick={() => addFavouriteSubmitHandler()}
+                    type="submit"
+                    className="fav-btn"
+                  >
+                    <i className="fa-solid fa-heart"></i>Add to Favoutires
+                  </a>
+                )}
+              </div>
             </div>
 
             <hr />
@@ -206,7 +262,6 @@ export const CarDetails = () => {
             <hr />
 
             <CarReviews carId={carId} />
-
           </div>
 
           <div className="right-container">

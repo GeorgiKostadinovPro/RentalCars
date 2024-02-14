@@ -31,6 +31,8 @@
 }
 
 .create-review .set-message textarea {
+    width: 85%;
+    height: 9em;
     padding: 1em;
     border-radius: 0.5em;
     resize: none;
