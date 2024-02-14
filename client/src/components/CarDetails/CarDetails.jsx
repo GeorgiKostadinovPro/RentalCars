@@ -31,6 +31,14 @@ export const CarDetails = () => {
         getCarDetails();
     }, [carId]);
 
+    const addToFavouritesSubmitHandler = () => {
+      try {
+        console.log(carId);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+
     return (
       <>
         <div className="page-heading header-text">
@@ -74,11 +82,16 @@ export const CarDetails = () => {
             </div>
 
             <div className="car-introduction">
-              <h2>
-                {carDetails.make} {carDetails.model}
-              </h2>
-              <p>Year of manufacture: {carDetails.year}</p>
-              <p>Price per Day: ${carDetails.pricePerDay}</p>
+              <div>
+                <h2>
+                  {carDetails.make} {carDetails.model}
+                </h2>
+                <p>Year of manufacture: {carDetails.year}</p>
+                <p>Price per Day: ${carDetails.pricePerDay}</p>
+              </div>
+              <div>
+                <a onClick={() => addToFavouritesSubmitHandler()} type="submit">Add to Favoutires</a>
+              </div>
             </div>
 
             <hr />

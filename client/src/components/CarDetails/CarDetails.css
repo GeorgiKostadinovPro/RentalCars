@@ -50,6 +50,9 @@
 
 .car-details .left-container .car-introduction {
     font-family: 'Protest Riot', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .car-details .left-container .car-introduction,
@@ -128,5 +131,11 @@
 @media screen and (max-width: 1300px) {
     .car-details {
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .car-details .left-container .car-owner .owner-info p {
+        font-size: 1em;
     }
 }

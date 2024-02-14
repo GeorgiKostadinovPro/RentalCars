@@ -53,8 +53,6 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
           <div className="set-message">
             <textarea
               {...register("message", Constants.reviews.message)}
-              cols="45"
-              rows="5"
               placeholder="Your message..."
             ></textarea>
             <span
