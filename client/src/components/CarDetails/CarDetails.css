@@ -75,6 +75,28 @@
     font-size: 1.5em;
 }
 
+.car-details .left-container .car-introduction .fav-btn {
+    padding: 1em;
+    background-color: #232323;
+    color: #ffffff;
+    border-radius: 0.5em;
+    font-size: 1.2em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+}
+
+.car-details .left-container .car-introduction .fav-btn i {
+    padding: 0 0.5em 0 0;
+}
+
+.car-details .left-container .car-introduction .fav-btn:hover {
+    transform: scale(1.02);
+}
+
+.car-details .left-container .car-introduction .fav-btn:hover i {
+    color: #ce1515;
+}
+
 .car-details .left-container .car-overview h2,
 .car-details .left-container .car-description h2,
 .car-details .left-container .car-owner h2 {

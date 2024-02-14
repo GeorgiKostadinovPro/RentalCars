@@ -15,11 +15,29 @@ const getAllByUserId = async (userId) => {
     return result;
 }
 
+const createFavourite = async (carId) => {
+    const result = await request.post(baseUrl, { carId });
+
+    return result;
+}
+
 const deleteFavourite = async (id) => {
     await request.delete(`${baseUrl}/${id}`);
 }
 
+const getFavourite = async (userId, carId) => {
+    const query = new URLSearchParams({
+        where: `_ownerId="${userId}"`
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result.filter(f => f.carId === carId)[0];
+}
+
 export {
     getAllByUserId,
-    deleteFavourite
+    createFavourite,
+    deleteFavourite,
+    getFavourite
 }
