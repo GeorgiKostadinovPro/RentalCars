@@ -14,4 +14,11 @@ const getAll = async () => {
     return result;
 }
 
-export { getAll }
+const deletePost = async (id) => {
+    await request.delete(`${baseUrl}/${id}`);
+}
+
+export { 
+    getAll, 
+    deletePost 
+}

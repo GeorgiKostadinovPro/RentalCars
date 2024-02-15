@@ -5,7 +5,8 @@ import { dateFormatter } from "../../../utilities/dateFormatter"
 
 export const PostRow = ({
     index,
-    post
+    post,
+    setPostIdToDeleteHandler
 }) => {
     return (
         <tr>
@@ -23,6 +24,7 @@ export const PostRow = ({
             </Link>
   
             <a
+              onClick={() => setPostIdToDeleteHandler(post._id)}
               type="submit"
               className="delete"
             >

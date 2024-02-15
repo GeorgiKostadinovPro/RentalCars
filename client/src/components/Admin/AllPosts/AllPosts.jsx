@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react'
 
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+
 import * as postService from '../../../services/postService'
 import { PostRow } from './PostRow';
 
 export const AllPosts = () => {
     const [posts, setPosts] = useState([]);
+    const [postIdToDelete, setPostIdToDelete] = useState(null);
 
     useEffect(() => {
         const getAllPosts = async () => {
@@ -19,6 +23,28 @@ export const AllPosts = () => {
 
         getAllPosts();
     }, []);
+
+    const setPostIdToDeleteHandler = (id) => {
+        if (id) {
+            setPostIdToDelete(id);
+        }
+    }
+
+    const handleClose = () => {
+        setPostIdToDelete(null);
+    }
+
+    const deletePostHandler = async () => {
+        try {
+            await postService.deletePost(postIdToDelete);
+
+            setPosts(posts => posts.filter(p => p._id !== postIdToDelete));
+
+            setPostIdToDelete(null);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -60,6 +86,7 @@ export const AllPosts = () => {
                         key={post._id}
                         index={i + 1}
                         post={post}
+                        setPostIdToDeleteHandler={setPostIdToDeleteHandler}
                       />
                     ))
                   ) : (
@@ -73,8 +100,8 @@ export const AllPosts = () => {
           </div>
         </div>
 
-        {/* <Modal
-          show={carIdToDelete}
+        <Modal
+          show={postIdToDelete}
           onHide={handleClose}
           style={{ marginTop: "100px" }}
         >
@@ -86,11 +113,11 @@ export const AllPosts = () => {
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="danger" onClick={deleteCarHandler}>
+            <Button variant="danger" onClick={deletePostHandler}>
               Delete
             </Button>
           </Modal.Footer>
-        </Modal> */}
+        </Modal>
       </>
     );
 }
