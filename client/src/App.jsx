@@ -41,6 +41,8 @@ function App() {
           <Route path={Path.profile} element={<Profile />} />
           <Route path={Path.allUserCars} element={<Profile />} />
           <Route path={Path.favouriteCars} element={<Profile />} />
+          <Route path={Path.allUsers} element={<Profile />} />
+          <Route path={Path.allCars} element={<Profile />} />
 
           <Route path={Path.home} element={<Home />} />
           <Route path={Path.cars} element={<Cars />} />
