@@ -86,7 +86,7 @@ export const FavouriteCars = () => {
                     />
                   ))
                 ) : (
-                  <tr className="no-cars-yet-p">
+                  <tr className="no-data-yet-p">
                     <td>No cars added yet.</td>
                   </tr>
                 )}

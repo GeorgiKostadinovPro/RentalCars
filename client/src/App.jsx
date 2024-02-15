@@ -39,10 +39,6 @@ function App() {
           <Route path={Path.login} element={<Login />} />
           <Route path={Path.logout} element={<Logout />} />
           <Route path={Path.profile} element={<Profile />} />
-          <Route path={Path.allUserCars} element={<Profile />} />
-          <Route path={Path.favouriteCars} element={<Profile />} />
-          <Route path={Path.allUsers} element={<Profile />} />
-          <Route path={Path.allCars} element={<Profile />} />
 
           <Route path={Path.home} element={<Home />} />
           <Route path={Path.cars} element={<Cars />} />
@@ -51,6 +47,12 @@ function App() {
           <Route path={Path.blog} element={<Blog />} />
           <Route path={Path.terms} element={<Terms />} />
           <Route path={Path.contact} element={<Contact />} />
+
+          <Route path={Path.allUserCars} element={<Profile />} />
+          <Route path={Path.favouriteCars} element={<Profile />} />
+          <Route path={Path.allUsers} element={<Profile />} />
+          <Route path={Path.allCars} element={<Profile />} />
+          <Route path={Path.allPosts} element={<Profile />} />
 
           <Route path={Path.notFound} element={<NotFound />} />
         </Routes>
