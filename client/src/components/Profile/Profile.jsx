@@ -10,6 +10,7 @@ import { FavouriteCars } from './FavouriteCars/FavouriteCars'
 import './Profile.css'
 import { AllCars } from '../Admin/AllCars/AllCars'
 import { AllUsers } from '../Admin/AllUsers/AllUsers'
+import { AllPosts } from '../Admin/AllPosts/AllPosts'
 
 export const Profile = () => {
     const { pathname } = useLocation();
@@ -28,6 +29,8 @@ export const Profile = () => {
           return <AllUsers />;
         case Path.allCars:
           return <AllCars />;
+        case Path.allPosts:
+          return <AllPosts />;
       }
     }
 
@@ -62,6 +65,9 @@ export const Profile = () => {
                 </li>
                 <li>
                   <Link to={Path.allCars}>All Cars</Link>
+                </li>
+                <li>
+                  <Link to={Path.allPosts}>All Posts</Link>
                 </li>
               </>
             )}

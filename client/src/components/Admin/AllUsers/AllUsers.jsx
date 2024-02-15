@@ -54,7 +54,7 @@ export const AllUsers = () => {
                       />
                     ))
                   ) : (
-                    <tr className="no-cars-yet-p">
+                    <tr className="no-data-yet-p">
                       <td>No users registered yet.</td>
                     </tr>
                   )}
