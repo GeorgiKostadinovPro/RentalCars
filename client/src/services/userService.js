@@ -10,4 +10,10 @@ const getUser = async () => {
     return result;
 }
 
-export { getUser }
+const getAll = async () => {
+    const result = await request.get(`${baseUrl}/users`);
+
+    return result;
+}
+
+export { getUser, getAll }

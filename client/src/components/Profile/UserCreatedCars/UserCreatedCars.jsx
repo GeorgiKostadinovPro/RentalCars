@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal'
 
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import { SingleCarRow } from './SingleCarRow'
+import { CreatedCarRow } from './CreatedCarRow'
 
 export const UserCreatedCars = () => {
   const [userCars, setUserCars] = useState([]);
@@ -86,7 +86,7 @@ export const UserCreatedCars = () => {
               <tbody>
                 {userCars && userCars.length > 0 ? (
                   userCars.map((car, i) => (
-                    <SingleCarRow
+                    <CreatedCarRow
                       key={car._id}
                       index={i + 1}
                       car={car}
