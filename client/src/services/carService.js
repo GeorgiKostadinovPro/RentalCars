@@ -9,22 +9,25 @@ const request = requestFactory();
 const getAll = async (
     filterCriteria, 
     skip = 0, 
-    take = Constants.pagination.pageSize
+    take = null
 ) => {
-    
+
     const mainQuery = new URLSearchParams({
-        select: '_id,make,model,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
-        offset: skip,
-        pageSize: take
+        select: '_id,make,model,year,_createdOn,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
+        offset: skip
     });
 
-    if (filterCriteria.searchInput) {
+    if (take !== null) {
+        mainQuery.set('pageSize', take);
+    }
+
+    if (filterCriteria?.searchInput) {
         mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
     }
 
     let sortQuery;
 
-    if (filterCriteria.sortCriteria) {
+    if (filterCriteria?.sortCriteria) {
         const sort = filterCriteria.sortOrder 
                     ? `${filterCriteria.sortCriteria} ${filterCriteria.sortOrder}`
                     : filterCriteria.sortCriteria;      

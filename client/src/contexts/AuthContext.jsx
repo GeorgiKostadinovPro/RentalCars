@@ -47,7 +47,8 @@ export const AuthProvider = ({ children }) => {
         loginSubmitHandler,
         logoutSubmitHandler,
         isUserAuthenticated,
-        userId: user._id
+        userId: user._id,
+        isAdmin: user.email === 'admin@abv.bg'
     };
 
     return (

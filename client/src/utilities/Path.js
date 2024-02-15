@@ -5,6 +5,8 @@ const Path = {
     profile: '/profile',
     allUserCars: '/profile/myCars',
     favouriteCars: '/profile/favouriteCars',
+    allCars: '/profile/admin/cars',
+    allUsers: '/profile/admin/users',
     home: '/',
     cars: '/cars',
     carDetails: (carId) => {

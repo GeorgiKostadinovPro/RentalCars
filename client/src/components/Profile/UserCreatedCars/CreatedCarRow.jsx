@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Path } from '../../../utilities/Path'
 import { dateFormatter } from "../../../utilities/dateFormatter"
 
-export const SingleCarRow = ({
+export const CreatedCarRow = ({
     index, 
     car,
     setCarIdToDeleteHandler

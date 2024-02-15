@@ -15,6 +15,10 @@ const request = async (method, url, data) => {
 
     if (user) {
         options.headers['X-Authorization'] = user.accessToken;
+
+        if (user.email === 'admin@abv.bg') {
+            options.headers['X-Admin'] = user.accessToken;
+        }
     }
 
     try {
@@ -27,10 +31,6 @@ const request = async (method, url, data) => {
         const result = await response.json();
 
         if (!response.ok) {
-            // if (response.status === 403) {
-                
-            // }
-
             throw new Error(result.message);
         }
 
