@@ -1,5 +1,8 @@
 import { useForm } from 'react-hook-form'
 
+import * as carService from '../../services/carService'
+import * as cloudinaryService from '../../services/cloudinaryService'
+
 import { Constants } from '../../utilities/constants'
 
 import './CreateCar.css'
@@ -26,12 +29,24 @@ export const CreateCar = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    reset,
     formState: {errors}
   } = useForm({ defaultValues, mode: 'onChange' });
 
-  const createCarSubmitHanlder = (data) => {
+  const createCarSubmitHanlder = async (data) => {
+    try {
+      const uploadedUrls = await cloudinaryService.uploadFiles(data.gallery);
 
+      console.log(uploadedUrls);
+
+      const carObj = { ...data, gallery: [] };
+      // uploadedUrls.forEach((url) => {
+      //   data.gallery
+      // });
+
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -314,6 +329,7 @@ export const CreateCar = () => {
                 className="create-form-input"
                 type="file"
                 multiple
+                accept="image/png, image/jpg, image/jpeg"
               />
               <span
                 style={{
