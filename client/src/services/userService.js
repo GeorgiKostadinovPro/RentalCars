@@ -12,7 +12,7 @@ const getUser = async () => {
 
 const getAll = async () => {
     const result = await request.get(`${baseUrl}/users`);
-
+    
     return result;
 }
 
