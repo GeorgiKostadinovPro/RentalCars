@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import * as carService from '../../services/carService'
 import * as cloudinaryService from '../../services/cloudinaryService'
 
+import { Path } from '../../utilities/Path'
 import { Constants } from '../../utilities/constants'
 
 import './CreateCar.css'
@@ -26,6 +28,8 @@ const defaultValues = {
 };
 
 export const CreateCar = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -37,13 +41,15 @@ export const CreateCar = () => {
     try {
       const uploadedUrls = await cloudinaryService.uploadFiles(data.gallery);
 
-      console.log(uploadedUrls);
-
       const carObj = { ...data, gallery: [] };
-      // uploadedUrls.forEach((url) => {
-      //   data.gallery
-      // });
 
+      uploadedUrls.forEach((url) => {
+        carObj.gallery.push(url);
+      });
+
+      await carService.createCar(carObj);
+
+      navigate(Path.allUserCars);
     } catch (error) {
       console.log(error.message);
     }
