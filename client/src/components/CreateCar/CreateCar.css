@@ -27,8 +27,7 @@
     text-transform: uppercase;
 }
 
-.create-car-container form .input-content input,
-.create-car-container form .input-content textarea {
+.create-car-container form .input-content .create-form-input {
     padding: 0.5em 1em;
     flex: 0 1 auto;
     color: #878E9C;
