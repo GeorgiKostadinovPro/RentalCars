@@ -139,6 +139,7 @@ a.border-button:hover {
 	padding: 20px 25px;
 	border-radius: 3px;
 	min-width: 1000px;
+	min-height: 250px;
 	box-shadow: 0 1px 1px rgba(0,0,0,.05);
 }
 .table-title {        
@@ -180,14 +181,15 @@ a.border-button:hover {
 }
 
 .no-data-yet-p {
+	margin-top: 1em;
     position: absolute;
     font-size: 1.5em;
     left: 50%;
     transform: translateX(-50%);
 }
 
-table.table {
-    position: relative;
+table.table tbody {
+	position: relative;
 }
 
 table.table tr th, table.table tr td {

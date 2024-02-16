@@ -7,9 +7,6 @@
 .car-details .right-container form .input-content {
     display: flex;
     flex-direction: column;
-}
-
-.car-details .right-container form .input-content  {
     font-size: 1em;
     font-weight: bold;
 }

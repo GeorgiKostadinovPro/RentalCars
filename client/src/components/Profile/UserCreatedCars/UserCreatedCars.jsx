@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 
+import { Link } from 'react-router-dom'
+
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { CreatedCarRow } from './CreatedCarRow'
+import { Path } from '../../../utilities/Path'
 
 export const UserCreatedCars = () => {
   const [userCars, setUserCars] = useState([]);
@@ -62,13 +65,10 @@ export const UserCreatedCars = () => {
                   </h2>
                 </div>
                 <div className="col-sm-6">
-                  <a
-                    href="#addEmployeeModal"
-                    className="btn btn-success"
-                    data-toggle="modal"
-                  >
-                    <i className="fa-solid fa-plus"></i> <span>Add New Car</span>
-                  </a>
+                  <Link to={Path.createCar} className="btn btn-success">
+                    <i className="fa-solid fa-plus"></i>{" "}
+                    <span>Add New Car</span>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -83,6 +83,7 @@ export const UserCreatedCars = () => {
                   <th>Actions</th>
                 </tr>
               </thead>
+              
               <tbody>
                 {userCars && userCars.length > 0 ? (
                   userCars.map((car, i) => (
@@ -104,7 +105,11 @@ export const UserCreatedCars = () => {
         </div>
       </div>
 
-      <Modal show={carIdToDelete} onHide={handleClose} style={{ marginTop: '100px' }}>
+      <Modal
+        show={carIdToDelete}
+        onHide={handleClose}
+        style={{ marginTop: "100px" }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>

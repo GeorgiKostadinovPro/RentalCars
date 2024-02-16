@@ -20,8 +20,116 @@ const Constants = {
     fullName: {
       required: "This field is required!",
       pattern: {
-        value: /^[A-z]{3,} [A-z]{3,}$/g,
+        value: /^[A-Z]{1}[A-z]{3,} [A-Z]{1}[A-z]{3,}$/g,
         message: "This full name is invalid"
+      }
+    },
+    car: {
+      make: {
+        required: "Please enter a valid make!"
+      },
+      model: {
+        required: "Please enter a valid model!"
+      },
+      year: {
+        required: "Please enter a valid year!",
+        min: {
+          value: 2000,
+          message: "The year must be at least 2000!"
+        },
+        max: {
+          value: 2024,
+          message: "The year cannot be above 2024!"
+        }
+      },
+      type: {
+        required: "Please enter a valid body type!"
+      },
+      mileAge: {
+        required: "Please enter a valid mileage!",
+        min: {
+          value: 2000,
+          message: "The mileage must be at least 2000 km!"
+        },
+        max: {
+          value: 300000,
+          message: "The mileage cannot be above 300 000 km!"
+        }
+      },
+      transmission: {
+        required: "Please enter a valid transmission!"
+      },
+      fuelType: {
+        required: "Please enter a valid fuel type!"
+      },
+      horsePower: {
+        required: "Please enter a valid horsepower!",
+        min: {
+          value: 75,
+          message: "The horsepower must be at least 75 hp!"
+        },
+        max: {
+          value: 2300,
+          message: "The horsepower cannot be above 2300 hp!"
+        }
+      },
+      doors: {
+        required: "Please enter a valid doors number!",
+        min: {
+          value: 2,
+          message: "The doors must be at least 2!"
+        },
+        max: {
+          value: 8,
+          message: "The doors cannot be above 8!"
+        }
+      },
+      luggageCapacity: {
+        required: "Please enter a valid luggage capacity!",
+        min: {
+          value: 2,
+          message: "The luggages must be at least 2!"
+        },
+        max: {
+          value: 10,
+          message: "The luggages cannot be above 10!"
+        }
+      },
+      maxPeople: {
+        required: "Please enter a valid people number!",
+        min: {
+          value: 2,
+          message: "The people must be at least 2!"
+        },
+        max: {
+          value: 8,
+          message: "The people cannot be above 8!"
+        }
+      },
+      location: {
+        required: "Please enter a valid location!",
+        pattern: {
+          value: /^[A-Z]{1}[A-z]+, [A-Z]{1}[A-z]+$/g,
+          message: "You should follow the example!"
+        }
+      },
+      pricePerDay: {
+        required: "Please enter a valid price!",
+        min: {
+          value: 10,
+          message: "The price must be at least $10!"
+        },
+        max: {
+          value: 1000,
+          message: "The price cannot be above $1000!"
+        }
+      },
+      description: {
+        required: "Please eneter a valid description!",
+        minLength: {
+          value: 50,
+          message: "Write at least 50 characters!"
+        }
       }
     },
     rent: {
