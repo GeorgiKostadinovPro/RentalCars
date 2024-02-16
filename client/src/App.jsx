@@ -18,6 +18,7 @@ import { Blog } from './components/Blog/Blog';
 import { Terms } from './components/Terms/Terms';
 import { AuthProvider } from './contexts/AuthContext';
 import { NotFound } from './components/Errors/NotFound';
+import { CreateCar } from './components/CreateCar/CreateCar';
 import { CarDetails } from './components/CarDetails/CarDetails';
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -42,6 +43,7 @@ function App() {
 
           <Route path={Path.home} element={<Home />} />
           <Route path={Path.cars} element={<Cars />} />
+          <Route path={Path.createCar} element={<CreateCar />} />
           <Route path={Path.carDetails()} element={<CarDetails />} />
           <Route path={Path.about} element={<About />} />
           <Route path={Path.blog} element={<Blog />} />

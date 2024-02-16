@@ -9,6 +9,7 @@ const Path = {
     allUsers: '/profile/admin/users',
     allPosts: '/profile/admin/posts',
     home: '/',
+    createCar: '/cars/create',
     cars: '/cars',
     carDetails: (carId) => {
         return carId ? `/cars/${carId}/details` : '/cars/:carId/details'
