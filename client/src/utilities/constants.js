@@ -130,6 +130,9 @@ const Constants = {
           value: 50,
           message: "Write at least 50 characters!"
         }
+      },
+      gallery: {
+        required: "Please choose at least two pictures!"
       }
     },
     rent: {

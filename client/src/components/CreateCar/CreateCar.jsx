@@ -133,6 +133,7 @@ export const CreateCar = () => {
                 {...register("type", Constants.car.type)}
                 className="create-form-input"
               >
+                <option value="">Choose a body</option>
                 <option value="Convertable">Convertable</option>
                 <option value="Coupe">Coupe</option>
                 <option value="Hatchback">Hatchback</option>
@@ -177,6 +178,7 @@ export const CreateCar = () => {
                 {...register("transmission", Constants.car.transmission)}
                 className="create-form-input"
               >
+                <option value="">Choose a transmission</option>
                 <option value="Automatic">Automatic</option>
                 <option value="Manual">Manual</option>
                 <option value="Semi-Automatic">Semi-Automatic</option>
@@ -196,6 +198,7 @@ export const CreateCar = () => {
                 {...register("fuelType", Constants.car.fuelType)}
                 className="create-form-input"
               >
+                <option value="">Choose a fuel</option>
                 <option value="Petrol">Petrol</option>
                 <option value="Diezel">Diezel</option>
                 <option value="Electric">Electric</option>
@@ -330,7 +333,14 @@ export const CreateCar = () => {
             <div className="input-content">
               <label htmlFor="gallery">Gallery ( minimum 2 pictures )</label>
               <input
-                {...register("gallery")}
+                {...register("gallery", {
+                  ...Constants.car.gallery,
+                  validate: (value) => {
+                    if (value.length < 2) {
+                      return 'Not enough images!'
+                    }
+                  }
+                })}
                 className="create-form-input"
                 type="file"
                 multiple
