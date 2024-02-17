@@ -1,0 +1,37 @@
+@import url(../Common/Info.css);
+
+.more-info .more-info-content p {
+    font-size: 1.2em;
+    text-align: justify;
+}
+
+.more-info .post-tags-container .post-tags {
+    padding: 0.5em 0 0 0;
+}
+
+.more-info .post-tags-container .post-tags ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+}
+
+.more-info .post-tags-container .post-tags ul li a {
+    padding: 0.5em 1em;
+    border: 1px solid #6C757D;
+    border-radius: 0.5em;
+    text-decoration: none;
+    color: #6C757D;
+    font-weight: normal;
+    font-size: 1.2em;
+}
+
+.more-info .post-tags-container .post-tags ul li:hover a {
+    background-color: #6C757D;
+    color: #ffffff;
+}
+
+.more-info .post-img-container {
+    display: flex;
+    justify-content: center;
+}
