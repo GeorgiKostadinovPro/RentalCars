@@ -33,7 +33,6 @@ export const CreateCar = () => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: {errors}
   } = useForm({ defaultValues, mode: 'onChange' });
 
