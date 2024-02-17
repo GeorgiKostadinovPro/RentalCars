@@ -6,8 +6,10 @@ import * as cloudinaryService from '../../services/cloudinaryService'
 
 import { Path } from '../../utilities/Path'
 import { Constants } from '../../utilities/constants'
+import { Loading } from '../Common/Loading'
 
 import './CreateCar.css'
+import { useState } from 'react'
 
 const defaultValues = {
   make: '',
@@ -30,6 +32,8 @@ const defaultValues = {
 export const CreateCar = () => {
   const navigate = useNavigate();
 
+  const [finishCreate, setFinishCreate] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -38,6 +42,8 @@ export const CreateCar = () => {
 
   const createCarSubmitHanlder = async (data) => {
     try {
+      setFinishCreate(false);
+
       const uploadedUrls = await cloudinaryService.uploadFiles(data.gallery);
 
       const carObj = { ...data, gallery: [] };
@@ -48,6 +54,8 @@ export const CreateCar = () => {
 
       await carService.createCar(carObj);
 
+      setFinishCreate(true);
+
       navigate(Path.allUserCars);
     } catch (error) {
       console.log(error.message);
@@ -56,6 +64,8 @@ export const CreateCar = () => {
 
   return (
     <>
+      {!finishCreate && <Loading />}
+      
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">
@@ -336,7 +346,7 @@ export const CreateCar = () => {
                 {...register("gallery", {
                   ...Constants.car.gallery,
                   validate: (value) => {
-                    if (value.length < 2) {
+                    if (value.length < 1) {
                       return 'Not enough images!'
                     }
                   }
