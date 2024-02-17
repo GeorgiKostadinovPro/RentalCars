@@ -224,8 +224,7 @@ export const CarDetails = () => {
                   <div className="text-content">
                     <strong>Location</strong>
                     <p>
-                      {carDetails.location?.country},{" "}
-                      {carDetails.location?.city}
+                      {carDetails.location}
                     </p>
                   </div>
                 </article>

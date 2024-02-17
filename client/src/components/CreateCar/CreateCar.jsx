@@ -6,8 +6,10 @@ import * as cloudinaryService from '../../services/cloudinaryService'
 
 import { Path } from '../../utilities/Path'
 import { Constants } from '../../utilities/constants'
+import { Loading } from '../Common/Loading'
 
 import './CreateCar.css'
+import { useState } from 'react'
 
 const defaultValues = {
   make: '',
@@ -30,15 +32,18 @@ const defaultValues = {
 export const CreateCar = () => {
   const navigate = useNavigate();
 
+  const [finishCreate, setFinishCreate] = useState(true);
+
   const {
     register,
     handleSubmit,
-    reset,
     formState: {errors}
   } = useForm({ defaultValues, mode: 'onChange' });
 
   const createCarSubmitHanlder = async (data) => {
     try {
+      setFinishCreate(false);
+
       const uploadedUrls = await cloudinaryService.uploadFiles(data.gallery);
 
       const carObj = { ...data, gallery: [] };
@@ -49,6 +54,8 @@ export const CreateCar = () => {
 
       await carService.createCar(carObj);
 
+      setFinishCreate(true);
+
       navigate(Path.allUserCars);
     } catch (error) {
       console.log(error.message);
@@ -57,6 +64,8 @@ export const CreateCar = () => {
 
   return (
     <>
+      {!finishCreate && <Loading />}
+      
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">
@@ -134,6 +143,7 @@ export const CreateCar = () => {
                 {...register("type", Constants.car.type)}
                 className="create-form-input"
               >
+                <option value="">Choose a body</option>
                 <option value="Convertable">Convertable</option>
                 <option value="Coupe">Coupe</option>
                 <option value="Hatchback">Hatchback</option>
@@ -178,6 +188,7 @@ export const CreateCar = () => {
                 {...register("transmission", Constants.car.transmission)}
                 className="create-form-input"
               >
+                <option value="">Choose a transmission</option>
                 <option value="Automatic">Automatic</option>
                 <option value="Manual">Manual</option>
                 <option value="Semi-Automatic">Semi-Automatic</option>
@@ -197,6 +208,7 @@ export const CreateCar = () => {
                 {...register("fuelType", Constants.car.fuelType)}
                 className="create-form-input"
               >
+                <option value="">Choose a fuel</option>
                 <option value="Petrol">Petrol</option>
                 <option value="Diezel">Diezel</option>
                 <option value="Electric">Electric</option>
@@ -331,7 +343,14 @@ export const CreateCar = () => {
             <div className="input-content">
               <label htmlFor="gallery">Gallery ( minimum 2 pictures )</label>
               <input
-                {...register("gallery")}
+                {...register("gallery", {
+                  ...Constants.car.gallery,
+                  validate: (value) => {
+                    if (value.length < 1) {
+                      return 'Not enough images!'
+                    }
+                  }
+                })}
                 className="create-form-input"
                 type="file"
                 multiple

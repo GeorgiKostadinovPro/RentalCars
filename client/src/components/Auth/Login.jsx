@@ -75,7 +75,7 @@ export const Login = () => {
           className="input_field"
         />
         <span id="create_account">
-          <Link to={Path.register}>Create your account ➡</Link>
+          <Link to={Path.register}>Create your account <i className="fa-solid fa-arrow-right"></i></Link>
         </span>
       </form>
     </div>

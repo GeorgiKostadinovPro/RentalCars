@@ -101,7 +101,7 @@ export const Register = () => {
           className="input_field"
         />
         <span id="create_account">
-          <Link to={Path.login}>Already have an account ➡</Link>
+          <Link to={Path.login}>Already have an account <i className="fa-solid fa-arrow-right"></i></Link>
         </span>
       </form>
       <div id="form_left">

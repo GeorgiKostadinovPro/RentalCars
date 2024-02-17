@@ -106,6 +106,14 @@ h1,
         top: 20px;
     }
 
+    #create_account a {
+        color: #1FCC44;
+    }
+
+    #create_account a i {
+        color: #1FCC44;
+    }
+
     a {
         text-decoration: none;
         color: var(--submit_bg);
