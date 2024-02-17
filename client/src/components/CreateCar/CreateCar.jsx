@@ -346,7 +346,7 @@ export const CreateCar = () => {
                 {...register("gallery", {
                   ...Constants.car.gallery,
                   validate: (value) => {
-                    if (value.length < 1) {
+                    if (value.length < 2) {
                       return 'Not enough images!'
                     }
                   }

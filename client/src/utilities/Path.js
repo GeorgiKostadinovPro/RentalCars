@@ -17,6 +17,9 @@ const Path = {
     about: '/about',
     terms: '/terms',
     blog: '/blog',
+    postDetails: (postId) => {
+        return postId ? `/blog/posts/${postId}/details` : '/blog/posts/:postId/details'
+    },
     contact: '/contact',
     notFound: '*'
 }
