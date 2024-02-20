@@ -145,7 +145,8 @@ const Constants = {
     },
     pagination: {
       carsPageSize: 3,
-      reviewsPageSize: 1
+      reviewsPageSize: 1,
+      postsPageSize: 2
     },
     reviews: {
       maxRating: 5,

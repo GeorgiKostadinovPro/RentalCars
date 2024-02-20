@@ -4,7 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 import * as postService from '../../../services/postService'
-import { PostRow } from './PostRow';
+import { PostRow } from './PostRow'
 
 export const AllPosts = () => {
     const [posts, setPosts] = useState([]);
@@ -13,7 +13,7 @@ export const AllPosts = () => {
     useEffect(() => {
         const getAllPosts = async () => {
             try {
-                const result =await postService.getAll();
+                const result =await postService.getForAdmin();
 
                 setPosts(result);
             } catch (error) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 import * as reviewService from '../../../services/reviewService'
 import { Constants } from '../../../utilities/constants'

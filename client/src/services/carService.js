@@ -1,7 +1,5 @@
 import { requestFactory } from "../api/api"
 
-import { Constants } from "../utilities/constants"
-
 const baseUrl = '/data/cars';
 
 const request = requestFactory();
@@ -14,10 +12,10 @@ const getAll = async (
 
     const mainQuery = new URLSearchParams({
         select: '_id,make,model,year,_createdOn,pricePerDay,maxPeople,luggageCapacity,doors,transmission,gallery',
-        offset: skip
     });
 
     if (take !== null) {
+        mainQuery.set('offset', skip);
         mainQuery.set('pageSize', take);
     }
 
