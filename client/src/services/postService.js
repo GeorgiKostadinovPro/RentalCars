@@ -14,6 +14,21 @@ const getAll = async () => {
     return result;
 }
 
+const getRecent = async () => {
+    const query = new URLSearchParams({
+        select: '_id,title,_ownerId,_createdOn',
+        load: 'author=_ownerId:users',
+        offset: 0,
+        pageSize: 3,
+    });
+
+    const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`
+
+    const result = await request.get(`${baseUrl}?${query}&${sort}`);
+
+    return result;
+}
+
 const getById = async (id) => {
     const query = new URLSearchParams({
         load: 'author=_ownerId:users'
@@ -29,7 +44,8 @@ const deletePost = async (id) => {
 }
 
 export { 
-    getAll, 
+    getAll,
+    getRecent,
     getById,
     deletePost 
 }
