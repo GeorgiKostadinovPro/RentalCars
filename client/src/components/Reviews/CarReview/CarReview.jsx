@@ -1,5 +1,5 @@
-import { dateFormatter } from '../../utilities/dateFormatter'
-import { Constants } from '../../utilities/constants'
+import { dateFormatter } from '../../../utilities/dateFormatter'
+import { Constants } from '../../../utilities/constants'
 
 import './CarReview.css'
 
