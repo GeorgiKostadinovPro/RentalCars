@@ -61,20 +61,18 @@ export const Blog = () => {
                 {recentPosts &&
                   recentPosts.length > 0 &&
                   recentPosts.map((post) => (
-                    <>
-                      <li key={post._id} style={{ marginBottom: 24 }}>
-                        <h5 style={{ marginBottom: 10 }}>
-                          <Link to={Path.postDetails(post._id)}>
-                            {post.title}
-                          </Link>
-                        </h5>
-                        <small>
-                          <i className="fa fa-user" /> {post.author?.username}{" "}
-                          &nbsp;|&nbsp; <i className="fa fa-calendar" />{" "}
-                          {dateFormatter(post._createdOn)}
-                        </small>
-                      </li>
-                    </>
+                    <li key={post._id} style={{ marginBottom: 24 }}>
+                      <h5 style={{ marginBottom: 10 }}>
+                        <Link to={Path.postDetails(post._id)}>
+                          {post.title}
+                        </Link>
+                      </h5>
+                      <small>
+                        <i className="fa fa-user" /> {post.author?.username}{" "}
+                        &nbsp;|&nbsp; <i className="fa fa-calendar" />{" "}
+                        {dateFormatter(post._createdOn)}
+                      </small>
+                    </li>
                   ))}
               </ul>
             </div>

@@ -27,15 +27,21 @@ export const Posts = () => {
     };
 
     getAllPosts();
-  }, []);
+  }, [currPage]);
 
   useEffect(() => {
     const getTotalSize = async () => {
+      try {
+        const result = await postService.getPostsCount();
 
+        setTotalPages(Math.ceil(result / Constants.pagination.postsPageSize));
+      } catch (error) {
+        console.log(error.message);
+      }
     };
 
     getTotalSize();
-  });
+  }, []);
 
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= totalPages) {

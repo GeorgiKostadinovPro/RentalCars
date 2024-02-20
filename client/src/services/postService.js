@@ -44,6 +44,12 @@ const getForAdmin = async () => {
     return result;
 }
 
+const getPostsCount = async () => {
+    const result = await request.get(`${baseUrl}?count`);
+
+    return result;
+}
+
 const getById = async (id) => {
     const query = new URLSearchParams({
         load: 'author=_ownerId:users'
@@ -62,6 +68,7 @@ export {
     getAll,
     getRecent,
     getForAdmin,
+    getPostsCount,
     getById,
     deletePost 
 }
