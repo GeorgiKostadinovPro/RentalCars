@@ -15,6 +15,7 @@ RentalCars is an easy-to-use platform for car rentals where users can rent cars,
   <img src="https://camo.githubusercontent.com/060b933b2cad8b2c927290fc1606777fd3009e5ca67ba8b75c0cc8023d3e628c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656163745f526f757465725f444f4d2d2545322539432539332d627269676874677265656e" alt="React Router DOM" data-canonical-src="https://img.shields.io/badge/React_Router_DOM-%E2%9C%93-brightgreen" style="max-width: 100%;">
   <img alt="Static Badge" src="https://img.shields.io/badge/React_Hook_Form-%E2%9C%93-%23F6546A">
   <img alt="Static Badge" src="https://img.shields.io/badge/EmailJS-%E2%9C%93-%23FFC0CB">
+  <img alt="Static Badge" src="https://img.shields.io/badge/Cloudinary-%E2%9C%93-%233442CD">
   <img alt="Static Badge" src="https://img.shields.io/badge/Swiper-%E2%9C%93-%2300CED1">
   <img alt="Static Badge" src="https://img.shields.io/badge/HTML5-%E2%9C%93-%23800080">
   <img alt="Static Badge" src="https://img.shields.io/badge/CSS3-%E2%9C%93-%23008080">
