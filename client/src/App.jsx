@@ -1,26 +1,26 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 
-import { Path } from './utilities/Path';
+import { Path } from './utilities/Path'
 
-import { Header } from "./components/Common/Header/Header";
-import { Footer } from "./components/Common/Footer/Footer";
+import { Header } from "./components/Common/Header/Header"
+import { Footer } from "./components/Common/Footer/Footer"
 
-import { Register } from './components/Auth/Register';
-import { Login } from './components/Auth/Login';
-import { Logout } from './components/Auth/Logout';
-import { Profile } from './components/Profile/Profile';
+import { Register } from './components/Auth/Register'
+import { Login } from './components/Auth/Login'
+import { Logout } from './components/Auth/Logout'
+import { Profile } from './components/Profile/Profile'
 
-import { Home } from "./components/Home/Home";
-import { Cars } from './components/Cars/Cars';
-import { Contact } from './components/Contact/Contact';
-import { About } from './components/About/About';
-import { Blog } from './components/Blog/Blog';
-import { Terms } from './components/Terms/Terms';
-import { AuthProvider } from './contexts/AuthContext';
-import { NotFound } from './components/Errors/NotFound';
-import { CreateCar } from './components/CreateCar/CreateCar';
-import { CarDetails } from './components/CarDetails/CarDetails';
-import { PostDetails } from './components/PostDetails/PostDetails';
+import { Home } from "./components/Home/Home"
+import { Cars } from './components/Cars/Cars'
+import { Contact } from './components/Contact/Contact'
+import { About } from './components/About/About'
+import { Blog } from './components/Blog/Blog'
+import { Terms } from './components/Terms/Terms'
+import { AuthProvider } from './contexts/AuthContext'
+import { NotFound } from './components/Errors/NotFound'
+import { CreateCar } from './components/Cars/CreateCar/CreateCar'
+import { CarDetails } from './components/Cars/CarDetails/CarDetails'
+import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 
 import 'bootstrap/dist/css/bootstrap.css'
 

@@ -4,12 +4,48 @@ const baseUrl = '/data/posts';
 
 const request = requestFactory();
 
-const getAll = async () => {
+const getAll = async (skip = 0, take = null) => {
+    const query = new URLSearchParams({
+        load: 'author=_ownerId:users'
+    });
+
+    if (take !== null) {
+        query.set('offset', skip);
+        query.set('pageSize', take);
+    }
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+}
+
+const getRecent = async () => {
+    const query = new URLSearchParams({
+        select: '_id,title,_ownerId,_createdOn',
+        load: 'author=_ownerId:users',
+        offset: 0,
+        pageSize: 3,
+    });
+
+    const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`
+
+    const result = await request.get(`${baseUrl}?${query}&${sort}`);
+
+    return result;
+}
+
+const getForAdmin = async () => {
     const query = new URLSearchParams({
         select: '_id,title,_createdOn'
     });
 
-    const result = await request.get(`${baseUrl}?${query}`);
+    const result = await request.get(`${baseUrl}?${query}`); 
+
+    return result;
+}
+
+const getPostsCount = async () => {
+    const result = await request.get(`${baseUrl}?count`);
 
     return result;
 }
@@ -29,7 +65,10 @@ const deletePost = async (id) => {
 }
 
 export { 
-    getAll, 
+    getAll,
+    getRecent,
+    getForAdmin,
+    getPostsCount,
     getById,
     deletePost 
 }

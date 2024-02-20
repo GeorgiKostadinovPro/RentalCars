@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import * as reviewService from '../../services/reviewService'
-import { Constants } from '../../utilities/constants'
+import * as reviewService from '../../../services/reviewService'
+import { Constants } from '../../../utilities/constants'
 
 import { CarReview } from '../CarReview/CarReview'
 import { CreateReview } from '../CreateReview/CreateReview'
-import { Pagination } from '../Pagination/Pagination'
+import { Pagination } from '../../Pagination/Pagination'
 
 import './CarReviews.css'
 

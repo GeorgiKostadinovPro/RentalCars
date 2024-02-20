@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
-import * as postService from '../../services/postService'
+import * as postService from '../../../services/postService'
 
-import { dateFormatter } from '../../utilities/dateFormatter'
+import { dateFormatter } from '../../../utilities/dateFormatter'
 
 import './PostDetails.css'
 

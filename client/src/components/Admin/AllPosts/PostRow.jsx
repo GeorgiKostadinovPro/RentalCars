@@ -11,7 +11,7 @@ export const PostRow = ({
     return (
         <tr>
           <td>{index}</td>
-          <td>{post.title.slice(0, 20)}</td>
+          <td>{`${post.title.slice(0, 40)}...`}</td>
           <td>{dateFormatter(post._createdOn)}</td>
           <td style={{ width: '125px' }}>
             <Link to={Path.carDetails(post._id)} className="details">

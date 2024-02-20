@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom"
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
 
-import * as carService from '../../services/carService'
-import * as favouriteService from '../../services/favouriteService'
-import { RentForm } from "../RentForm/RentForm"
-import { CarReviews } from "../CarReviews/CarReviews"
-import { useAuthContext } from "../../hooks/useAuthContext"
+import * as carService from '../../../services/carService'
+import * as favouriteService from '../../../services/favouriteService'
+import { RentForm } from "../../RentForm/RentForm"
+import { CarReviews } from "../../Reviews/CarReviews/CarReviews"
+import { useAuthContext } from "../../../hooks/useAuthContext"
 
 import 'swiper/css'
 import 'swiper/css/navigation'
