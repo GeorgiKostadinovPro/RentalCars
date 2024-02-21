@@ -41,6 +41,7 @@ export const Blog = () => {
       <div className="single-services">
         <div className="container">
           <div className="row">
+            
             <Posts />
 
             <div className="col-md-4">

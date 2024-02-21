@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 import * as postService from '../../../services/postService'
+import { Path } from '../../../utilities/Path'
 import { PostRow } from './PostRow'
 
 export const AllPosts = () => {
@@ -59,14 +61,14 @@ export const AllPosts = () => {
                     </h2>
                   </div>
                   <div className="col-sm-6">
-                    <a
-                      href="#addEmployeeModal"
+                    <Link
+                      to={Path.createPost}
                       className="btn btn-success"
                       data-toggle="modal"
                     >
                       <i className="fa-solid fa-plus"></i>{" "}
                       <span>Add New Post</span>
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>
