@@ -9,14 +9,15 @@ const Path = {
     allUsers: '/profile/admin/users',
     allPosts: '/profile/admin/posts',
     home: '/',
-    createCar: '/cars/create',
     cars: '/cars',
+    createCar: '/cars/create',
     carDetails: (carId) => {
         return carId ? `/cars/${carId}/details` : '/cars/:carId/details'
     },
     about: '/about',
     terms: '/terms',
     blog: '/blog',
+    createPost: '/blog/posts/create',
     postDetails: (postId) => {
         return postId ? `/blog/posts/${postId}/details` : '/blog/posts/:postId/details'
     },

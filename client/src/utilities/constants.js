@@ -158,6 +158,32 @@ const Constants = {
         }
       }
     },
+    posts: {
+      title: {
+        required: "The title is required!",
+        minLength: {
+          value: 50,
+          message: "The title should be at least 50 symbols long!"
+        }
+      },
+      tags: {
+        required: "The tags are required!",
+        minLength: {
+          value: 3,
+          message: "Please enter at least 1 tag!"
+        }
+      },
+      content: {
+        required: "The content is required!",
+        minLength: {
+          value: 100,
+          message: "The content should be at least 100 symbols long!"
+        }
+      },
+      imageUrl: {
+        required: "Please choose a picture!"
+      }
+    },
     contact: {
       subject: {
         required: "Please write a valid subject!",
