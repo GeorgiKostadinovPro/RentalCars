@@ -36,7 +36,7 @@ const getRecent = async () => {
 
 const getForAdmin = async () => {
     const query = new URLSearchParams({
-        select: '_id,title,_createdOn'
+        select: '_id,title,_createdOn,image'
     });
 
     const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`
@@ -66,6 +66,10 @@ const createPost = async (data) => {
     await request.post(baseUrl, data);
 }
 
+const editPost = async (id, data) => {
+    await request.put(`${baseUrl}/${id}`, data);
+}
+
 const deletePost = async (id) => {
     await request.delete(`${baseUrl}/${id}`);
 }
@@ -77,5 +81,6 @@ export {
     getPostsCount,
     getById,
     createPost,
+    editPost,
     deletePost 
 }

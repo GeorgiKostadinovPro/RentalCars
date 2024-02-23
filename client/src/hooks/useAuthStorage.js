@@ -25,5 +25,5 @@ export const useAuthStorage = (initialValue) => {
         localStorage.setItem('userData', valueToJSON);
     };
 
-    return [state, setPersistedState]
+    return [state, setPersistedState];
 }

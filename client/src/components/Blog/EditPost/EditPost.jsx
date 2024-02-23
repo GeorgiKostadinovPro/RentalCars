@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import * as postService from '../../../services/postService'
@@ -9,41 +9,65 @@ import { Path } from '../../../utilities/Path'
 import { Loading } from '../../Common/Loading'
 import { Constants } from '../../../utilities/constants'
 
-import './CreatePost.css'
+import './EditPost.css'
 
-const defaultValues = {
-    title: '',
-    tags: '',
-    content: '',
-    image: ''
-};
-
-export const CreatePost = () => {
+export const EditPost = () => {
+  const { postId } = useParams();
   const navigate = useNavigate();
 
-  const [finishCreate, setFinishCreate] = useState(true);
+  const [finishEdit, setFinishEdit] = useState(true);
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: {errors}
-  } = useForm({ defaultValues, mode: 'onChange' });
+  } = useForm({ mode: 'onChange' });
 
-  const createPostSubmitHandler = async (data) => {
+  useEffect(() => {
+    const getPostToEdit = async () => {
+        try {
+            const postToEdit = await postService.getById(postId);
+
+            const defaultValues = {
+                title: postToEdit.title,
+                tags: postToEdit.tags.join(','),
+                content: postToEdit.content,
+                image: {
+                  url: postToEdit.image.url,
+                  publicId: postToEdit.image.publicId
+                }
+            };
+            
+            Object.keys(defaultValues).forEach(key => {
+                setValue(key, defaultValues[key]);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    getPostToEdit();
+  }, [postId]);
+
+  const editPostSubmitHandler = async (data) => {
     try {
-      setFinishCreate(false);
-
-      const { url, publicId } = await cloudinaryService.uploadFile(data.image[0]);
+      setFinishEdit(false);
 
       const postObj = {
         ...data,
-        tags: data.tags.split(','),
-        image: { url, publicId }
+        tags: data.tags.split(',')
       };
+      
+      if (data.imageFile.length > 0) {
+        const { url, publicId } = await cloudinaryService.uploadFile(data.imageFile[0], data.image.publicId);
 
-      await postService.createPost(postObj);
+        postObj.image = { url, publicId };
+      }
 
-      setFinishCreate(true);
+      await postService.editPost(postId, postObj);
+
+      setFinishEdit(true);
 
       navigate(Path.allPosts);
     } catch (error) {
@@ -53,29 +77,29 @@ export const CreatePost = () => {
 
   return (
     <>
-      {!finishCreate && <Loading />}
+      {!finishEdit && <Loading />}
 
       <div className="page-heading header-text">
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1>Add your Post</h1>
+              <h1>Edit your Post</h1>
               <span>You can manage the posts from your admin profile</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="create-post-container">
+      <div className="edit-post-container">
         <form
-          onSubmit={handleSubmit(createPostSubmitHandler)}
+          onSubmit={handleSubmit(editPostSubmitHandler)}
           encType="multipart/form-data"
         >
           <div className="input-content">
             <label htmlFor="title">Title</label>
             <input
               {...register("title", Constants.posts.title)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="Enter title..."
             />
@@ -92,7 +116,7 @@ export const CreatePost = () => {
             <label htmlFor="tags">Tags</label>
             <input
               {...register("tags", Constants.posts.tags)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="car,engine,fast..."
             />
@@ -106,10 +130,15 @@ export const CreatePost = () => {
             </span>
           </div>
           <div className="input-content">
-            <label htmlFor="image">Image</label>
+            <label htmlFor="imageFile">
+              Image{" "}
+              <span className="edit-image-span">
+                ( you already have an image )
+              </span>
+            </label>
             <input
-              {...register("image", Constants.posts.image)}
-              className="create-form-input"
+              {...register("imageFile")}
+              className="edit-form-input"
               type="file"
               accept="image/png, image/jpg, image/jpeg"
             />
@@ -126,7 +155,7 @@ export const CreatePost = () => {
             <label htmlFor="content">Content</label>
             <textarea
               {...register("content", Constants.posts.content)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="Write content..."
             />
@@ -139,8 +168,8 @@ export const CreatePost = () => {
               {errors.content?.message}
             </span>
           </div>
-          <div className="submit-create">
-            <input className="create-btn" type="submit" value="Create" />
+          <div className="submit-edit">
+            <input className="edit-btn" type="submit" value="Save" />
           </div>
         </form>
       </div>

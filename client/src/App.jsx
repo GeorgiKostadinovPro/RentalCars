@@ -22,6 +22,7 @@ import { CreateCar } from './components/Cars/CreateCar/CreateCar'
 import { CarDetails } from './components/Cars/CarDetails/CarDetails'
 import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 import { CreatePost } from './components/Blog/CreatePost/CreatePost'
+import { EditPost } from './components/Blog/EditPost/EditPost'
 
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -44,12 +45,16 @@ function App() {
           <Route path={Path.profile} element={<Profile />} />
 
           <Route path={Path.home} element={<Home />} />
+
           <Route path={Path.cars} element={<Cars />} />
           <Route path={Path.createCar} element={<CreateCar />} />
           <Route path={Path.carDetails()} element={<CarDetails />} />
+
           <Route path={Path.about} element={<About />} />
+
           <Route path={Path.blog} element={<Blog />} />
           <Route path={Path.createPost} element={<CreatePost />} />
+          <Route path={Path.editPost()} element={<EditPost />} />
           <Route path={Path.postDetails()} element={<PostDetails />} />
           <Route path={Path.terms} element={<Terms />} />
           <Route path={Path.contact} element={<Contact />} />

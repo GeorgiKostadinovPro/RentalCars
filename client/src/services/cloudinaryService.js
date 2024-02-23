@@ -19,16 +19,14 @@ const uploadFiles = async (files) => {
             body: formData
         })
         .then(async (response) => {
-            if (response.ok) {
-                const data = await response.json();
-                const imageUrl = data.secure_url;
-
-                return imageUrl;
-            } else {
-                console.error('Failed to upload image to Cloudinary:', response.statusText);
-
-                return null;
+            if (!response.ok) {
+                throw new Error(`Failed to upload image to Cloudinary: ${response.statusText}`);
             }
+
+            const data = await response.json();
+            const imageUrl = data.secure_url;
+
+            return imageUrl;
         })
         .catch((error) => {
             alert('Pictures failed to upload! Please try again or contact admin.');
@@ -62,7 +60,7 @@ const uploadFile = async (file, publicId) => {
         });
 
         if (!response.ok) {
-            throw new Error(response.message);
+            throw new Error(response.statusText);
         }
 
         const data = await response.json();
@@ -71,10 +69,13 @@ const uploadFile = async (file, publicId) => {
 
         return { url, publicId: data.public_id };
     } catch (error) {
-        alert('Pictures failed to upload! Please try again or contact admin.');
+        alert('Picture failed to upload! Please try again or contact admin.');
 
         throw error;
     }
 }
 
-export { uploadFiles, uploadFile }
+export { 
+    uploadFiles, 
+    uploadFile
+}
