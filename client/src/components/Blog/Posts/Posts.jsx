@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
 import * as postService from '../../../services/postService'
+
 import { Post } from './Post'
 import { Pagination } from '../../Pagination/Pagination'
 import { Constants } from '../../../utilities/constants'

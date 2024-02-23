@@ -38,7 +38,7 @@ export const EditPost = () => {
                   publicId: postToEdit.image.publicId
                 }
             };
-
+            
             Object.keys(defaultValues).forEach(key => {
                 setValue(key, defaultValues[key]);
             });
@@ -59,13 +59,11 @@ export const EditPost = () => {
         tags: data.tags.split(',')
       };
       
-      if (data.image.length > 0) {
-        const { url, publicId } = await cloudinaryService.uploadFile(data.image[0], data.publicId);
+      if (data.imageFile.length > 0) {
+        const { url, publicId } = await cloudinaryService.uploadFile(data.imageFile[0], data.image.publicId);
 
         postObj.image = { url, publicId };
       }
-
-      console.log(postObj.image);
 
       await postService.editPost(postId, postObj);
 
@@ -132,14 +130,14 @@ export const EditPost = () => {
             </span>
           </div>
           <div className="input-content">
-            <label htmlFor="image">
+            <label htmlFor="imageFile">
               Image{" "}
               <span className="edit-image-span">
                 ( you already have an image )
               </span>
             </label>
             <input
-              {...register("image")}
+              {...register("imageFile")}
               className="edit-form-input"
               type="file"
               accept="image/png, image/jpg, image/jpeg"

@@ -36,7 +36,7 @@ const getRecent = async () => {
 
 const getForAdmin = async () => {
     const query = new URLSearchParams({
-        select: '_id,title,_createdOn'
+        select: '_id,title,_createdOn,image'
     });
 
     const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`

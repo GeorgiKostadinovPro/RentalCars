@@ -69,10 +69,13 @@ const uploadFile = async (file, publicId) => {
 
         return { url, publicId: data.public_id };
     } catch (error) {
-        alert('Pictures failed to upload! Please try again or contact admin.');
+        alert('Picture failed to upload! Please try again or contact admin.');
 
         throw error;
     }
 }
 
-export { uploadFiles, uploadFile }
+export { 
+    uploadFiles, 
+    uploadFile
+}
