@@ -66,6 +66,10 @@ const createPost = async (data) => {
     await request.post(baseUrl, data);
 }
 
+const editPost = async (id, data) => {
+    await request.put(`${baseUrl}/${id}`, data);
+}
+
 const deletePost = async (id) => {
     await request.delete(`${baseUrl}/${id}`);
 }
@@ -77,5 +81,6 @@ export {
     getPostsCount,
     getById,
     createPost,
+    editPost,
     deletePost 
 }
