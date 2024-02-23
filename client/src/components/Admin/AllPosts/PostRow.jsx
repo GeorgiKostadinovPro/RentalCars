@@ -14,11 +14,10 @@ export const PostRow = ({
           <td>{`${post.title.slice(0, 40)}...`}</td>
           <td>{dateFormatter(post._createdOn)}</td>
           <td style={{ width: '125px' }}>
-            <Link to={Path.carDetails(post._id)} className="details">
+            <Link to={Path.postDetails(post._id)} className="details">
               <i className="fa-solid fa-circle-info"></i>
             </Link>
   
-            
             <Link className="edit">
               <i className="fa-solid fa-pen"></i>
             </Link>

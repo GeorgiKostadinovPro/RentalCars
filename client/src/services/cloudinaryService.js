@@ -1,7 +1,8 @@
 const cloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const uploadPreset = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
-const folder = 'RentalCars/assets/cars-gallery-pictures';
+const carsFolder = 'RentalCars/assets/cars-gallery-pictures';
+const postsFolder = 'RentalCars/assets/posts-gallery-pictures';
 
 const uploadFiles = async (files) => {
     const uploadPromises = [];
@@ -10,7 +11,7 @@ const uploadFiles = async (files) => {
         const formData = new FormData();
 
         formData.append('file', file);
-        formData.append('folder', folder);
+        formData.append('folder', carsFolder);
         formData.append('upload_preset', uploadPreset);
 
         const uploadPromise = fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
@@ -32,7 +33,7 @@ const uploadFiles = async (files) => {
         .catch((error) => {
             alert('Pictures failed to upload! Please try again or contact admin.');
 
-            return null;
+            throw error;
         });
 
         uploadPromises.push(uploadPromise);
@@ -43,4 +44,37 @@ const uploadFiles = async (files) => {
     return uploadUrls;
 }
 
-export { uploadFiles }
+const uploadFile = async (file, publicId) => {
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('folder', postsFolder);
+    formData.append('upload_preset', uploadPreset);
+
+    if (publicId) {
+        formData.append('public_id', publicId);
+    }
+
+    try {
+        const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            throw new Error(response.message);
+        }
+
+        const data = await response.json();
+
+        const url = data.secure_url;
+
+        return { url, publicId: data.public_id };
+    } catch (error) {
+        alert('Pictures failed to upload! Please try again or contact admin.');
+
+        throw error;
+    }
+}
+
+export { uploadFiles, uploadFile }

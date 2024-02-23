@@ -7,14 +7,14 @@ export const Post = ({
     _id,
     title,
     content,
-    imageUrl,
+    image,
     _createdOn,
     author
 }) => {
     return (
       <>
         <article id="tabs-1">
-          <img src={imageUrl} alt="" />
+          <img src={image.url} alt="" />
           <h4>
             <Link to={Path.postDetails(_id)}>
               {title}
