@@ -9,7 +9,7 @@ import { Path } from '../../../utilities/Path'
 import { Loading } from '../../Common/Loading'
 import { Constants } from '../../../utilities/constants'
 
-import './CreatePost.css'
+import './EditPost.css'
 
 const defaultValues = {
     title: '',
@@ -59,14 +59,14 @@ export const CreatePost = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-12">
-              <h1>Add your Post</h1>
+              <h1>Edit your Post</h1>
               <span>You can manage the posts from your admin profile</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="create-post-container">
+      <div className="edit-post-container">
         <form
           onSubmit={handleSubmit(createPostSubmitHandler)}
           encType="multipart/form-data"
@@ -75,7 +75,7 @@ export const CreatePost = () => {
             <label htmlFor="title">Title</label>
             <input
               {...register("title", Constants.posts.title)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="Enter title..."
             />
@@ -92,7 +92,7 @@ export const CreatePost = () => {
             <label htmlFor="tags">Tags</label>
             <input
               {...register("tags", Constants.posts.tags)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="car,engine,fast..."
             />
@@ -109,7 +109,7 @@ export const CreatePost = () => {
             <label htmlFor="image">Image</label>
             <input
               {...register("image", Constants.posts.image)}
-              className="create-form-input"
+              className="edit-form-input"
               type="file"
               accept="image/png, image/jpg, image/jpeg"
             />
@@ -126,7 +126,7 @@ export const CreatePost = () => {
             <label htmlFor="content">Content</label>
             <textarea
               {...register("content", Constants.posts.content)}
-              className="create-form-input"
+              className="edit-form-input"
               type="text"
               placeholder="Write content..."
             />
@@ -139,8 +139,8 @@ export const CreatePost = () => {
               {errors.content?.message}
             </span>
           </div>
-          <div className="submit-create">
-            <input className="create-btn" type="submit" value="Create" />
+          <div className="submit-edit">
+            <input className="edit-btn" type="submit" value="Create" />
           </div>
         </form>
       </div>
