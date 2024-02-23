@@ -39,7 +39,9 @@ const getForAdmin = async () => {
         select: '_id,title,_createdOn'
     });
 
-    const result = await request.get(`${baseUrl}?${query}`); 
+    const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`
+
+    const result = await request.get(`${baseUrl}?${query}&${sort}`); 
 
     return result;
 }
@@ -60,6 +62,10 @@ const getById = async (id) => {
     return result;
 }
 
+const createPost = async (data) => {
+    await request.post(baseUrl, data);
+}
+
 const deletePost = async (id) => {
     await request.delete(`${baseUrl}/${id}`);
 }
@@ -70,5 +76,6 @@ export {
     getForAdmin,
     getPostsCount,
     getById,
+    createPost,
     deletePost 
 }

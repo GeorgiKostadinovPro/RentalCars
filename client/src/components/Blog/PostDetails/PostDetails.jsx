@@ -17,6 +17,8 @@ export const PostDetails = () => {
             try {
                 const result = await postService.getById(postId);
 
+                console.log(result);
+
                 setPostDetails(result);
             } catch (error) {
                 console.log(error.message);
@@ -49,7 +51,7 @@ export const PostDetails = () => {
               <div className="right-content">
                 <div className="post-img-container">
                   <img
-                    src={postDetails.imageUrl}
+                    src={postDetails.image?.url}
                     className="img-fluid post-img"
                     alt=""
                   />

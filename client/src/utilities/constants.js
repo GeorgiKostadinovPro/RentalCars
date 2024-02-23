@@ -180,7 +180,7 @@ const Constants = {
           message: "The content should be at least 100 symbols long!"
         }
       },
-      imageUrl: {
+      image: {
         required: "Please choose a picture!"
       }
     },
