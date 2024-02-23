@@ -18,7 +18,7 @@ export const PostRow = ({
               <i className="fa-solid fa-circle-info"></i>
             </Link>
   
-            <Link className="edit">
+            <Link to={Path.editPost(post._id)} className="edit">
               <i className="fa-solid fa-pen"></i>
             </Link>
   

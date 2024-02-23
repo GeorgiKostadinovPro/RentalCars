@@ -17,8 +17,6 @@ export const PostDetails = () => {
             try {
                 const result = await postService.getById(postId);
 
-                console.log(result);
-
                 setPostDetails(result);
             } catch (error) {
                 console.log(error.message);

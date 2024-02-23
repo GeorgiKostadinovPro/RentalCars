@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import * as postService from '../../../services/postService'
@@ -11,39 +11,65 @@ import { Constants } from '../../../utilities/constants'
 
 import './EditPost.css'
 
-const defaultValues = {
-    title: '',
-    tags: '',
-    content: '',
-    image: ''
-};
-
-export const CreatePost = () => {
+export const EditPost = () => {
+  const { postId } = useParams();
   const navigate = useNavigate();
 
-  const [finishCreate, setFinishCreate] = useState(true);
+  const [finishEdit, setFinishEdit] = useState(true);
 
   const {
     register,
     handleSubmit,
+    setValue,
     formState: {errors}
-  } = useForm({ defaultValues, mode: 'onChange' });
+  } = useForm({ mode: 'onChange' });
 
-  const createPostSubmitHandler = async (data) => {
+  useEffect(() => {
+    const getPostToEdit = async () => {
+        try {
+            const postToEdit = await postService.getById(postId);
+
+            const defaultValues = {
+                title: postToEdit.title,
+                tags: postToEdit.tags.join(','),
+                content: postToEdit.content,
+                image: {
+                  url: postToEdit.image.url,
+                  publicId: postToEdit.image.publicId
+                }
+            };
+
+            Object.keys(defaultValues).forEach(key => {
+                setValue(key, defaultValues[key]);
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    getPostToEdit();
+  }, [postId]);
+
+  const editPostSubmitHandler = async (data) => {
     try {
-      setFinishCreate(false);
-
-      const { url, publicId } = await cloudinaryService.uploadFile(data.image[0]);
+      setFinishEdit(false);
 
       const postObj = {
         ...data,
-        tags: data.tags.split(','),
-        image: { url, publicId }
+        tags: data.tags.split(',')
       };
+      
+      if (data.image.length > 0) {
+        const { url, publicId } = await cloudinaryService.uploadFile(data.image[0], data.publicId);
 
-      await postService.createPost(postObj);
+        postObj.image = { url, publicId };
+      }
 
-      setFinishCreate(true);
+      console.log(postObj.image);
+
+      await postService.editPost(postId, postObj);
+
+      setFinishEdit(true);
 
       navigate(Path.allPosts);
     } catch (error) {
@@ -53,7 +79,7 @@ export const CreatePost = () => {
 
   return (
     <>
-      {!finishCreate && <Loading />}
+      {!finishEdit && <Loading />}
 
       <div className="page-heading header-text">
         <div className="container">
@@ -68,7 +94,7 @@ export const CreatePost = () => {
 
       <div className="edit-post-container">
         <form
-          onSubmit={handleSubmit(createPostSubmitHandler)}
+          onSubmit={handleSubmit(editPostSubmitHandler)}
           encType="multipart/form-data"
         >
           <div className="input-content">
@@ -106,9 +132,14 @@ export const CreatePost = () => {
             </span>
           </div>
           <div className="input-content">
-            <label htmlFor="image">Image</label>
+            <label htmlFor="image">
+              Image{" "}
+              <span className="edit-image-span">
+                ( you already have an image )
+              </span>
+            </label>
             <input
-              {...register("image", Constants.posts.image)}
+              {...register("image")}
               className="edit-form-input"
               type="file"
               accept="image/png, image/jpg, image/jpeg"
@@ -140,7 +171,7 @@ export const CreatePost = () => {
             </span>
           </div>
           <div className="submit-edit">
-            <input className="edit-btn" type="submit" value="Create" />
+            <input className="edit-btn" type="submit" value="Save" />
           </div>
         </form>
       </div>

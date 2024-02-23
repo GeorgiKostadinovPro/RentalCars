@@ -28,6 +28,10 @@
     border-radius: 0.2em;
 }
 
+.edit-post-container form .input-content .edit-image-span {
+    font-weight: normal;
+}
+
 .edit-post-container .submit-edit {
     display: flex;
     justify-content: center;

@@ -18,6 +18,9 @@ const Path = {
     terms: '/terms',
     blog: '/blog',
     createPost: '/blog/posts/create',
+    editPost: (postId) => {
+        return postId ? `/blog/posts/edit/${postId}` : '/blog/posts/edit/:postId'
+    },
     postDetails: (postId) => {
         return postId ? `/blog/posts/${postId}/details` : '/blog/posts/:postId/details'
     },
