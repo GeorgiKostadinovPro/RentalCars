@@ -1,0 +1,17 @@
+.home-page-recent-post {
+    margin: 0 0 1em 0;
+    padding: 1em;
+    color: #000;
+    background-color: #A4C639;
+    transition: 0.3s;
+}
+
+.home-page-recent-post:hover {
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.home-page-recent-post a {
+    color: #000;
+    font-size: 1.1em;
+}

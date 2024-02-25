@@ -42,16 +42,12 @@ const uploadFiles = async (files) => {
     return uploadUrls;
 }
 
-const uploadFile = async (file, publicId) => {
+const uploadFile = async (file) => {
     const formData = new FormData();
 
     formData.append('file', file);
     formData.append('folder', postsFolder);
     formData.append('upload_preset', uploadPreset);
-
-    if (publicId) {
-        formData.append('public_id', publicId);
-    }
 
     try {
         const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
