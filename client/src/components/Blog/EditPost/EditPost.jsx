@@ -60,7 +60,7 @@ export const EditPost = () => {
       };
       
       if (data.imageFile.length > 0) {
-        const { url, publicId } = await cloudinaryService.uploadFile(data.imageFile[0], data.image.publicId);
+        const { url, publicId } = await cloudinaryService.uploadFile(data.imageFile[0]);
 
         postObj.image = { url, publicId };
       }

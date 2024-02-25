@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-import * as postService from '../../services/postService'
-import { dateFormatter } from '../../utilities/dateFormatter'
-import { Path } from '../../utilities/Path'
+import * as postService from '../../../services/postService'
+import { dateFormatter } from '../../../utilities/dateFormatter'
+import { Path } from '../../../utilities/Path'
 
-import '../Common/Info.css'
+import './BlogInfo.css'
 
 export const BlogInfo = () => {
   const [recentPosts, setRecentPosts] = useState([]);
@@ -22,7 +22,7 @@ export const BlogInfo = () => {
     };
 
     getRecentPosts();
-  }, [])
+  }, []);
 
   return (
     <div className="more-info" style={{ marginBottom: "140px" }}>
@@ -39,7 +39,7 @@ export const BlogInfo = () => {
               {recentPosts &&
                 recentPosts.length > 0 &&
                 recentPosts.map((post) => (
-                  <li key={post._id}>
+                  <li key={post._id} className="home-page-recent-post">
                     <Link to={Path.postDetails(post._id)}>
                       {post.title} <br />{" "}
                       <small>{post.author?.username} &nbsp;|&nbsp; {dateFormatter(post._createdOn)}</small>
