@@ -21,7 +21,7 @@ export const CreatedCarRow = ({
           </Link>
 
           
-          <Link className="edit">
+          <Link to={Path.editCar(car._id)} className="edit">
             <i className="fa-solid fa-pen"></i>
           </Link>
 

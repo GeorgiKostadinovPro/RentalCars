@@ -11,6 +11,9 @@ const Path = {
     home: '/',
     cars: '/cars',
     createCar: '/cars/create',
+    editCar: (carId) => {
+        return carId ? `/cars/edit/${carId}` : '/cars/edit/:carId'
+    },
     carDetails: (carId) => {
         return carId ? `/cars/${carId}/details` : '/cars/:carId/details'
     },
