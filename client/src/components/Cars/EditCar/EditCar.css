@@ -1,0 +1,59 @@
+.edit-car-container {
+    max-width: 1200px;
+    margin: 140px auto;
+    padding: 2em;
+    background-color: #F8F9FA;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+}
+
+.edit-car-container form .inputs {
+    margin: 0 0 3em 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
+}
+
+.edit-car-container .input-content {
+    width: 21em;
+    display: flex;
+    flex-direction: column;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.edit-car-container form .input-content label {
+    text-transform: uppercase;
+}
+
+.edit-car-container form .input-content .create-form-input {
+    padding: 0.5em 1em;
+    flex: 0 1 auto;
+    color: #878E9C;
+    border: none;
+    border-radius: 0.2em;
+}
+
+.edit-car-container .edit-edit {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-car-container .edit-btn {
+    width: 30%;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border: none;
+    background-color: #212529;
+    color: #ffffff;
+    font-family: 'Protest Riot', sans-serif;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: 0.4s;
+}
+
+.edit-car-container .edit-btn:hover {
+    background-color: #A4C639;
+}

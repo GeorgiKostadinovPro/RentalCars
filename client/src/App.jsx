@@ -19,6 +19,7 @@ import { Terms } from './components/Terms/Terms'
 import { AuthProvider } from './contexts/AuthContext'
 import { NotFound } from './components/Errors/NotFound'
 import { CreateCar } from './components/Cars/CreateCar/CreateCar'
+import { EditCar } from './components/Cars/EditCar/EditCar'
 import { CarDetails } from './components/Cars/CarDetails/CarDetails'
 import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 import { CreatePost } from './components/Blog/CreatePost/CreatePost'
@@ -48,6 +49,7 @@ function App() {
 
           <Route path={Path.cars} element={<Cars />} />
           <Route path={Path.createCar} element={<CreateCar />} />
+          <Route path={Path.editCar()} element={<EditCar />} />
           <Route path={Path.carDetails()} element={<CarDetails />} />
 
           <Route path={Path.about} element={<About />} />
