@@ -75,6 +75,10 @@ const createCar = async (data) => {
     await request.post(`${baseUrl}`, data);
 }
 
+const editCar = async (id, data) => {
+    await request.put(`${baseUrl}/${id}`, data);
+}
+
 const deleteCar = async (carId) => {
     await request.delete(`${baseUrl}/${carId}`);
 }
@@ -85,5 +89,6 @@ export {
     getById, 
     getByUserId, 
     createCar,
+    editCar,
     deleteCar 
 }

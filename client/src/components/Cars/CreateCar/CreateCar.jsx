@@ -46,11 +46,7 @@ export const CreateCar = () => {
 
       const uploadedUrls = await cloudinaryService.uploadFiles(data.gallery);
 
-      const carObj = { ...data, gallery: [] };
-
-      uploadedUrls.forEach((url) => {
-        carObj.gallery.push(url);
-      });
+      const carObj = { ...data, gallery: uploadedUrls };
 
       await carService.createCar(carObj);
 
@@ -269,7 +265,7 @@ export const CreateCar = () => {
                 {...register("luggageCapacity", Constants.car.luggageCapacity)}
                 className="create-form-input"
                 type="number"
-                min="2"
+                min="1"
                 max="10"
                 step="1"
                 placeholder="Enter luggages..."

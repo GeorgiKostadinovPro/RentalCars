@@ -35,7 +35,7 @@
     border-radius: 0.2em;
 }
 
-.edit-car-container .edit-edit {
+.edit-car-container .submit-edit {
     display: flex;
     justify-content: center;
 }

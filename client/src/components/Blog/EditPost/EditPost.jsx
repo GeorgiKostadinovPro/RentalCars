@@ -28,7 +28,7 @@ export const EditPost = () => {
     const getPostToEdit = async () => {
         try {
             const postToEdit = await postService.getById(postId);
-
+            
             const defaultValues = {
                 title: postToEdit.title,
                 tags: postToEdit.tags.join(','),
@@ -53,11 +53,16 @@ export const EditPost = () => {
   const editPostSubmitHandler = async (data) => {
     try {
       setFinishEdit(false);
+      
+      const postObj = {};
 
-      const postObj = {
-        ...data,
-        tags: data.tags.split(',')
-      };
+      Object.keys(data).forEach(key => {
+        if (key !== 'imageFile') {
+          postObj[key] = data[key];
+        }
+      });
+
+      postObj.tags = data.tags.split(',');
       
       if (data.imageFile.length > 0) {
         const { url, publicId } = await cloudinaryService.uploadFile(data.imageFile[0]);

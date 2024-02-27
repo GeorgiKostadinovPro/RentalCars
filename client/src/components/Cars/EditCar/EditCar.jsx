@@ -20,8 +20,8 @@ export const EditCar = () => {
     const {
       register,
       handleSubmit,
-      getValues,
       setValue,
+      setError,
       formState: { errors },
     } = useForm({ mode: "onChange" });
 
@@ -35,8 +35,6 @@ export const EditCar = () => {
               setValue(key, carToEdit[key]);
             }
           });
-
-          console.log(getValues('_ownerId'));
         } catch (error) {
           console.log(error);
         }
@@ -44,6 +42,43 @@ export const EditCar = () => {
 
       getCarToEdit();
     }, [carId]);
+
+    const editCarSubmitHanlder = async (data) => {
+      try {
+        setFinishEdit(false);
+
+        const carObj = { ...data };
+
+        if (data.galleryFiles.length > 0) {
+
+            if (data.galleryFiles.length < 2) {
+                setError('galleryFiles', {
+                  type: 'custom',
+                  message: 'You must choose at least 2 pictures!'
+                });
+
+                setFinishEdit(true);
+
+                return;
+            }
+
+            const uploadedUrls = await cloudinaryService.uploadFiles(data.galleryFiles);
+
+            carObj.gallery = uploadedUrls;
+        }
+
+        console.log(carObj);
+        return;
+
+        await carService.editCar(carId, carObj);
+
+        setFinishEdit(true);
+
+        navigate(Path.allUserCars);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
     
     return (
       <>
@@ -62,7 +97,7 @@ export const EditCar = () => {
 
         <div className="edit-car-container">
           <form
-            onSubmit={handleSubmit()}
+            onSubmit={handleSubmit(editCarSubmitHanlder)}
             encType="multipart/form-data"
           >
             <div className="inputs">
@@ -255,7 +290,7 @@ export const EditCar = () => {
                   )}
                   className="create-form-input"
                   type="number"
-                  min="2"
+                  min="1"
                   max="10"
                   step="1"
                   placeholder="Enter luggages..."
@@ -329,14 +364,7 @@ export const EditCar = () => {
               <div className="input-content">
                 <label htmlFor="gallery">Gallery ( minimum 2 pictures )</label>
                 <input
-                  {...register("gallery", {
-                    ...Constants.car.gallery,
-                    validate: (value) => {
-                      if (value.length < 2) {
-                        return "Not enough images!";
-                      }
-                    },
-                  })}
+                  {...register("galleryFiles")}
                   className="create-form-input"
                   type="file"
                   multiple
@@ -344,11 +372,11 @@ export const EditCar = () => {
                 />
                 <span
                   style={{
-                    display: errors.gallery?.message ? "block" : "none",
+                    display: errors.galleryFiles?.message ? "block" : "none",
                     color: "red",
                   }}
                 >
-                  {errors.gallery?.message}
+                  {errors.galleryFiles?.message}
                 </span>
               </div>
               <div className="input-content">
