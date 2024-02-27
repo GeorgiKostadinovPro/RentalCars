@@ -47,7 +47,13 @@ export const EditCar = () => {
       try {
         setFinishEdit(false);
 
-        const carObj = { ...data };
+        const carObj = {};
+
+        Object.keys(data).forEach(key => {
+          if (key !== 'galleryFiles') {
+            carObj[key] = data[key];
+          }
+        });
 
         if (data.galleryFiles.length > 0) {
 
@@ -66,9 +72,6 @@ export const EditCar = () => {
 
             carObj.gallery = uploadedUrls;
         }
-
-        console.log(carObj);
-        return;
 
         await carService.editCar(carId, carObj);
 
