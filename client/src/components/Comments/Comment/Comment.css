@@ -1,0 +1,27 @@
+.comments-container .single-comment {
+    margin: 0 0 1em 0;
+    display: flex;
+    align-items: center;
+    gap: 2em;
+}
+
+.comments-container .single-comment img {
+    max-width: 5em;
+    height: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+.comments-container .single-comment .comment-content {
+    flex: 1 1 auto;
+}
+
+.comments-container .single-comment h5 span {
+    margin: 0 0 0 1em;
+    font-size: 0.7em;
+    display: inline;
+}
+
+.comments-container .single-comment .comment-content p {
+    margin: 0;
+}

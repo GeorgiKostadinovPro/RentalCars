@@ -1,18 +1,14 @@
-import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import * as commentService from '../../../services/commentService'
 import { Constants } from '../../../utilities/constants'
 
 import './CreateComment.css'
 
 const defaultValues = {
     message: ''
-}
+};
 
-export const CreateComment = ({ postId }) => {
-    const navigate = useNavigate();
-
+export const CreateComment = ({ createCommentSubmitHandler }) => {
     const {
         register,
         handleSubmit,
@@ -20,16 +16,10 @@ export const CreateComment = ({ postId }) => {
         formState: {errors}
     } = useForm({ defaultValues, mode: 'onChange' });
 
-    const createCommentSubmitHandler = async (data) => {
-        try {
-          await commentService.createComment({ ...data, postId });
+    const onSubmitHanlder = (data) => {
+      createCommentSubmitHandler(data);
 
-          reset();
-
-          navigate(`/blog/posts/${postId}/details`);
-        } catch (error) {
-          console.log(error.message);
-        }
+      reset();
     };
 
     return (
@@ -47,7 +37,7 @@ export const CreateComment = ({ postId }) => {
             <div className="col-md-12">
               <div className="contact-form">
                 <form
-                  onSubmit={handleSubmit(createCommentSubmitHandler)}
+                  onSubmit={handleSubmit(onSubmitHanlder)}
                   id="contact"
                 >
                   <div className="row">

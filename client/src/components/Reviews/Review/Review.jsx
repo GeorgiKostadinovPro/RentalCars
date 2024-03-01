@@ -1,9 +1,9 @@
 import { dateFormatter } from '../../../utilities/dateFormatter'
 import { Constants } from '../../../utilities/constants'
 
-import './CarReview.css'
+import './Review.css'
 
-export const CarReview = ({
+export const Review = ({
   rating,
   message,
   _createdOn,

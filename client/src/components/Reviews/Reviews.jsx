@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react'
 
-import * as reviewService from '../../../services/reviewService'
-import { Constants } from '../../../utilities/constants'
+import * as reviewService from '../../services/reviewService'
+import { Constants } from '../../utilities/constants'
 
-import { CarReview } from '../CarReview/CarReview'
-import { CreateReview } from '../CreateReview/CreateReview'
-import { Pagination } from '../../Pagination/Pagination'
+import { Review } from './Review/Review'
+import { CreateReview } from './CreateReview/CreateReview'
+import { Pagination } from '../Pagination/Pagination'
 
-import './CarReviews.css'
+import './Reviews.css'
 
-export const CarReviews = ({ carId }) => {
+export const Reviews = ({ carId }) => {
   const [reviewsPaginated, setReviewsPaginated] = useState([]);
   const [allReviewsCount, setAllReviewsCount] = useState(0);
   const [avgRating, setAvgRating] = useState(0);
@@ -69,7 +69,7 @@ export const CarReviews = ({ carId }) => {
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
   return (
     <>
@@ -82,7 +82,7 @@ export const CarReviews = ({ carId }) => {
         )}
 
         {reviewsPaginated && reviewsPaginated.length > 0 ? (
-          reviewsPaginated.map((review) => <CarReview key={review._id} {...review} />)
+          reviewsPaginated.map((review) => <Review key={review._id} {...review} />)
         ) : (
           <p className="no-reviews-p">No reviews yet.</p>
         )}
