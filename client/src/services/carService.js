@@ -72,7 +72,7 @@ const getByUserId = async (userId) => {
 }
 
 const createCar = async (data) => {
-    await request.post(`${baseUrl}`, data);
+    await request.post(baseUrl, data);
 }
 
 const editCar = async (id, data) => {
