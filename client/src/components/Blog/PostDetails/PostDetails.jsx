@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import * as postService from '../../../services/postService'
+import * as commentService from '../../../services/commentService'
 import { dateFormatter } from '../../../utilities/dateFormatter'
 
 import { Comments } from '../../Comments/Comments'
@@ -27,7 +28,7 @@ export const PostDetails = () => {
     };
 
     getPostDetails();
-  }, [postId, state]);
+  }, [postId]);
 
   const createCommentSubmitHandler = async (data) => {
     try {
@@ -84,7 +85,7 @@ export const PostDetails = () => {
                 </div>
               </div>
               
-              <Comments />
+              <Comments postId={postId} state={state} />
             </div>
           </div>
         </div>

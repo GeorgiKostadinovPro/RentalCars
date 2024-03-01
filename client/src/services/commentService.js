@@ -4,6 +4,19 @@ const baseUrl = '/data/comments';
 
 const request = requestFactory();
 
+const getAllByPostId = async (postId, skip, take) => {
+    const query = new URLSearchParams({
+        where: `postId="${postId}"`,
+        load: `author=_ownerId:users`,
+        offset: skip,
+        pageSize: take
+    });
+
+    const result = await request.get(`${baseUrl}?${query}`);
+
+    return result;
+}
+
 const getCountByPostId = async (postId) => {
     const query = new URLSearchParams({
         where: `postId="${postId}"`
@@ -19,6 +32,7 @@ const createComment = async (data) => {
 }
 
 export {
+    getAllByPostId,
     getCountByPostId,
     createComment
 }

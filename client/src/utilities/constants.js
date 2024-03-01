@@ -143,11 +143,6 @@ const Constants = {
         required: "This field is required!"
       }
     },
-    pagination: {
-      carsPageSize: 3,
-      reviewsPageSize: 1,
-      postsPageSize: 2
-    },
     reviews: {
       maxRating: 5,
       message: {
@@ -192,6 +187,12 @@ const Constants = {
           message: "The message should be at least 5 symbols long!"
         }
       }
+    },
+    pagination: {
+      carsPageSize: 3,
+      reviewsPageSize: 1,
+      postsPageSize: 2,
+      commentsPageSize: 2
     },
     contact: {
       subject: {

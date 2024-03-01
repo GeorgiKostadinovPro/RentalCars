@@ -1,5 +1,7 @@
 .pagination .page-item .page-link {
     color: #A4C639;
+    width: 100%;
+    height: 100%;
 }
 
 .pagination .page-item.active .page-link {
@@ -10,6 +12,12 @@
     box-shadow: none;
 }
 
-.pagination .page-item.disabled .page-link {
+.pagination .page-item .page-link span {
+    margin: 0;
+    font-size: 1em;
+    color: #A4C639;
+}
+
+.pagination .page-item.disabled .page-link span {
     color: #6c757d;
 }
