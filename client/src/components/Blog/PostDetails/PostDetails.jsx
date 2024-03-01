@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom'
 
 import * as postService from '../../../services/postService'
 import { dateFormatter } from '../../../utilities/dateFormatter'
+
+import { Comments } from '../../Comments/Comments'
 import { CreateComment } from '../../Comments/CreateComment/CreateComment'
 
 import './PostDetails.css'
@@ -81,6 +83,8 @@ export const PostDetails = () => {
                   </ul>
                 </div>
               </div>
+              
+              <Comments />
             </div>
           </div>
         </div>

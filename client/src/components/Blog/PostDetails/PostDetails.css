@@ -5,6 +5,15 @@
     text-align: justify;
 }
 
+.more-info .post-img-container {
+    display: flex;
+    justify-content: center;
+}
+
+.more-info .post-tags-container {
+    margin: 0 0 30px 0;
+}
+
 .more-info .post-tags-container .post-tags {
     padding: 0.5em 0 0 0;
 }
@@ -29,9 +38,4 @@
 .more-info .post-tags-container .post-tags ul li:hover a {
     background-color: #6C757D;
     color: #ffffff;
-}
-
-.more-info .post-img-container {
-    display: flex;
-    justify-content: center;
 }
