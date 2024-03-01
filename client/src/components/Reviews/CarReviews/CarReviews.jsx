@@ -69,7 +69,7 @@ export const CarReviews = ({ carId }) => {
     } catch (error) {
       console.log(error.message);
     }
-  }
+  };
 
   return (
     <>
