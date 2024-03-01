@@ -7,7 +7,7 @@ import { Navigation, Autoplay } from 'swiper/modules'
 import * as carService from '../../../services/carService'
 import * as favouriteService from '../../../services/favouriteService'
 import { RentForm } from "../../RentForm/RentForm"
-import { CarReviews } from "../../Reviews/CarReviews/CarReviews"
+import { Reviews } from "../../Reviews/Reviews"
 import { useAuthContext } from "../../../hooks/useAuthContext"
 
 import 'swiper/css'
@@ -260,7 +260,7 @@ export const CarDetails = () => {
 
             <hr />
 
-            <CarReviews carId={carId} />
+            <Reviews carId={carId} />
           </div>
 
           <div className="right-container">
