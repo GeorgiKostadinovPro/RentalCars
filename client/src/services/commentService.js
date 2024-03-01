@@ -14,6 +14,11 @@ const getCountByPostId = async (postId) => {
     return result;
 }
 
+const createComment = async (data) => {
+    await request.post(baseUrl, data);
+}
+
 export {
-    getCountByPostId
+    getCountByPostId,
+    createComment
 }

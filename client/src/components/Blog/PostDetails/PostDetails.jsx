@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import * as postService from '../../../services/postService'
-
 import { dateFormatter } from '../../../utilities/dateFormatter'
+import { CreateComment } from '../../Comments/CreateComment/CreateComment'
 
 import './PostDetails.css'
 
@@ -24,7 +24,7 @@ export const PostDetails = () => {
         };
         
         getPostDetails();
-    }, [postId])
+    }, [postId]);
 
     return (
       <>
@@ -73,52 +73,8 @@ export const PostDetails = () => {
             </div>
           </div>
         </div>
-        <div className="callback-form contact-us">
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12">
-                <div className="section-heading">
-                  <h2>
-                    Leave a <em>comment</em>
-                  </h2>
-                  <span>Please share with us your thoughs</span>
-                </div>
-              </div>
-              <div className="col-md-12">
-                <div className="contact-form">
-                  <form id="contact" action="" method="get">
-                    <div className="row">
-                      <div className="col-lg-12">
-                        <fieldset>
-                          <textarea
-                            name="message"
-                            rows={6}
-                            className="form-control"
-                            id="message"
-                            placeholder="Your Message..."
-                            required=""
-                            defaultValue={""}
-                          />
-                        </fieldset>
-                      </div>
-                      <div className="col-lg-12">
-                        <fieldset>
-                          <button
-                            type="submit"
-                            id="form-submit"
-                            className="filled-button"
-                          >
-                            Submit
-                          </button>
-                        </fieldset>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        
+        <CreateComment postId={postId} />
       </>
     );
 }

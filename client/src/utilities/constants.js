@@ -184,6 +184,15 @@ const Constants = {
         required: "Please choose a picture!"
       }
     },
+    comments: {
+      message: {
+        required: "A valid message is required!",
+        minLength: {
+          value: 5,
+          message: "The message should be at least 5 symbols long!"
+        }
+      }
+    },
     contact: {
       subject: {
         required: "Please write a valid subject!",
