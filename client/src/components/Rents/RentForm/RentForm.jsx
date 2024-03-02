@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { addDays, format } from 'date-fns'
+import { addDays, differenceInDays, format } from 'date-fns'
 
 import * as carService from '../../../services/carService'
+import * as rentService from '../../../services/rentService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
 
@@ -23,6 +24,7 @@ export const RentForm = ({ carId }) => {
     register,
     handleSubmit,
     setValue,
+    reset,
     watch,
     formState: { errors },
   } = useForm({ defaultValues, mode: "onChange" });
@@ -37,14 +39,19 @@ export const RentForm = ({ carId }) => {
     try {
       const car = await carService.getById(carId);
 
+      const days = differenceInDays(new Date(data.returningDateAndTime), new Date(data.pickUpDateAndTime));
+
       const rent = {
         carId: car._id,
-        totalPrice: car.pricePerDay, 
+        totalPrice: car.pricePerDay * days, 
+        totalDays: days,
         pickUpDateAndTime: data.pickUpDateAndTime,
         returningDateAndTime: data.returningDateAndTime
       };
 
-      console.log(rent);
+      await rentService.createRent(rent);
+
+      reset();
     } catch (error) {
       console.log(error.message);
     }
