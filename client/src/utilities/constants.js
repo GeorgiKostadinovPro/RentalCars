@@ -143,6 +143,29 @@ const Constants = {
         required: "This field is required!"
       }
     },
+    payment: {
+      cardNumber: {
+        required: "The card number is required!",
+        pattern: {
+          value: /^[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}$/g,
+          message: 'The card number is invalid!'
+        }
+      },
+      CVC: {
+        required: "The card CVC is required!",
+        pattern: {
+          value: /^[0-9]{3,4}$/g,
+          message: "The CVC is invalid!"
+        }
+      },
+      expires: {
+        required: "The expiration date is required!",
+        pattern: {
+          value: /^[1-9]{2}\/[1-9]{2}$/g,
+          message: "The expiriation date is inavlid!"
+        }
+      }
+    },
     reviews: {
       maxRating: 5,
       message: {

@@ -1,4 +1,8 @@
-.payment-expires-and-cvc {
+.payment-form-container {
+    margin: 2em 0 0 0;
+}
+
+.payment-form-container .payment-expires-and-cvc {
     display: flex;
     justify-content: space-between;
 }

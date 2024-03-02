@@ -54,6 +54,8 @@ export const RentForm = ({ carId }) => {
       
       reset();
 
+      setValue('email', email);
+
       setRentInfo(rent);
     } catch (error) {
       console.log(error.message);
@@ -62,6 +64,8 @@ export const RentForm = ({ carId }) => {
   
   return (
     <>
+      {rentInfo && <PaymentForm rentInfo={rentInfo} />}
+
       <form onSubmit={handleSubmit(rentCarSubmitHandler)}>
         <div className="input-content">
           <label htmlFor="fullName">Full Name</label>
@@ -147,8 +151,6 @@ export const RentForm = ({ carId }) => {
         </div>
         <input className="rent-btn" type="submit" value="Rent" />
       </form>
-
-      {rentInfo && <PaymentForm rentInfo={rentInfo} />}
     </>
   );
 }
