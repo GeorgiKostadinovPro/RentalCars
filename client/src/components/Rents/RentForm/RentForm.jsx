@@ -1,18 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
-
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
 
 import { addDays, differenceInDays } from 'date-fns'
 
 import * as carService from '../../../services/carService'
-import * as rentService from '../../../services/rentService'
 
+import { PaymentForm } from '../PaymentForm/PaymentForm'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
-import { Path } from '../../../utilities/Path'
 
 import './RentForm.css'
 
@@ -26,8 +21,7 @@ const defaultValues = {
 export const RentForm = ({ carId }) => {
   const { email } = useAuthContext();
 
-  const [show, setShow] = useState(false);
-  const [rentId, setRentId] = useState(null);
+  const [payment, setPayment] = useState(null);
 
   const {
     register,
@@ -44,10 +38,6 @@ export const RentForm = ({ carId }) => {
     }
   }, []);
 
-  const handleClose = () => {
-    setShow(false);
-  }
-
   const rentCarSubmitHandler = async (data) => {
     try {
       const car = await carService.getById(carId);
@@ -61,14 +51,10 @@ export const RentForm = ({ carId }) => {
         pickUpDateAndTime: data.pickUpDateAndTime,
         returningDateAndTime: data.returningDateAndTime
       };
-
-      const result = await rentService.createRent(rent);
-
-      setRentId(result._id);
-
+      
       reset();
 
-      setShow(true);
+      setPayment(rent);
     } catch (error) {
       console.log(error.message);
     }
@@ -162,10 +148,13 @@ export const RentForm = ({ carId }) => {
         <input className="rent-btn" type="submit" value="Rent" />
       </form>
 
-      <Modal
+      {payment && <PaymentForm payment={payment} />}
+
+      {/* <Modal
         show={show}
         onHide={handleClose}
-        style={{ marginTop: "100px" }}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
       >
         <Modal.Header closeButton>
           <Modal.Title>You successfully rented this vehicle.</Modal.Title>
@@ -179,7 +168,7 @@ export const RentForm = ({ carId }) => {
             See Details
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </>
   );
 }
