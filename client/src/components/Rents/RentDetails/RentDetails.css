@@ -1,0 +1,35 @@
+.rent-details-container {
+    max-width: 600px;
+    margin: 140px auto;
+    padding: 2em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+}
+
+.rent-details-container h2 {
+    font-family: 'Protest Riot', sans-serif;
+    margin: 0 0 1em 0;
+    text-align: center;
+}
+
+.rent-details-container .details-content p {
+    margin: 0 0 0.5em 0;
+    font-size: 1.5em;
+}
+
+.rent-details-container .details-content .return-btn {
+    display: block;
+    max-width: 10em;
+    margin: 1em auto 0;
+    padding: 0.5em 1em;
+    font-family: 'Protest Riot', sans-serif;
+    font-size: 1.3em;
+    text-align: center;
+    color: #ffffff;
+    background-color: #232323;
+    border-radius: 0.5em;
+}
+
+.rent-details-container .details-content .return-btn:hover {
+    background-color: #A4C639;
+}
