@@ -1,20 +1,29 @@
+import { useState } from 'react'
+
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
 import './PaymentForm.css'
-import { useState } from 'react'
 
-export const PaymentForm = ({ payment }) => {
-    const [paymentInfo, setPaymentInfo] = useState(payment);
+export const PaymentForm = ({ rentInfo }) => {
+    const [rent, setRentInfo] = useState(rentInfo);
+
+    const paymentSubmitHandler = async () => {
+        try {
+            
+        } catch (error) {
+            
+        }
+    };
 
     const handleClose = () => {
-        setPaymentInfo(null);
+        setRentInfo(null);
     };
 
     return (
       <Modal
-        show={paymentInfo}
+        show={rent}
         onHide={handleClose}
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -24,7 +33,7 @@ export const PaymentForm = ({ payment }) => {
         </Modal.Header>
         <Modal.Body>
           <div className="payment-summary">
-            <Form.Label>Total Price: ${payment.totalPrice}</Form.Label>
+            <Form.Label>Total Price: ${rent?.totalPrice}</Form.Label>
             <hr />
           </div>
           <Form>

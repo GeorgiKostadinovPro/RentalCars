@@ -21,7 +21,7 @@ const defaultValues = {
 export const RentForm = ({ carId }) => {
   const { email } = useAuthContext();
 
-  const [payment, setPayment] = useState(null);
+  const [rentInfo, setRentInfo] = useState(null);
 
   const {
     register,
@@ -54,7 +54,7 @@ export const RentForm = ({ carId }) => {
       
       reset();
 
-      setPayment(rent);
+      setRentInfo(rent);
     } catch (error) {
       console.log(error.message);
     }
@@ -148,27 +148,7 @@ export const RentForm = ({ carId }) => {
         <input className="rent-btn" type="submit" value="Rent" />
       </form>
 
-      {payment && <PaymentForm payment={payment} />}
-
-      {/* <Modal
-        show={show}
-        onHide={handleClose}
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>You successfully rented this vehicle.</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Check your email for more information.</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="success" as={Link} to={Path.rentDetails(rentId)}>
-            See Details
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
+      {rentInfo && <PaymentForm rentInfo={rentInfo} />}
     </>
   );
 }
