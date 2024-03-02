@@ -17,8 +17,6 @@ const Path = {
     carDetails: (carId) => {
         return carId ? `/cars/${carId}/details` : '/cars/:carId/details'
     },
-    about: '/about',
-    terms: '/terms',
     blog: '/blog',
     createPost: '/blog/posts/create',
     editPost: (postId) => {
@@ -27,6 +25,11 @@ const Path = {
     postDetails: (postId) => {
         return postId ? `/blog/posts/${postId}/details` : '/blog/posts/:postId/details'
     },
+    rentDetails: (rentId) => {
+        return rentId ? `/rents/${rentId}/details` : '/rents/:rentId/details'
+    },
+    about: '/about',
+    terms: '/terms',
     contact: '/contact',
     notFound: '*'
 }

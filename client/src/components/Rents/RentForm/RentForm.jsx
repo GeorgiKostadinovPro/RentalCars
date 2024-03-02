@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
 import Button from 'react-bootstrap/Button'
@@ -8,8 +9,10 @@ import { addDays, differenceInDays } from 'date-fns'
 
 import * as carService from '../../../services/carService'
 import * as rentService from '../../../services/rentService'
+
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
+import { Path } from '../../../utilities/Path'
 
 import './RentForm.css'
 
@@ -24,6 +27,7 @@ export const RentForm = ({ carId }) => {
   const { email } = useAuthContext();
 
   const [show, setShow] = useState(false);
+  const [rentId, setRentId] = useState(null);
 
   const {
     register,
@@ -58,7 +62,9 @@ export const RentForm = ({ carId }) => {
         returningDateAndTime: data.returningDateAndTime
       };
 
-      await rentService.createRent(rent);
+      const result = await rentService.createRent(rent);
+
+      setRentId(result._id);
 
       reset();
 
@@ -169,7 +175,7 @@ export const RentForm = ({ carId }) => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="success">
+          <Button variant="success" as={Link} to={Path.rentDetails(rentId)}>
             See Details
           </Button>
         </Modal.Footer>
