@@ -266,7 +266,7 @@ export const CarDetails = () => {
           <div className="right-container">
             <h2>Rent Now</h2>
 
-            <RentForm />
+            <RentForm carId={carId} />
           </div>
         </div>
       </>

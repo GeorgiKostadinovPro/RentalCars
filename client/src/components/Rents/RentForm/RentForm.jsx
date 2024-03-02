@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { addDays, format } from 'date-fns'
+
+import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
 
 import './RentForm.css'
-
 
 const defaultValues = {
   fullName: '',
@@ -14,7 +16,7 @@ const defaultValues = {
   returningDateAndTime: ''
 };
 
-export const RentForm = () => {
+export const RentForm = ({ carId }) => {
   const { email } = useAuthContext();
 
   const {
@@ -31,8 +33,21 @@ export const RentForm = () => {
     }
   }, []);
 
-  const rentCarSubmitHandler = (data) => {
-    console.log(data);
+  const rentCarSubmitHandler = async (data) => {
+    try {
+      const car = await carService.getById(carId);
+
+      const rent = {
+        carId: car._id,
+        totalPrice: car.pricePerDay, 
+        pickUpDateAndTime: data.pickUpDateAndTime,
+        returningDateAndTime: data.returningDateAndTime
+      };
+
+      console.log(rent);
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   
   return (
@@ -100,10 +115,13 @@ export const RentForm = () => {
           {...register("returningDateAndTime", {
             ...Constants.rent.returningDateAndTime,
             validate: (returningDateAndTime) => {
-              if (watch("pickUpDateAndTime") >= returningDateAndTime) {
-                return "Invalid returning date and time!";
+              const pickUpDateAndTime = new Date(watch("pickUpDateAndTime"));
+              const returningDateTime = new Date(returningDateAndTime);
+
+              if (returningDateTime <= addDays(pickUpDateAndTime, 1)) {
+                return "Invalid returning date and time! It should be at least one day after pick-up.";
               }
-            },
+            }
           })}
           type="datetime-local"
         />
