@@ -48,6 +48,7 @@ export const AuthProvider = ({ children }) => {
         logoutSubmitHandler,
         isUserAuthenticated,
         userId: user._id,
+        email: user.email,
         isAdmin: user.email === 'admin@abv.bg'
     };
 
