@@ -25,6 +25,15 @@
     color: #ffffff;
 }
 
+.profile-nav-bar .nav-item.dropdown {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.profile-nav-bar .nav-item.dropdown .dropdown-menu .dropdown-item {
+    color: #232323;   
+}
+
 @media screen and (max-width: 425px) {
     .profile-nav-bar ul {
         display: flex;

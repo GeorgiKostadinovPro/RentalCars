@@ -58,18 +58,31 @@ export const Profile = () => {
             <li>
               <Link to={Path.favouriteCars}>My Favourites</Link>
             </li>
+
             {isAdmin && (
-              <>
-                <li>
-                  <Link to={Path.allUsers}>All Users</Link>
-                </li>
-                <li>
-                  <Link to={Path.allCars}>All Cars</Link>
-                </li>
-                <li>
-                  <Link to={Path.allPosts}>All Posts</Link>
-                </li>
-              </>
+              <li className="nav-item dropdown">
+                <a
+                  className="dropdown-toggle nav-link"
+                  data-toggle="dropdown"
+                  href="#"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  Manage
+                </a>
+                <div className="dropdown-menu">
+                  <Link to={Path.allUsers} className="dropdown-item">
+                    Users
+                  </Link>
+                  <Link to={Path.allCars} className="dropdown-item">
+                    Cars
+                  </Link>
+                  <Link to={Path.allPosts} className="dropdown-item">
+                    Posts
+                  </Link>
+                </div>
+              </li>
             )}
           </ul>
         </div>
