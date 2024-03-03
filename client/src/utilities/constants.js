@@ -161,7 +161,7 @@ const Constants = {
       expires: {
         required: "The expiration date is required!",
         pattern: {
-          value: /^[1-9]{2}\/[1-9]{2}$/g,
+          value: /^[0-9]{2}\/[1-9]{2}$/g,
           message: "The expiriation date is inavlid!"
         }
       }
