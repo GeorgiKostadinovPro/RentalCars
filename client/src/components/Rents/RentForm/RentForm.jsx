@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
+
 import { addDays, differenceInDays } from 'date-fns'
 
 import * as carService from '../../../services/carService'
+import * as rentService from '../../../services/rentService'
 
 import { PaymentForm } from '../PaymentForm/PaymentForm'
 import { useAuthContext } from '../../../hooks/useAuthContext'
@@ -22,6 +26,7 @@ export const RentForm = ({ carId }) => {
   const { email } = useAuthContext();
 
   const [rentInfo, setRentInfo] = useState(null);
+  const [rentNotPossible, setRentNotPossible] = useState(false);
 
   const {
     register,
@@ -40,6 +45,18 @@ export const RentForm = ({ carId }) => {
 
   const rentCarSubmitHandler = async (data) => {
     try {
+      const isRentPossible = await rentService.checkIfRentIsPossible(
+        carId,
+        data.pickUpDateAndTime,
+        data.returningDateAndTime
+      );
+
+      if (!isRentPossible) {
+        setRentNotPossible(true);
+
+        return;
+      }
+
       const car = await carService.getById(carId);
 
       const days = differenceInDays(new Date(data.returningDateAndTime), new Date(data.pickUpDateAndTime));
@@ -61,6 +78,12 @@ export const RentForm = ({ carId }) => {
       console.log(error.message);
     }
   };
+
+  const handleClose = () => {
+    if (rentNotPossible) {
+      setRentNotPossible(false);
+    }
+  }
   
   return (
     <>
@@ -151,6 +174,23 @@ export const RentForm = ({ carId }) => {
         </div>
         <input className="rent-btn" type="submit" value="Rent" />
       </form>
+
+      <Modal
+        show={rentNotPossible}
+        onHide={handleClose}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>This rent is not possible.</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>The car is not available in the specified time span.</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 }
