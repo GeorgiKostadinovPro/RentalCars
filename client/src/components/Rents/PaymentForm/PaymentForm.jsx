@@ -1,15 +1,22 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import emailjs from '@emailjs/browser'
+
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
 import * as rentService from '../../../services/rentService'
 import { SuccessfulPayment } from './SuccessfulPayment'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
 
 import './PaymentForm.css'
+
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_RENT_TEMPLATE_ID;
 
 const defaultValues = {
     cardNumber: '',
@@ -21,6 +28,8 @@ const defaultValues = {
 export const PaymentForm = ({ rentInfo }) => {
     const [rent, setRentInfo] = useState(rentInfo);
     const [show, setShow] = useState(rentInfo); 
+
+    const { email, username } = useAuthContext();
 
     const {
         register,
@@ -38,6 +47,21 @@ export const PaymentForm = ({ rentInfo }) => {
             reset();
 
             setShow(null);
+
+            emailjs.send(serviceId, templateId, {
+              to_name: username,
+              to_email: email,
+              message: 'You have successfully rented a vehicle.\nYou can see details about your rent from your profile page.'
+            }, {
+              publicKey: publicKey
+            })
+            .then(() => {
+              console.log('Email send successfully.');
+            })
+            .catch(error => {
+              console.log(error.message);
+            });
+
         } catch (error) {
             console.log(error.message);
         }
