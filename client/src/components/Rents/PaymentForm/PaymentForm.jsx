@@ -49,6 +49,8 @@ export const PaymentForm = ({ rentInfo }) => {
 
     return (
       <>
+        {rent._id && <SuccessfulPayment rentId={rent._id} />}
+
         <Modal
           show={show}
           onHide={handleClose}
@@ -90,15 +92,15 @@ export const PaymentForm = ({ rentInfo }) => {
                     {...register("expires", {
                       ...Constants.payment.expires,
                       validate: (expires) => {
-                        const [month, year] = expires.split('/');
+                        const [month, year] = expires.split("/");
 
                         const expirationDate = new Date(`20${year}`, month - 1);
                         const currDate = new Date();
 
                         if (expirationDate <= currDate) {
-                            return "The expiration date is invalid!";
+                          return "The expiration date is invalid!";
                         }
-                      }
+                      },
                     })}
                     type="text"
                     placeholder="MM/YY"
@@ -160,8 +162,6 @@ export const PaymentForm = ({ rentInfo }) => {
             </Modal.Footer>
           </Form>
         </Modal>
-
-        {rent._id && <SuccessfulPayment rentId={rent._id} />}
       </>
     );
 }
