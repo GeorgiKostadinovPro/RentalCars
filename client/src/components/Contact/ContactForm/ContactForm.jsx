@@ -7,7 +7,7 @@ import './ContactForm.css'
 
 const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
 
 const defaultValues = {
   fullName: '',

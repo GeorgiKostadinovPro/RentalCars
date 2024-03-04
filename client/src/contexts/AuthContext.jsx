@@ -49,6 +49,7 @@ export const AuthProvider = ({ children }) => {
         isUserAuthenticated,
         userId: user._id,
         email: user.email,
+        username: user.username,
         isAdmin: user.email === 'admin@abv.bg'
     };
 
