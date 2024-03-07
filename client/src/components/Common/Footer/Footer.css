@@ -15,6 +15,10 @@ footer p {
 	color: #fff;
 }
 
+footer ul {
+	padding: 0;
+}
+
 footer ul.social-icons {
 	margin-top: 25px;
 }
