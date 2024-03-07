@@ -30,7 +30,7 @@ export const SubHeader = () => {
                   </li>
                   <li>
                     <a href="#">
-                      <i className="fa fa-twitter" />
+                      <i className="fa fa-instagram" />
                     </a>
                   </li>
                   <li>
