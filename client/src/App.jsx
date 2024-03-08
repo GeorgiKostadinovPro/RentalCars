@@ -1,11 +1,10 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
+import { ErrorBoundary } from 'react-error-boundary'
 
 import { Path } from './utilities/Path'
 
 import { Header } from "./components/Common/Header/Header"
 import { Footer } from "./components/Common/Footer/Footer"
-
-import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 
 import { AuthProvider } from './contexts/AuthContext'
 
@@ -20,13 +19,14 @@ import { Contact } from './components/Contact/Contact'
 import { About } from './components/About/About'
 import { Blog } from './components/Blog/Blog'
 import { Terms } from './components/Terms/Terms'
-import { NotFound } from './components/Errors/NotFound'
+import { NotFound } from './components/Errors/NotFound/NotFound'
+import { BadRequest } from './components/Errors/BadRequest/BadRequest'
 import { CreateCar } from './components/Cars/CreateCar/CreateCar'
 import { EditCar } from './components/Cars/EditCar/EditCar'
 import { CarDetails } from './components/Cars/CarDetails/CarDetails'
-import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 import { CreatePost } from './components/Blog/CreatePost/CreatePost'
 import { EditPost } from './components/Blog/EditPost/EditPost'
+import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 import { RentDetails } from './components/Rents/RentDetails/RentDetails'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <ErrorBoundary>
+      <ErrorBoundary FallbackComponent={BadRequest}>
         <AuthProvider>
           {shouldRenderHeaderAndFooter && <Header />}
 
