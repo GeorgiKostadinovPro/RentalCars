@@ -37,16 +37,12 @@ export const AuthProvider = ({ children }) => {
 
         navigate(Path.home);
     }
-
-    const isUserAuthenticated = () => {
-        return user.accessToken ? true : false;
-    };
-
+    
     const values = {
         registerSubmitHandler,
         loginSubmitHandler,
         logoutSubmitHandler,
-        isUserAuthenticated,
+        isUserAuthenticated: user.accessToken ? true : false,
         userId: user._id,
         email: user.email,
         username: user.username,

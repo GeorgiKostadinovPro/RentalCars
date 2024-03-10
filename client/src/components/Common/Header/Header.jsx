@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom"
 
 import { Path } from '../../../utilities/Path'
-import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useAuthContext } from "../../../hooks/useAuthContext"
 
-import { SubHeader } from "./SubHeader/SubHeader";
+import { SubHeader } from "./SubHeader/SubHeader"
 
 import './Header.css'
 
@@ -71,7 +71,7 @@ export const Header = () => {
                     Contact Us
                   </Link>
                 </li>
-                {!isUserAuthenticated() ? (
+                {!isUserAuthenticated ? (
                   <li className="nav-item">
                     <Link to={Path.login} className="nav-link">
                       Login
