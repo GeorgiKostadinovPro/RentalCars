@@ -1,9 +1,10 @@
-import { createContext, useState } from 'react'
+import { createContext } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 import * as authService from '../services/authService'
-import { useAuthStorage } from '../hooks/useAuthStorage';
-import { Path } from '../utilities/Path';
+
+import { useAuthStorage } from '../hooks/useAuthStorage'
+import { Path } from '../utilities/Path'
 
 export const AuthContext = createContext();
 

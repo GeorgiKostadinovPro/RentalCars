@@ -8,6 +8,9 @@ import { Footer } from "./components/Common/Footer/Footer"
 
 import { AuthProvider } from './contexts/AuthContext'
 
+import { AuthGuard } from './guards/AuthGuard'
+import { OwnerGuard } from './guards/OwnerGuard'
+
 import { Register } from './components/Auth/Register'
 import { Login } from './components/Auth/Login'
 import { Logout } from './components/Auth/Logout'
@@ -30,7 +33,6 @@ import { PostDetails } from './components/Blog/PostDetails/PostDetails'
 import { RentDetails } from './components/Rents/RentDetails/RentDetails'
 
 import 'bootstrap/dist/css/bootstrap.css'
-import { AuthGuard } from './guards/AuthGuard'
 
 function App() {
   const location = useLocation();
@@ -61,7 +63,11 @@ function App() {
 
               <Route path={Path.cars} element={<Cars />} />
               <Route path={Path.createCar} element={<CreateCar />} />
-              <Route path={Path.editCar()} element={<EditCar />} />
+
+              <Route element={<OwnerGuard />}>
+                <Route path={Path.editCar()} element={<EditCar />} />
+              </Route>
+
               <Route path={Path.carDetails()} element={<CarDetails />} />
 
               <Route path={Path.rentDetails()} element={<RentDetails />} />
