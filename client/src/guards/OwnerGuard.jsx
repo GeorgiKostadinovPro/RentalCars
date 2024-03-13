@@ -1,30 +1,26 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react"
-import { Navigate, Outlet, useParams } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Outlet, useParams } from "react-router-dom"
 
 import { useAuthContext } from "../hooks/useAuthContext"
 
 import * as carService from '../services/carService'
 
-import { Path } from "../utilities/Path"
+import { NotFound } from "../components/Errors/NotFound/NotFound"
 
 export const OwnerGuard = () => {
     const { userId } = useAuthContext();
 
     const { carId } = useParams();
 
-    const isOwnerToCar = useRef(false);
+    const [isOwner, setIsOwner] = useState(false);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const checkIsOwner = async () => {
             try {
                 const car = await carService.getById(carId);
 
                 if (car && car._ownerId === userId) {
-                    isOwnerToCar.current = true;
-                    console.log(isOwnerToCar.current);
-                } else {
-                    isOwnerToCar.current = false;
-                    console.log(isOwnerToCar.current);
+                    setIsOwner(true);
                 }
             } catch (error) {
                 console.error(error.message);
@@ -34,8 +30,8 @@ export const OwnerGuard = () => {
         checkIsOwner();
     }, [carId, userId]);
 
-    if (!isOwnerToCar) {
-        return <Navigate to={Path.notFound} replace={true} />;
+    if (!isOwner) {
+        return <NotFound />;
     }
 
     return <Outlet />;
