@@ -1,34 +1,34 @@
-import { render, cleanup } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 
 import { Terms } from './Terms'
 
 describe('Terms Component', () => {
+  beforeEach(() => {
+    render(<Terms />);
+  });
+
   afterEach(() => {
     cleanup();
   });
 
   it("renders the page heading with correct text", () => {
-    const { getByText } = render(<Terms />);
-
-    expect(getByText("Terms")).toBeInTheDocument();
-    expect(getByText("Read about our terms and privacy")).toBeInTheDocument();
+    expect(screen.getByText("Terms")).toBeInTheDocument();
+    expect(screen.getByText("Read about our terms and privacy")).toBeInTheDocument();
   });
 
   it("renders all sections with correct titles and content", () => {
-    const { getByText } = render(<Terms />);
+    expect(screen.getByText("A) Terms")).toBeInTheDocument();
+    expect(screen.getByText("1. Terms of Service")).toBeInTheDocument();
+    expect(screen.getByText(/By using our car rental services/)).toBeInTheDocument();
 
-    expect(getByText("A) Terms")).toBeInTheDocument();
-    expect(getByText("1. Terms of Service")).toBeInTheDocument();
-    expect(getByText(/By using our car rental services/)).toBeInTheDocument();
+    expect(screen.getByText("B) Our Privacy")).toBeInTheDocument();
+    expect(screen.getByText("2. Privacy Policy")).toBeInTheDocument();
+    expect(screen.getByText(/Your privacy is important to us/)).toBeInTheDocument();
 
-    expect(getByText("B) Our Privacy")).toBeInTheDocument();
-    expect(getByText("2. Privacy Policy")).toBeInTheDocument();
-    expect(getByText(/Your privacy is important to us/)).toBeInTheDocument();
-
-    expect(getByText("C) Security")).toBeInTheDocument();
-    expect(getByText("3. Data Security Agreement")).toBeInTheDocument();
+    expect(screen.getByText("C) Security")).toBeInTheDocument();
+    expect(screen.getByText("3. Data Security Agreement")).toBeInTheDocument();
     expect(
-      getByText(/We employ industry-standard security measures/)
+      screen.getByText(/We employ industry-standard security measures/)
     ).toBeInTheDocument();
   });
 });
