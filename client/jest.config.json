@@ -1,0 +1,6 @@
+{
+    "moduleNameMapper": {
+        "\\.(gif|ttf|svg|jpg|jpeg|png)$": "<rootDir>/src/test/fileMock.js",
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
+}
