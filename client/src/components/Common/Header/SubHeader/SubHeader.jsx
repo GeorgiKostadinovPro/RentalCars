@@ -24,17 +24,17 @@ export const SubHeader = () => {
               <div className="col-md-4">
                 <ul className="right-icons">
                   <li>
-                    <a href="#">
+                    <a data-testid="facebook-link" href="https://www.facebook.com/george.kostadinov.372">
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a data-testid="instagram-link" href="https://www.instagram.com/george.kostadinov.372">
                       <i className="fa fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a data-testid="linkedin-link" href="https://www.linkedin.com/in/georgi-kostadinov-125349241/">
                       <i className="fa fa-linkedin" />
                     </a>
                   </li>
