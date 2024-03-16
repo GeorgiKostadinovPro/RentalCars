@@ -17,17 +17,17 @@ export const Footer = () => {
                 </p>
                 <ul className="social-icons">
                   <li>
-                    <a rel="nofollow" href="#" target="_blank">
+                    <a rel="nofollow" href="https://www.facebook.com/george.kostadinov.372" target="_blank">
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="https://www.instagram.com/george.kostadinov.372">
                       <i className="fa fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a href="https://www.linkedin.com/in/georgi-kostadinov-125349241/">
                       <i className="fa fa-linkedin" />
                     </a>
                   </li>
