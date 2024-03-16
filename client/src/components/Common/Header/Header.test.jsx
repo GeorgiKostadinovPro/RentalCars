@@ -35,11 +35,14 @@ describe('Header Component', () => {
     });
 
     it('should navigate to cars page', async () => {
-      const carsLink = screen.getByText('Cars');
+      const carsLink = screen.getByText("Cars");
+
       expect(carsLink).toBeInTheDocument();
+
       userEvent.click(carsLink);
+
       await waitFor(() => {
-          expect(window.location.pathname).toBe('/cars');
+        expect(window.location.pathname).toBe("/cars");
       });
   });
 
@@ -47,9 +50,11 @@ describe('Header Component', () => {
       const aboutLink = screen.getByText('About');
       expect(aboutLink).toBeInTheDocument();
       userEvent.click(aboutLink);
+
       const aboutUsLink = await screen.findByText('About Us');
       expect(aboutUsLink).toBeInTheDocument();
       userEvent.click(aboutUsLink);
+
       await waitFor(() => {
           expect(window.location.pathname).toBe('/about');
       });
@@ -59,9 +64,11 @@ describe('Header Component', () => {
       const aboutLink = screen.getByText('About');
       expect(aboutLink).toBeInTheDocument();
       userEvent.click(aboutLink);
+
       const blogLink = await screen.findByText('Blog');
       expect(blogLink).toBeInTheDocument();
       userEvent.click(blogLink);
+
       await waitFor(() => {
           expect(window.location.pathname).toBe('/blog');
       });
@@ -71,9 +78,11 @@ describe('Header Component', () => {
       const aboutLink = screen.getByText('About');
       expect(aboutLink).toBeInTheDocument();
       userEvent.click(aboutLink);
+
       const termsLink = await screen.findByText('Terms');
       expect(termsLink).toBeInTheDocument();
       userEvent.click(termsLink);
+
       await waitFor(() => {
           expect(window.location.pathname).toBe('/terms');
       });
@@ -83,6 +92,7 @@ describe('Header Component', () => {
       const contactLink = screen.getByText('Contact Us');
       expect(contactLink).toBeInTheDocument();
       userEvent.click(contactLink);
+
       await waitFor(() => {
           expect(window.location.pathname).toBe('/contact');
       });
@@ -92,6 +102,7 @@ describe('Header Component', () => {
       const loginLink = screen.getByText('Login');
       expect(loginLink).toBeInTheDocument();
       userEvent.click(loginLink);
+      
       await waitFor(() => {
           expect(window.location.pathname).toBe('/login');
       });
