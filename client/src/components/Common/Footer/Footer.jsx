@@ -17,17 +17,17 @@ export const Footer = () => {
                 </p>
                 <ul className="social-icons">
                   <li>
-                    <a rel="nofollow" href="#" target="_blank">
+                    <a data-testid="facebook-link" rel="nofollow" href="https://www.facebook.com/george.kostadinov.372" target="_blank">
                       <i className="fa fa-facebook" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a data-testid="instagram-link" href="https://www.instagram.com/george.kostadinov.372">
                       <i className="fa fa-instagram" />
                     </a>
                   </li>
                   <li>
-                    <a href="#">
+                    <a data-testid="linkedin-link" href="https://www.linkedin.com/in/georgi-kostadinov-125349241/">
                       <i className="fa fa-linkedin" />
                     </a>
                   </li>
@@ -69,7 +69,7 @@ export const Footer = () => {
                 </ul>
               </div>
               <div className="col-md-3 footer-item last-item">
-                <h4>Contact Us</h4>
+                <h4>Connect with us</h4>
                 <div className="contact-form">
                   <form id="contact footer-contact" action="" method="post">
                     <div className="row">
