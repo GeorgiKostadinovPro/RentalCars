@@ -14,7 +14,7 @@ export const Header = () => {
     <>
       <SubHeader />
 
-      <header className="">
+      <header>
         <nav className="navbar navbar-expand-lg">
           <div className="container">
             <Link to={Path.home} className="navbar-brand">

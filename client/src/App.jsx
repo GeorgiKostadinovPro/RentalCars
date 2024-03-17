@@ -13,7 +13,7 @@ import { OwnerGuard } from './guards/OwnerGuard'
 
 import { Register } from './components/Auth/Register/Register'
 import { Login } from './components/Auth/Login/Login'
-import { Logout } from './components/Auth/Logout'
+import { Logout } from './components/Auth/Logout/Logout'
 import { Profile } from './components/Profile/Profile'
 
 import { Home } from "./components/Home/Home"
