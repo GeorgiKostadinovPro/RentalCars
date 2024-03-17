@@ -12,7 +12,7 @@ import { AuthGuard } from './guards/AuthGuard'
 import { OwnerGuard } from './guards/OwnerGuard'
 
 import { Register } from './components/Auth/Register'
-import { Login } from './components/Auth/Login'
+import { Login } from './components/Auth/Login/Login'
 import { Logout } from './components/Auth/Logout'
 import { Profile } from './components/Profile/Profile'
 
