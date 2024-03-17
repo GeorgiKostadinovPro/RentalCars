@@ -25,8 +25,9 @@ describe('Login Component', () => {
     });
 
     it("renders login form with email and password fields", () => {
-      const emailInput = screen.getByPlaceholderText("Email");
-      const passwordInput = screen.getByPlaceholderText("Password");
+      const emailInput = dom.container.querySelector('input[name="email"]');
+      const passwordInput = dom.container.querySelector('input[name="password"]');
+
       expect(emailInput).toBeInTheDocument();
       expect(passwordInput).toBeInTheDocument();
     });
@@ -35,8 +36,8 @@ describe('Login Component', () => {
       const email = "peter@abv.com";
       const password = "Pt123.";
 
-      const emailInput = screen.getByPlaceholderText("Email");
-      const passwordInput = screen.getByPlaceholderText("Password");
+      const emailInput = dom.container.querySelector('input[name="email"]');
+      const passwordInput = dom.container.querySelector('input[name="password"]');
       const submitButton = dom.container.querySelector("#input_submit");
       
       userEvent.type(emailInput, email);
@@ -62,7 +63,7 @@ describe('Login Component', () => {
     it("should display error when email is invalid", async () => {
       const email = "peterabv.com";
 
-      const emailInput = screen.getByPlaceholderText("Email");
+      const emailInput = dom.container.querySelector('input[name="email"]');
 
       userEvent.type(emailInput, email);
 
@@ -73,7 +74,7 @@ describe('Login Component', () => {
     });
 
     it("should display error when password's length is invalid", async () => {
-      const passwordInput = screen.getByPlaceholderText("Password");
+      const passwordInput = dom.container.querySelector('input[name="password"]');
 
       userEvent.type(passwordInput, "123");
 
@@ -84,7 +85,7 @@ describe('Login Component', () => {
     });
 
     it("should display error when password's pattern is invalid", async () => {
-      const passwordInput = screen.getByPlaceholderText("Password");
+      const passwordInput = dom.container.querySelector('input[name="password"]');
 
       userEvent.type(passwordInput, "Pass123");
 
@@ -95,7 +96,7 @@ describe('Login Component', () => {
     });
 
     it("should navigate to register page when 'Create your account' is clicked", async () => {
-        const registerLink = screen.getByText("Create your account");
+        const registerLink = dom.container.querySelector("#create_account a");
         expect(registerLink).toBeInTheDocument();
 
         userEvent.click(registerLink);

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 
-import { useAuthContext } from '../../hooks/useAuthContext'
-import { Constants } from '../../utilities/constants'
-import { Path } from '../../utilities/Path'
+import { useAuthContext } from '../../../hooks/useAuthContext'
+import { Constants } from '../../../utilities/constants'
+import { Path } from '../../../utilities/Path'
 
-import './AuthForms.css'
+import '../AuthForms.css'
 
 const defaultValues = {
   email: '',
