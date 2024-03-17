@@ -6,7 +6,7 @@ import { AuthProvider } from "../../contexts/AuthContext"
 
 import { Contact } from "./Contact"
 
-describe('Header Component', () => {
+describe('Contact Component', () => {
     beforeEach(() => {
       render(
         <BrowserRouter>
