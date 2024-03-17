@@ -35,8 +35,6 @@ export const AuthProvider = ({ children }) => {
         setUser({});
 
         localStorage.removeItem('userData');
-
-        navigate(Path.home);
     }
     
     const values = {
