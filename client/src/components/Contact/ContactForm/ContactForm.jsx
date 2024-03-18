@@ -1,7 +1,8 @@
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
-import { Constants, ENV } from '../../../utilities/constants'
+import { ENV } from '../../../utilities/env'
+import { Constants } from '../../../utilities/constants'
 
 import './ContactForm.css'
 
@@ -46,7 +47,6 @@ export const ContactForm = () => {
           <div className="col-md-12">
             <div className="section-heading">
               <h2>
-                {console.log(ENV.emailJS)}
                 Send us a <em>message</em>
               </h2>
               <span>

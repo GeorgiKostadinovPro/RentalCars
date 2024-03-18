@@ -10,7 +10,8 @@ import Form from 'react-bootstrap/Form'
 import * as rentService from '../../../services/rentService'
 import { SuccessfulPayment } from './SuccessfulPayment'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import { Constants, ENV } from '../../../utilities/constants'
+import { Constants } from '../../../utilities/constants'
+import { ENV } from '../../../utilities/env'
 
 import './PaymentForm.css'
 
