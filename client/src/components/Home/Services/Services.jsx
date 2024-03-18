@@ -59,7 +59,7 @@ export const Services = () => {
                   Feel free to leave a comment and give a like.
                 </p>
                 <Link to={Path.blog} className="filled-button">
-                  Our Blog
+                  Read More
                 </Link>
               </div>
             </div>
