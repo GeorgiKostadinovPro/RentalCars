@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -43,9 +43,13 @@ describe('Hero Component', () => {
         expect(slides.length).toBe(3);
     });
 
-    it("renders correct slide content", () => {
-      const slides = screen.getAllByText("Welcome to Rental Cars!");
+    it("navigates to About page", async () => {
+      const aboutLinks = screen.getAllByText("about us");
 
-      expect(slides.length).toBe(3);
+      fireEvent.click(aboutLinks[0]);
+
+      await waitFor(() => {
+        expect(window.location.pathname).toBe("/about");
+      });
     });
 });

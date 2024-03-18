@@ -33,8 +33,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>
@@ -58,8 +58,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>
@@ -83,8 +83,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>
