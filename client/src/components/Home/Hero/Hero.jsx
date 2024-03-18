@@ -1,11 +1,10 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay } from 'swiper/modules'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { Path } from '../../../utilities/Path'
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css'
 
 import './Hero.css'
 
