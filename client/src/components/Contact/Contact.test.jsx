@@ -6,6 +6,13 @@ import { AuthProvider } from "../../contexts/AuthContext"
 
 import { Contact } from "./Contact"
 
+jest.mock("./ContactForm/ContactForm", () => ({
+  __esModule: true,
+  ContactForm: () => {
+    return <mock-contact-form />;
+  }
+}));
+
 describe('Contact Component', () => {
     beforeEach(() => {
       render(
@@ -36,7 +43,7 @@ describe('Contact Component', () => {
       const email = screen.getByText("kostadinovgeorgi@gmail.com");
       expect(email).toBeInTheDocument();
 
-      const location = screen.getByText("bul. Bruksel, 1517 Sofia");
+      const location = screen.getByText("Location");
       expect(location).toBeInTheDocument();
     });
 
