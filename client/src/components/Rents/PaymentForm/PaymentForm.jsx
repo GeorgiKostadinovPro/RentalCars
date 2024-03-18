@@ -10,13 +10,9 @@ import Form from 'react-bootstrap/Form'
 import * as rentService from '../../../services/rentService'
 import { SuccessfulPayment } from './SuccessfulPayment'
 import { useAuthContext } from '../../../hooks/useAuthContext'
-import { Constants } from '../../../utilities/constants'
+import { Constants, ENV } from '../../../utilities/constants'
 
 import './PaymentForm.css'
-
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_RENT_TEMPLATE_ID;
 
 const defaultValues = {
     cardNumber: '',
@@ -48,12 +44,12 @@ export const PaymentForm = ({ rentInfo }) => {
 
             setShow(null);
 
-            emailjs.send(serviceId, templateId, {
+            emailjs.send(ENV.emailJS.serviceId, ENV.emailJS.rentTemplateId, {
               to_name: username,
               to_email: email,
               message: 'You have successfully rented a vehicle.\nYou can see details about your rent from your profile page.'
             }, {
-              publicKey: publicKey
+              publicKey: ENV.emailJS.publicKey
             })
             .then(() => {
               console.log('Email send successfully.');
