@@ -1,11 +1,10 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Autoplay } from 'swiper/modules'
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 import { Path } from '../../../utilities/Path'
 
-import 'swiper/css';
-import 'swiper/css/navigation';
+import 'swiper/css'
 
 import './Hero.css'
 
@@ -34,8 +33,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>
@@ -59,8 +58,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>
@@ -84,8 +83,8 @@ export const Hero = () => {
                         Your journey starts here at RentalCars – where
                         convenience meets quality. Let the adventure begin!
                       </p>
-                      <Link to={Path.contact} className="filled-button">
-                        contact us
+                      <Link to={Path.about} className="filled-button">
+                        about us
                       </Link>
                     </div>
                   </div>

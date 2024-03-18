@@ -1,13 +1,10 @@
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
+import { ENV } from '../../../utilities/env'
 import { Constants } from '../../../utilities/constants'
 
 import './ContactForm.css'
-
-const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-const templateId = import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID;
 
 const defaultValues = {
   fullName: '',
@@ -25,13 +22,13 @@ export const ContactForm = () => {
   } = useForm({defaultValues, mode: 'onChange'});
 
   const contactSubmitHandler = (data) => {
-    emailjs.send(serviceId, templateId, {
+    emailjs.send(ENV.emailJS.serviceId, ENV.emailJS.contactTemplateId, {
       from_email: data.email,
       from_name: data.fullName,
       subject: data.subject,
       message: data.message,
     }, {
-      publicKey: publicKey
+      publicKey: ENV.emailJS.publicKey
     })
     .then(() => {
       alert('You have successfully send a message. We will call to you soon.');
