@@ -26,6 +26,7 @@ describe('Contact Component', () => {
 
     afterEach(() => {
         cleanup();
+        jest.clearAllMocks();
     });
 
     it("renders contact headings", () => {

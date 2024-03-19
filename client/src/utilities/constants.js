@@ -20,7 +20,7 @@ const Constants = {
   fullName: {
     required: "This field is required!",
     pattern: {
-      value: /^[A-Z]{1}[A-z]{3,} [A-Z]{1}[A-z]{3,}$/g,
+      value: /^[A-Z]{1}[A-z]{3,} [A-Z]{1}[A-z]{2,}$/g,
       message: "This full name is invalid",
     },
   },
@@ -229,7 +229,7 @@ const Constants = {
       required: "Please write a valid message!",
       minLength: {
         value: 100,
-        message: "The subject must be at least 100 symbols long!",
+        message: "The message must be at least 100 symbols long!",
       },
     },
   },

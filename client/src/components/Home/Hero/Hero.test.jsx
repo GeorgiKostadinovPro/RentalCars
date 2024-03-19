@@ -35,6 +35,7 @@ describe('Hero Component', () => {
 
     afterEach(() => {
         cleanup();
+        jest.clearAllMocks();
     });
 
     it("renders without crashing", () => {

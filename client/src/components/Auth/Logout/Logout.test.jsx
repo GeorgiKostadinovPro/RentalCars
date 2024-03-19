@@ -26,6 +26,7 @@ describe('Logout Component', () => {
 
     afterEach(() => {
         cleanup();
+        jest.clearAllMocks();
     });
 
     it("should logout the user and redirect to home page", async () => {

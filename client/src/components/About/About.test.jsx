@@ -32,4 +32,13 @@ describe('About Component', () => {
     const teamTitle = screen.getByText('Our team');
     expect(teamTitle).toBeInTheDocument();
   });
+
+  it("should render linkedin link and redirect to linkedin", async () => {
+    const linkedinLink = screen.getByTestId("linkedin-link");
+
+    expect(linkedinLink).toHaveAttribute(
+      "href",
+      "https://www.linkedin.com/in/georgi-kostadinov-125349241/"
+    );
+  });
 });
