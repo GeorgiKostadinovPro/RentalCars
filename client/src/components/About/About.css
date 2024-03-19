@@ -1,3 +1,6 @@
+@import url(../Common/Info.css);
+@import url(../Common/Facts.css);
+
 .team {
 	background-color: #f7f7f7;
 	margin-top: 140px;
