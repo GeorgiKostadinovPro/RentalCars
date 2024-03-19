@@ -41,6 +41,7 @@ describe('Home Component', () => {
 
     afterEach(() => {
         cleanup();
+        jest.clearAllMocks();
     });
 
     it('renders home page correctly', () => {
