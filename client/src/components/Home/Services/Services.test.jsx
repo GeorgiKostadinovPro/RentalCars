@@ -6,7 +6,7 @@ import { AuthProvider } from "../../../contexts/AuthContext"
 
 import { Services } from "./Services"
 
-describe('Hero Component', () => {
+describe('Services Component', () => {
     beforeEach(() => {
       render(
         <BrowserRouter>
