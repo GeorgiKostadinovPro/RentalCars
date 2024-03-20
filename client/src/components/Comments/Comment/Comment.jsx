@@ -10,6 +10,7 @@ export const Comment = ({
     return (
       <div className="single-comment">
         <img
+          alt="User profile"
           src={
             author?.profilePictureUrl
               ? author?.profilePictureUrl
