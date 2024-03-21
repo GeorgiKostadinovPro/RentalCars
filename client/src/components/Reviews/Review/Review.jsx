@@ -17,7 +17,7 @@ export const Review = ({
               ? author?.profilePictureUrl
               : "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
           }
-          alt=""
+          alt="User profile"
         />
         <div className="review-content">
           <h5>
@@ -25,7 +25,7 @@ export const Review = ({
             <span>{dateFormatter(_createdOn)}</span>
           </h5>
           <p className="review-stars">
-            {[...Array(Constants.reviews.maxRating)].map((rate, i) => {
+            {[...Array(Constants.reviews.rating.maxValue)].map((rate, i) => {
               return i + 1 <= rating ? (
                 <span key={i} className="fa fa-star checked"></span>
               ) : (
