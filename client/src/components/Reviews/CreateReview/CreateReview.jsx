@@ -23,7 +23,10 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
 
     const handleStarClick = (rating) => {
         setValue('rating', rating);
-        clearErrors('rating');
+
+        if (errors.rating?.message) {
+          clearErrors('rating');
+        }
     };
 
     const onSubmitHandler = (data) => {

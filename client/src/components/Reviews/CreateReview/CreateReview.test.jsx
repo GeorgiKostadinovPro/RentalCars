@@ -7,8 +7,10 @@ import { AuthProvider } from "../../../contexts/AuthContext"
 import { CreateReview } from "./CreateReview"
 
 describe('CreateReview Component', () => {
+    let dom;
+
     beforeEach(() => {
-      render(
+      dom = render(
         <BrowserRouter>
           <AuthProvider>
             <CreateReview createReviewSubmitHandler={() => {}} />
@@ -23,28 +25,56 @@ describe('CreateReview Component', () => {
     });
 
     test("renders the review form", () => {
-      const messageTextArea = screen.getByPlaceholderText("Your Message...");
-      const submitButton = screen.getByText("Submit");
+      const stars = dom.container.querySelectorAll('.fa-star');
+      const messageTextArea = screen.getByPlaceholderText("Your message...");
+      const submitButton = screen.getByText("Post Review");
 
+      expect(stars.length).toBe(5);
       expect(messageTextArea).toBeInTheDocument();
       expect(submitButton).toBeInTheDocument();
     });
 
-    test('submits the form with valid data', async () => {
-        const messageTextArea = screen.getByPlaceholderText('Your Message...');
-        const submitButton = screen.getByText('Submit');
-
+    test('submits the form with valid rating and message', async () => {
+        const stars = dom.container.querySelectorAll('.fa-star');
+        const messageTextArea = screen.getByPlaceholderText('Your message...');
+        const submitButton = screen.getByText('Post Review');
+    
+        fireEvent.click(stars[3]);
         fireEvent.change(messageTextArea, { target: { value: 'Test message' } });
         fireEvent.click(submitButton);
+    
+        await waitFor(() => {
+          expect(dom.container.querySelectorAll(".checked").length).toBe(0);
+          expect(messageTextArea).toHaveValue("");
+        });
+    });
+
+    test('does not submit the form with invalid rating', async () => {
+        const messageTextArea = screen.getByPlaceholderText('Your message...');
+        const submitButton = screen.getByText('Post Review');
+    
+        fireEvent.change(messageTextArea, { target: { value: 'Test message' } });
+        fireEvent.click(submitButton);
+    
+        await waitFor(() => {
+            expect(screen.getByText('Please add a valid rating!')).toBeInTheDocument();
+        });
+    });
+
+    test('sets the rating when a star is clicked', async () => {
+        const stars = dom.container.querySelectorAll('.fa-star');
+
+        fireEvent.click(stars[3]);
 
         await waitFor(() => {
-            expect(messageTextArea).toHaveValue('');
+            const chosenRating = dom.container.querySelectorAll('.checked');
+            expect(chosenRating.length).toBe(4);
         });
     });
 
     test('does not submit the form with empty message', async () => {
-        const messageTextArea = screen.getByPlaceholderText('Your Message...');
-        const submitButton = screen.getByText('Submit');
+        const messageTextArea = screen.getByPlaceholderText('Your message...');
+        const submitButton = screen.getByText('Post Review');
     
         fireEvent.change(messageTextArea, { target: { value: '' } });
         fireEvent.click(submitButton);
@@ -55,8 +85,8 @@ describe('CreateReview Component', () => {
     });
 
     test('does not submit the form with message length < 5', async () => {
-        const messageTextArea = screen.getByPlaceholderText('Your Message...');
-        const submitButton = screen.getByText('Submit');
+        const messageTextArea = screen.getByPlaceholderText('Your message...');
+        const submitButton = screen.getByText('Post Review');
     
         fireEvent.change(messageTextArea, { target: { value: 'Test' } });
         fireEvent.click(submitButton);
