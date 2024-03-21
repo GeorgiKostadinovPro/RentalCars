@@ -24,7 +24,7 @@ describe('CreateReview Component', () => {
         jest.clearAllMocks();
     });
 
-    test("renders the review form", () => {
+    it("renders the review form", () => {
       const stars = dom.container.querySelectorAll('.fa-star');
       const messageTextArea = screen.getByPlaceholderText("Your message...");
       const submitButton = screen.getByText("Post Review");
@@ -34,7 +34,7 @@ describe('CreateReview Component', () => {
       expect(submitButton).toBeInTheDocument();
     });
 
-    test('submits the form with valid rating and message', async () => {
+    it('submits the form with valid rating and message', async () => {
         const stars = dom.container.querySelectorAll('.fa-star');
         const messageTextArea = screen.getByPlaceholderText('Your message...');
         const submitButton = screen.getByText('Post Review');
@@ -49,7 +49,7 @@ describe('CreateReview Component', () => {
         });
     });
 
-    test('does not submit the form with invalid rating', async () => {
+    it('does not submit the form with invalid rating', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your message...');
         const submitButton = screen.getByText('Post Review');
     
@@ -61,7 +61,7 @@ describe('CreateReview Component', () => {
         });
     });
 
-    test('sets the rating when a star is clicked', async () => {
+    it('sets the rating when a star is clicked', async () => {
         const stars = dom.container.querySelectorAll('.fa-star');
 
         fireEvent.click(stars[3]);
@@ -72,7 +72,7 @@ describe('CreateReview Component', () => {
         });
     });
 
-    test('does not submit the form with empty message', async () => {
+    it('does not submit the form with empty message', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your message...');
         const submitButton = screen.getByText('Post Review');
     
@@ -84,7 +84,7 @@ describe('CreateReview Component', () => {
         });
     });
 
-    test('does not submit the form with message length < 5', async () => {
+    it('does not submit the form with message length < 5', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your message...');
         const submitButton = screen.getByText('Post Review');
     

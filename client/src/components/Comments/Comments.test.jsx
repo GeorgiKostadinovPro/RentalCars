@@ -49,7 +49,7 @@ describe('Comments Component', () => {
       jest.clearAllMocks();
     });
 
-    test("renders comments correctly", async () => {
+    it("renders comments correctly", async () => {
       await waitFor(() => {
         expect(commentService.getAllByPostId).toHaveBeenCalledWith("1", 0, 2);
         expect(screen.getByText("Comments (2)")).toBeInTheDocument();
@@ -58,7 +58,7 @@ describe('Comments Component', () => {
       });
     });
 
-    test("renders no comments message when there are no comments", async () => {
+    it("renders no comments message when there are no comments", async () => {
       jest.spyOn(commentService, "getAllByPostId").mockResolvedValue([]);
 
       await waitFor(() => {

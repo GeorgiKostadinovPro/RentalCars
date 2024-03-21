@@ -17,7 +17,7 @@ export const Pagination = ({
         </li>
         
         {[...Array(totalPages)].map((page, i) => (
-          <li key={i + 1} className={`page-item ${currPage === i + 1 && 'active'}`}>
+          <li key={i + 1} data-testid="change-page" className={`page-item ${currPage === i + 1 && 'active'}`}>
             <button className="page-link" onClick={() => handlePageChange(i + 1)}>
               {i + 1}
             </button>
