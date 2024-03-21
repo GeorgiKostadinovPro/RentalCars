@@ -22,7 +22,7 @@ describe('CreateComment Component', () => {
         jest.clearAllMocks();
     });
 
-    test("renders the comment form", () => {
+    it("renders the comment form", () => {
       const messageTextArea = screen.getByPlaceholderText("Your Message...");
       const submitButton = screen.getByText("Submit");
 
@@ -30,7 +30,7 @@ describe('CreateComment Component', () => {
       expect(submitButton).toBeInTheDocument();
     });
 
-    test('submits the form with valid data', async () => {
+    it('submits the form with valid data', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your Message...');
         const submitButton = screen.getByText('Submit');
 
@@ -42,7 +42,7 @@ describe('CreateComment Component', () => {
         });
     });
 
-    test('does not submit the form with empty message', async () => {
+    it('does not submit the form with empty message', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your Message...');
         const submitButton = screen.getByText('Submit');
     
@@ -54,7 +54,7 @@ describe('CreateComment Component', () => {
         });
     });
 
-    test('does not submit the form with message length < 5', async () => {
+    it('does not submit the form with message length < 5', async () => {
         const messageTextArea = screen.getByPlaceholderText('Your Message...');
         const submitButton = screen.getByText('Submit');
     

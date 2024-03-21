@@ -8,7 +8,7 @@ import * as reviewService from '../../services/reviewService'
 
 import { Reviews } from "./Reviews"
 
-describe('Comments Component', () => {
+describe('Reviews Component', () => {
     beforeEach(() => {
       jest.spyOn(reviewService, "getAllByCarId").mockResolvedValue([
         {
@@ -52,7 +52,7 @@ describe('Comments Component', () => {
       jest.clearAllMocks();
     });
 
-    test("renders reviews correctly", async () => {
+    it("renders reviews correctly", async () => {
       await waitFor(() => {
         expect(reviewService.getAllByCarId).toHaveBeenCalledWith("1", 0, 1);
         expect(screen.getByText("Test message 1")).toBeInTheDocument();
@@ -60,7 +60,7 @@ describe('Comments Component', () => {
       });
     });
 
-    test("renders no reviews message when there are no reviews", async () => {
+    it("renders no reviews message when there are no reviews", async () => {
       jest.spyOn(reviewService, "getAllByCarId").mockResolvedValue([]);
 
       await waitFor(() => {
