@@ -14,6 +14,8 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
         register,
         handleSubmit,
         setValue,
+        setError,
+        clearErrors,
         watch,
         reset,
         formState: {errors}
@@ -21,9 +23,20 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
 
     const handleStarClick = (rating) => {
         setValue('rating', rating);
+        clearErrors('rating');
     };
 
     const onSubmitHandler = (data) => {
+      if (data.rating < Constants.reviews.rating.minValue
+        || data.rating > Constants.reviews.rating.maxValue ) {
+        setError("rating", {
+          type: "custom",
+          message: Constants.reviews.rating.message,
+        });
+
+        return;
+      }
+
       createReviewSubmitHandler(data);
 
       reset();
@@ -34,7 +47,8 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
         <h2>Leave a Review</h2>
         <form onSubmit={handleSubmit(onSubmitHandler)}>
           <div className="set-rating">
-            {[...Array(Constants.reviews.maxRating)].map((rate, i) => {
+            <div className="rating-stars">
+              {[...Array(Constants.reviews.rating.maxValue)].map((rate, i) => {
               return i + 1 <= watch("rating") ? (
                 <span
                   key={i}
@@ -49,6 +63,16 @@ export const CreateReview = ({ createReviewSubmitHandler }) => {
                 ></span>
               );
             })}
+            </div>
+            <span
+              style={{
+                display: errors.rating?.message ? "block" : "none",
+                margin: '-10px 0 10px 0',
+                color: "red",
+              }}
+            >
+              {errors.rating?.message}
+            </span>
           </div>
           <div className="set-message">
             <textarea

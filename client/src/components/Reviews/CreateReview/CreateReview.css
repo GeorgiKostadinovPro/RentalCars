@@ -12,17 +12,17 @@
     font-family: 'Protest Riot', sans-serif;
 }
 
-.create-review .set-rating {
+.create-review .set-rating .rating-stars {
     margin: 0 0 1em 0;
     display: flex;
     gap: 0.5em;
 }
 
-.create-review .set-rating span {
+.create-review .set-rating .rating-stars span {
     font-size: 1.5em;
 }
 
-.create-review .set-rating span.checked {
+.create-review .set-rating .rating-stars span.checked {
     color: orange;
 }
 

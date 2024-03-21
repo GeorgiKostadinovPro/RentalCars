@@ -167,7 +167,11 @@ const Constants = {
     },
   },
   reviews: {
-    maxRating: 5,
+    rating: {
+      maxValue: 5,
+      minValue: 1,
+      message: "Please add a valid rating!"
+    },
     message: {
       required: "A valid message is required!",
       minLength: {
