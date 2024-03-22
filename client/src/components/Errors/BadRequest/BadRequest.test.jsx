@@ -1,7 +1,7 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
-import { AuthProvider } from "../../../contexts/AuthContext";
-import { BadRequest } from "./BadRequest";
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { BrowserRouter } from 'react-router-dom'
+import { AuthProvider } from "../../../contexts/AuthContext"
+import { BadRequest } from "./BadRequest"
 
 describe('BadRequest Component', () => {
     let dom;
