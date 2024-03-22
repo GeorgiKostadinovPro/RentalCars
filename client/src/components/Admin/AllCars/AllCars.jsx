@@ -10,8 +10,7 @@ export const AllCars = () => {
         const getAllCars = async () => {
             try {
                 const result = await carService.getAll();
-
-                console.log(result);
+                
                 setCars(result);
             } catch (error) {
                 console.log(error.message);
