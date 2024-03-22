@@ -205,6 +205,9 @@ const Constants = {
     image: {
       required: "Please choose a picture!",
     },
+    search: {
+      required: "Please write at least 1 symbol!"
+    }
   },
   comments: {
     message: {

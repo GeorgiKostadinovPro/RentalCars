@@ -1,3 +1,25 @@
 .single-services {
 	margin-top: 140px;
 }
+
+.single-services .search-box {
+	display: flex;
+	align-items: center;
+	gap: 1em;
+}
+
+.single-services .search-box button {
+	background-color: transparent;
+	border: none;
+}
+
+.single-services .search-box button i {
+	font-size: 1.5em;
+	color: #A4C639;
+}
+
+.single-services .no-posts-found {
+	margin-top: 2em;
+	text-align: center;
+	font-size: 1.5em;
+}

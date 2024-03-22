@@ -19,7 +19,7 @@ const getAll = async (skip = 0, take = null) => {
     return result;
 }
 
-const getRecent = async () => {
+const getRecent = async (search) => {
     const query = new URLSearchParams({
         select: '_id,title,_ownerId,_createdOn',
         load: 'author=_ownerId:users',
@@ -27,9 +27,15 @@ const getRecent = async () => {
         pageSize: 3,
     });
 
+    let searchQuery;
+
+    if (search) {
+        searchQuery = `&where=title${encodeURIComponent(` LIKE "${search}"`)}`;
+    }
+
     const sort = `sortBy=${encodeURIComponent('_createdOn desc')}`
 
-    const result = await request.get(`${baseUrl}?${query}&${sort}`);
+    const result = await request.get(`${baseUrl}?${query}&${sort}${searchQuery}`);
 
     return result;
 }
