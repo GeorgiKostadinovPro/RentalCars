@@ -8,36 +8,36 @@ import * as reviewService from '../../services/reviewService'
 
 import { Reviews } from "./Reviews"
 
+jest.spyOn(reviewService, "getAllByCarId").mockResolvedValue([
+  {
+    _id: "1",
+    rating: 4,
+    message: "Test message 1",
+    _createdOn: new Date().toISOString(),
+    author: {
+      username: "testuser",
+      email: "testuser@example.com",
+      profilePictureUrl: "https://example.com/profilepic.jpg",
+    },
+  },
+  {
+    _id: "2",
+    rating: 5,
+    message: "Test message 2",
+    _createdOn: new Date().toISOString(),
+    author: {
+      username: "testuser",
+      email: "testuser@example.com",
+      profilePictureUrl: "https://example.com/profilepic.jpg",
+    },
+  },
+]);
+
+jest.spyOn(reviewService, "getReviewsCountByCarId").mockResolvedValue(2);
+jest.spyOn(reviewService, "getAverageRatingByCarId").mockResolvedValue(4.5);
+
 describe('Reviews Component', () => {
     beforeEach(() => {
-      jest.spyOn(reviewService, "getAllByCarId").mockResolvedValue([
-        {
-          _id: "1",
-          rating: 4,
-          message: "Test message 1",
-          _createdOn: new Date().toISOString(),
-          author: {
-            username: "testuser",
-            email: "testuser@example.com",
-            profilePictureUrl: "https://example.com/profilepic.jpg",
-          },
-        },
-        {
-          _id: "2",
-          rating: 5,
-          message: "Test message 2",
-          _createdOn: new Date().toISOString(),
-          author: {
-            username: "testuser",
-            email: "testuser@example.com",
-            profilePictureUrl: "https://example.com/profilepic.jpg",
-          },
-        },
-      ]);
-
-      jest.spyOn(reviewService, "getReviewsCountByCarId").mockResolvedValue(2);
-      jest.spyOn(reviewService, "getAverageRatingByCarId").mockResolvedValue(4.5);
-
       render(
         <BrowserRouter>
           <AuthProvider>

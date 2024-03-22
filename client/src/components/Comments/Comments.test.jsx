@@ -8,33 +8,33 @@ import * as commentService from '../../services/commentService'
 
 import { Comments } from "./Comments"
 
+jest.spyOn(commentService, "getAllByPostId").mockResolvedValue([
+  {
+    _id: "1",
+    message: "Test message 1",
+    _createdOn: new Date().toISOString(),
+    author: {
+      username: "testuser",
+      email: "testuser@example.com",
+      profilePictureUrl: "https://example.com/profilepic.jpg",
+    },
+  },
+  {
+    _id: "2",
+    message: "Test message 2",
+    _createdOn: new Date().toISOString(),
+    author: {
+      username: "testuser",
+      email: "testuser@example.com",
+      profilePictureUrl: "https://example.com/profilepic.jpg",
+    },
+  },
+]);
+
+jest.spyOn(commentService, "getCountByPostId").mockResolvedValue(2);
+
 describe('Comments Component', () => {
     beforeEach(() => {
-      jest.spyOn(commentService, "getAllByPostId").mockResolvedValue([
-        {
-          _id: "1",
-          message: "Test message 1",
-          _createdOn: new Date().toISOString(),
-          author: {
-            username: "testuser",
-            email: "testuser@example.com",
-            profilePictureUrl: "https://example.com/profilepic.jpg",
-          },
-        },
-        {
-          _id: "2",
-          message: "Test message 2",
-          _createdOn: new Date().toISOString(),
-          author: {
-            username: "testuser",
-            email: "testuser@example.com",
-            profilePictureUrl: "https://example.com/profilepic.jpg",
-          },
-        },
-      ]);
-
-      jest.spyOn(commentService, "getCountByPostId").mockResolvedValue(2);
-
       render(
         <BrowserRouter>
           <AuthProvider>
