@@ -9,7 +9,7 @@ import * as postService from '../../../services/postService'
 import { Path } from '../../../utilities/Path'
 import { PostRow } from './PostRow'
 
-export const AllPosts = () => {
+export const ManagePosts = () => {
     const [posts, setPosts] = useState([]);
     const [postIdToDelete, setPostIdToDelete] = useState(null);
 

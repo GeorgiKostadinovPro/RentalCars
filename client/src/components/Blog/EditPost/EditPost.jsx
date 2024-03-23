@@ -74,7 +74,7 @@ export const EditPost = () => {
 
       setFinishEdit(true);
 
-      navigate(Path.allPosts);
+      navigate(Path.ManagePosts);
     } catch (error) {
       console.log(error.message);
     }

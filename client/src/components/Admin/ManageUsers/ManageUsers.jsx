@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
 import * as userService from '../../../services/userService'
+
 import { UserRow } from "./UserRow"
 
-export const AllUsers = () => {
+export const ManageUsers = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {

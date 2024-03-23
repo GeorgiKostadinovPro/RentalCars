@@ -7,17 +7,18 @@ import { UserInfo } from './UserInfo/UserInfo'
 import { UserCreatedCars } from './UserCreatedCars/UserCreatedCars'
 import { FavouriteCars } from './FavouriteCars/FavouriteCars'
 
+import { ManageCars } from '../Admin/ManageCars/ManageCars'
+import { ManageUsers } from '../Admin/ManageUsers/ManageUsers'
+import { ManagePosts } from '../Admin/ManagePosts/ManagePosts'
+
 import './Profile.css'
-import { AllCars } from '../Admin/AllCars/AllCars'
-import { AllUsers } from '../Admin/AllUsers/AllUsers'
-import { AllPosts } from '../Admin/AllPosts/AllPosts'
 
 export const Profile = () => {
     const { pathname } = useLocation();
 
     const { isAdmin } = useAuthContext();
 
-    const renderComponent = () => {
+    const renderProfileSection = () => {
       switch (pathname) {
         case Path.profile:
           return <UserInfo />;
@@ -25,12 +26,12 @@ export const Profile = () => {
           return <UserCreatedCars />;
         case Path.favouriteCars:
           return <FavouriteCars />;
-        case Path.allUsers:
-          return <AllUsers />;
-        case Path.allCars:
-          return <AllCars />;
-        case Path.allPosts:
-          return <AllPosts />;
+        case Path.ManageUsers:
+          return <ManageUsers />;
+        case Path.ManageCars:
+          return <ManageCars />;
+        case Path.ManagePosts:
+          return <ManagePosts />;
       }
     }
 
@@ -72,13 +73,13 @@ export const Profile = () => {
                   Manage
                 </a>
                 <div className="dropdown-menu">
-                  <Link to={Path.allUsers} className="dropdown-item">
+                  <Link to={Path.ManageUsers} className="dropdown-item">
                     Users
                   </Link>
-                  <Link to={Path.allCars} className="dropdown-item">
+                  <Link to={Path.ManageCars} className="dropdown-item">
                     Cars
                   </Link>
-                  <Link to={Path.allPosts} className="dropdown-item">
+                  <Link to={Path.ManagePosts} className="dropdown-item">
                     Posts
                   </Link>
                 </div>
@@ -87,7 +88,7 @@ export const Profile = () => {
           </ul>
         </div>
 
-        {renderComponent()}
+        {renderProfileSection()}
       </>
     );
 }

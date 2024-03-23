@@ -45,7 +45,7 @@ export const CreatePost = () => {
 
       setFinishCreate(true);
 
-      navigate(Path.allPosts);
+      navigate(Path.ManagePosts);
     } catch (error) {
       console.log(error.message);
     }
