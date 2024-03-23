@@ -6,85 +6,85 @@ import * as favouriteService from '../services/favouriteService'
 export const CarsContext = createContext();
 
 export const CarsProvider = ({ children }) => {
-    const [cars, setCars] = useState([]);
-    const [carIdToDelete, setCarIdToDelete] = useState(null);
+  const [cars, setCars] = useState([]);
+  const [carIdToDelete, setCarIdToDelete] = useState(null);
 
-    const getAllCars = async () => {
-      try {
-        const result = await carService.getAll();
-        
-        setCars(result);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
+  const getAllCars = async () => {
+    try {
+      const result = await carService.getAll();
 
-    const getUserCars = async (userId) => {
-        try {
-          const result = await carService.getByUserId(userId);
+      setCars(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
-          setCars(result);
-        } catch (error) {
-          console.log(error.message);
-        }
-    };
+  const getUserCars = async (userId) => {
+    try {
+      const result = await carService.getByUserId(userId);
 
-    const getFavouriteCars = async (userId) => {
-      try {
-        const result = await favouriteService.getAllByUserId(userId);
+      setCars(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
-        setCars(result);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-    
-    const deleteCarSubmitHandler = async (carId) => {
-        try {
-          await carService.deleteCar(carId);
+  const getFavouriteCars = async (userId) => {
+    try {
+      const result = await favouriteService.getAllByUserId(userId);
 
-          setCars((cars) => cars.filter(c => c._id !== carId));
+      setCars(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
-          setCarIdToDelete(null);
-        } catch (error) {
-          console.log(error);
-        }
-    };
+  const deleteCarSubmitHandler = async (carId) => {
+    try {
+      await carService.deleteCar(carId);
 
-    const deleteFavouriteSubmitHandler = async (favouriteId) => {
-      try {
-        await favouriteService.deleteFavourite(favouriteId);
+      setCars((cars) => cars.filter((c) => c._id !== carId));
 
-        setCars((cars) => cars.filter((f) => f._id !== favouriteId));
+      setCarIdToDelete(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-        setCarIdToDelete(null);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const deleteFavouriteSubmitHandler = async (favouriteId) => {
+    try {
+      await favouriteService.deleteFavourite(favouriteId);
 
-    const setCarIdToDeleteHandler = (id) => {
-      if (id) {
-        setCarIdToDelete(id);
-      } else {
-        setCarIdToDelete(null);
-      }
-    };
+      setCars((cars) => cars.filter((f) => f._id !== favouriteId));
 
-    const values = {
-        cars,
-        getAllCars,
-        getUserCars,
-        getFavouriteCars,
-        deleteCarSubmitHandler,
-        deleteFavouriteSubmitHandler,
-        setCarIdToDeleteHandler,
-        carIdToDelete
-    };
+      setCarIdToDelete(null);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    return (
-        <CarsContext.Provider value={values}>
-            {children}
-        </CarsContext.Provider>
-    )
+  const setCarIdToDeleteHandler = (id) => {
+    if (id) {
+      setCarIdToDelete(id);
+    } else {
+      setCarIdToDelete(null);
+    }
+  };
+
+  const values = {
+    cars,
+    getAllCars,
+    getUserCars,
+    getFavouriteCars,
+    deleteCarSubmitHandler,
+    deleteFavouriteSubmitHandler,
+    setCarIdToDeleteHandler,
+    carIdToDelete,
+  };
+
+  return (
+    <CarsContext.Provider value={values}>
+      {children}
+    </CarsContext.Provider>
+  );
 }

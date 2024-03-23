@@ -6,6 +6,7 @@ import { Navigation, Autoplay } from 'swiper/modules'
 
 import * as carService from '../../../services/carService'
 import * as favouriteService from '../../../services/favouriteService'
+
 import { RentForm } from "../../Rents/RentForm/RentForm"
 import { Reviews } from "../../Reviews/Reviews"
 import { useAuthContext } from "../../../hooks/useAuthContext"
