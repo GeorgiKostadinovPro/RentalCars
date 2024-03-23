@@ -1,55 +1,31 @@
-import { useEffect, useState } from 'react'
-
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-import * as carService from '../../../services/carService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+import { useCarsContext } from '../../../hooks/useCarsContext'
+
 import { CreatedCarRow } from './CreatedCarRow'
 import { Path } from '../../../utilities/Path'
 
 export const UserCreatedCars = () => {
-  const [userCars, setUserCars] = useState([]);
-  const [carIdToDelete, setCarIdToDelete] = useState(null);
+  const { 
+    cars, 
+    getUserCars,
+    deleteCarSubmitHandler,
+    carIdToDelete, 
+    setCarIdToDeleteHandler } = useCarsContext();
 
   const { userId } = useAuthContext();
 
   useEffect(() => {
-    const getUserCars = async () => {
-      try {
-        const result = await carService.getByUserId(userId);
-
-        setUserCars(result);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    getUserCars();
+    getUserCars(userId);
   }, []);
-  
-  const setCarIdToDeleteHandler = (id) => {
-    if (id) {
-      setCarIdToDelete(id);
-    }
-  };
 
   const handleClose = () => {
-    setCarIdToDelete(null);
-  };
-
-  const deleteCarHandler = async () => {
-    try {
-      await carService.deleteCar(carIdToDelete);
-
-      setUserCars(cars => cars.filter(c => c._id !== carIdToDelete));
-      
-      setCarIdToDelete(null);
-    } catch (error) {
-      console.log(error);
-    }
+    setCarIdToDeleteHandler();
   };
 
   return (
@@ -85,8 +61,8 @@ export const UserCreatedCars = () => {
               </thead>
               
               <tbody>
-                {userCars && userCars.length > 0 ? (
-                  userCars.map((car, i) => (
+                {cars && cars.length > 0 ? (
+                  cars.map((car, i) => (
                     <CreatedCarRow
                       key={car._id}
                       index={i + 1}
@@ -118,7 +94,7 @@ export const UserCreatedCars = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={deleteCarHandler}>
+          <Button variant="danger" onClick={() => deleteCarSubmitHandler(carIdToDelete)}>
             Delete
           </Button>
         </Modal.Footer>

@@ -1,52 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-import * as favouriteService from '../../../services/favouriteService'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+import { useCarsContext } from '../../../hooks/useCarsContext'
+
 import { FavouriteCarRow } from './FavouriteCarRow'
 
 export const FavouriteCars = () => {
-  const [favouriteCars, setFavouriteCars] = useState([]);
-  const [favIdToDelete, setFavIdToDelete] = useState(null);
+  const { 
+    cars, 
+    getFavouriteCars,
+    deleteFavouriteSubmitHandler,
+    carIdToDelete, 
+    setCarIdToDeleteHandler } = useCarsContext();
 
   const { userId } = useAuthContext();
 
   useEffect(() => {
-    const getUserCars = async () => {
-      try {
-        const result = await favouriteService.getAllByUserId(userId);
-
-        setFavouriteCars(result);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    getUserCars();
+    getFavouriteCars(userId);
   }, []);
-  
-  const setFavIdToDeleteHandler = (id) => {
-    if (id) {
-      setFavIdToDelete(id);
-    }
-  };
 
   const handleClose = () => {
-    setFavIdToDelete(null);
-  };
-
-  const deleteFavouriteHandler = async () => {
-    try {
-      await favouriteService.deleteFavourite(favIdToDelete);
-
-      setFavouriteCars(favourites => favourites.filter(f => f._id !== favIdToDelete));
-
-      setFavIdToDelete(null);
-    } catch (error) {
-      console.log(error);
-    }
+    setCarIdToDeleteHandler();
   };
 
   return (
@@ -71,18 +48,18 @@ export const FavouriteCars = () => {
                   <th>Model</th>
                   <th>Year</th>
                   <th>Created On</th>
-                  <th style={{ textAlign: 'left' }}>Actions</th>
+                  <th style={{ textAlign: "left" }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {favouriteCars && favouriteCars.length > 0 ? (
-                  favouriteCars.map((favourite, i) => (
+                {cars && cars.length > 0 ? (
+                  cars.map((favourite, i) => (
                     <FavouriteCarRow
                       key={favourite._id}
                       index={i + 1}
                       id={favourite._id}
                       car={favourite.car}
-                      setFavIdToDeleteHandler={setFavIdToDeleteHandler}
+                      setCarIdToDeleteHandler={setCarIdToDeleteHandler}
                     />
                   ))
                 ) : (
@@ -96,7 +73,11 @@ export const FavouriteCars = () => {
         </div>
       </div>
 
-      <Modal show={favIdToDelete} onHide={handleClose} style={{ marginTop: '100px' }}>
+      <Modal
+        show={carIdToDelete}
+        onHide={handleClose}
+        style={{ marginTop: "100px" }}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Are you sure?</Modal.Title>
         </Modal.Header>
@@ -105,7 +86,7 @@ export const FavouriteCars = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="danger" onClick={deleteFavouriteHandler}>
+          <Button variant="danger" onClick={() => deleteFavouriteSubmitHandler(carIdToDelete)}>
             Delete
           </Button>
         </Modal.Footer>
