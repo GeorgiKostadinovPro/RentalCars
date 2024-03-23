@@ -30,7 +30,7 @@ jest.mock("../../services/postService", () => ({
       title: "Post 2",
       author: { username: "User2" },
       _createdOn: new Date().toISOString(),
-    },
+    }
   ])
 }));
 
@@ -57,7 +57,7 @@ describe('Blog Component', () => {
         expect(headingElement).toBeInTheDocument();
     });
 
-    test('fetches and renders recent posts', async () => {
+    it('fetches and renders recent posts', async () => {
         const postElements = await screen.findAllByRole('listitem');
         expect(postElements).toHaveLength(2);
     
