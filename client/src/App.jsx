@@ -79,9 +79,9 @@ function App() {
 
               <Route path={Path.allUserCars} element={<Profile />} />
               <Route path={Path.favouriteCars} element={<Profile />} />
-              <Route path={Path.allUsers} element={<Profile />} />
-              <Route path={Path.allCars} element={<Profile />} />
-              <Route path={Path.allPosts} element={<Profile />} />
+              <Route path={Path.ManageUsers} element={<Profile />} />
+              <Route path={Path.ManageCars} element={<Profile />} />
+              <Route path={Path.ManagePosts} element={<Profile />} />
 
               <Route path={Path.notFound} element={<NotFound />} />
             </Route>

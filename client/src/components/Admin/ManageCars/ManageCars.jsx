@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import * as carService from '../../../services/carService'
+
 import { CarRow } from './CarRow'
 
-export const AllCars = () => {
+export const ManageCars = () => {
     const [cars, setCars] = useState([]);
 
     useEffect(() => {

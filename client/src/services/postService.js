@@ -27,7 +27,7 @@ const getRecent = async (search) => {
         pageSize: 3,
     });
 
-    let searchQuery;
+    let searchQuery = '';
 
     if (search) {
         searchQuery = `&where=title${encodeURIComponent(` LIKE "${search}"`)}`;

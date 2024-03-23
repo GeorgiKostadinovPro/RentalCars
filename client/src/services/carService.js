@@ -19,11 +19,13 @@ const getAll = async (
         mainQuery.set('pageSize', take);
     }
 
+    let searchQuery = '';
+
     if (filterCriteria?.searchInput) {
-        mainQuery.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+        searchQuery = `&where=${filterCriteria.searchCriteria}${encodeURIComponent(` LIKE "${filterCriteria.searchInput}"`)}`;
     }
 
-    let sortQuery;
+    let sortQuery = '';
 
     if (filterCriteria?.sortCriteria) {
         const sort = filterCriteria.sortOrder 
@@ -33,7 +35,7 @@ const getAll = async (
         sortQuery = '&sortBy=' + encodeURIComponent(sort);
     }
 
-    const result = await request.get(`${baseUrl}?${mainQuery}${sortQuery ? sortQuery : ''}`);
+    const result = await request.get(`${baseUrl}?${mainQuery}${searchQuery}${sortQuery}`);
 
     return result;
 }
