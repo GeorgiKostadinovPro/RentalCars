@@ -8,7 +8,7 @@ import * as carService from '../services/carService'
 import { NotFound } from "../components/Errors/NotFound/NotFound"
 
 export const OwnerGuard = () => {
-    const { userId } = useAuthContext();
+    const { userId, isAdmin } = useAuthContext();
 
     const { carId } = useParams();
 
@@ -19,7 +19,8 @@ export const OwnerGuard = () => {
             try {
                 const car = await carService.getById(carId);
 
-                if (car && car._ownerId === userId) {
+                if ((car && car._ownerId === userId)
+                || (car && isAdmin)) {
                     setIsOwner(true);
                 }
             } catch (error) {
