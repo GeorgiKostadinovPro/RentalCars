@@ -3,17 +3,38 @@ import { createContext, useState } from 'react'
 import * as carService from '../services/carService'
 import * as favouriteService from '../services/favouriteService'
 
+import { Constants } from '../utilities/constants'
+
 export const CarsContext = createContext();
 
 export const CarsProvider = ({ children }) => {
   const [cars, setCars] = useState([]);
   const [carIdToDelete, setCarIdToDelete] = useState(null);
 
-  const getAllCars = async () => {
+  const getAllCars = async (filterCriteria, currPage, totalPages) => {
     try {
-      const result = await carService.getAll();
+      let result;
+
+      if (currPage && totalPages) {
+        const skip = (currPage - 1) * Constants.pagination.carsPageSize;
+        const take = Constants.pagination.carsPageSize;
+
+        result = await carService.getAll(filterCriteria, skip, take);
+      } else {
+        result = await carService.getAll();
+      }
 
       setCars(result);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  const getTotalSize = async (filterCriteria) => {
+    try {
+      const result = await carService.getCarsCount(filterCriteria);
+
+      return result;
     } catch (error) {
       console.log(error.message);
     }
@@ -76,10 +97,11 @@ export const CarsProvider = ({ children }) => {
     getAllCars,
     getUserCars,
     getFavouriteCars,
+    getTotalSize,
     deleteCarSubmitHandler,
     deleteFavouriteSubmitHandler,
     setCarIdToDeleteHandler,
-    carIdToDelete,
+    carIdToDelete
   };
 
   return (

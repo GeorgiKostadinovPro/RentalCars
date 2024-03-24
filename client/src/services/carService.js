@@ -41,11 +41,12 @@ const getAll = async (
 }
 
 const getCarsCount = async (filterCriteria) => {
+    let query = '';
 
-    const query = new URLSearchParams();
-
-    if (filterCriteria.searchInput) {
-        query.set('where', `${filterCriteria.searchCriteria}="${filterCriteria.searchInput}"`);
+    if (filterCriteria && filterCriteria.searchInput) {
+      query = `&where=${filterCriteria.searchCriteria}${encodeURIComponent(
+        ` LIKE "${filterCriteria.searchInput}"`
+      )}`;
     }
 
     const result = await request.get(`${baseUrl}?${query}&count`);

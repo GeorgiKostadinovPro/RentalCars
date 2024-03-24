@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import * as carService from '../../services/carService'
+import { useCarsContext } from '../../hooks/useCarsContext'
 
 import { Car } from './Car'   
 import { Filter } from '../Filter/Filter'
@@ -10,40 +10,26 @@ import { Constants } from '../../utilities/constants'
 import './Cars.css'
 
 export const Cars = () => {
-  const [cars, setCars] = useState([]);
+  const {
+    cars,
+    getAllCars,
+    getTotalSize
+  } = useCarsContext();
+
   const [currPage, setCurrPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [filterCriteria, setFilterCriteria] = useState({});
+  const [filterCriteria, setFilterCriteria] = useState(null);
 
   useEffect(() => {
-    const getAllCars = async () => {
-      const skip = (currPage - 1) * Constants.pagination.carsPageSize;
-      const take = Constants.pagination.carsPageSize;
-
-      try {
-        const result = await carService.getAll(filterCriteria, skip, take);
-
-        setCars(result);
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    getAllCars();
+    getAllCars(filterCriteria, currPage, totalPages);
   }, [filterCriteria, currPage]);
 
   useEffect(() => {
-    const getTotalSize = async () => {
-      try {
-        const result = await carService.getCarsCount(filterCriteria);
-
-        setTotalPages(Math.ceil(result / Constants.pagination.carsPageSize));
-      } catch (error) {
-        console.log(error.message);
-      }
-    };
-
-    getTotalSize();
+    getTotalSize(filterCriteria)
+      .then((res) => {
+        setCurrPage(1);
+        setTotalPages(Math.ceil(res / Constants.pagination.carsPageSize));
+      });
   }, [filterCriteria]);
   
   const handleFilterSubmit = (criteria) => {
