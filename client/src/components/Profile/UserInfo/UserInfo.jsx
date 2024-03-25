@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
 import * as userService from '../../../services/userService'
 
@@ -30,7 +30,7 @@ export const UserInfo = () => {
               ? user?.profilePictureUrl
               : "https://api-private.atlassian.com/users/804a32f69779303c8344ba035dd49356/avatar"
           }
-          alt=""
+          alt="User profile"
         />
 
         <div className="main-content">

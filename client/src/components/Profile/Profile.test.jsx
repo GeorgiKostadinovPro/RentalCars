@@ -55,7 +55,7 @@ jest.mock("../Admin/ManagePosts/ManagePosts", () => ({
   }
 }));
 
-describe('CreatePost Component', () => {
+describe('Profile Component', () => {
     beforeEach(() => {
       render(
         <BrowserRouter>
@@ -86,7 +86,7 @@ describe('CreatePost Component', () => {
       expect(myFavouritesLink).toBeInTheDocument();
     });
 
-    test("renders manage dropdown for admin users", () => {
+    it("renders manage dropdown for admin users", () => {
       const manageDropdown = screen.getByText("Manage");
       expect(manageDropdown).toBeInTheDocument();
 
