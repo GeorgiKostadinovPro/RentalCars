@@ -10,7 +10,7 @@ import { Header } from "../../Common/Header/Header"
 jest.mock("../../../hooks/useAuthContext", () => ({
   useAuthContext: () => ({
     isUserAuthenticated: true
-  }),
+  })
 }));
 
 describe('Logout Component', () => {
