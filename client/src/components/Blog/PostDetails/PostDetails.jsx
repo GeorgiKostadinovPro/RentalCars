@@ -66,7 +66,7 @@ export const PostDetails = () => {
                 <img
                   src={postDetails.image?.url}
                   className="img-fluid post-img"
-                  alt=""
+                  alt="Post Picture"
                 />
               </div>
               <br />

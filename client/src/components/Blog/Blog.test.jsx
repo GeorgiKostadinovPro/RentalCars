@@ -11,7 +11,6 @@ jest.mock('../../utilities/dateFormatter', () => ({
 }));
 
 jest.mock("./Posts/Posts", () => ({
-    __esModule: true,
     Posts: () => {
       return <mock-posts />;
     }
