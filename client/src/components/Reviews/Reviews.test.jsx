@@ -1,4 +1,4 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -38,13 +38,15 @@ jest.spyOn(reviewService, "getAverageRatingByCarId").mockResolvedValue(4.5);
 
 describe('Reviews Component', () => {
     beforeEach(() => {
-      render(
-        <BrowserRouter>
-          <AuthProvider>
-            <Reviews carId={"1"} />
-          </AuthProvider>
-        </BrowserRouter>
-      );
+      act(() => {
+        render(
+          <BrowserRouter>
+            <AuthProvider>
+              <Reviews carId={"1"} />
+            </AuthProvider>
+          </BrowserRouter>
+        );
+      });
     });
 
     afterEach(() => {

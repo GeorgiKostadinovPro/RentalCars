@@ -1,4 +1,4 @@
-import { cleanup, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -35,13 +35,15 @@ jest.spyOn(commentService, "getCountByPostId").mockResolvedValue(2);
 
 describe('Comments Component', () => {
     beforeEach(() => {
-      render(
-        <BrowserRouter>
-          <AuthProvider>
-            <Comments postId={"1"} state={{}} />
-          </AuthProvider>
-        </BrowserRouter>
-      );
+      act(() => {
+        render(
+          <BrowserRouter>
+            <AuthProvider>
+              <Comments postId={"1"} state={{}} />
+            </AuthProvider>
+          </BrowserRouter>
+        );
+      });
     });
 
     afterEach(() => {

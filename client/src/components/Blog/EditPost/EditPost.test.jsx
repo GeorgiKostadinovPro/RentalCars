@@ -56,39 +56,39 @@ describe('EditPost Component', () => {
         });
     });
 
-    // it('submit form with valid data', async () => {
-    //   fireEvent.change(dom.container.querySelector('input[name="title"]'), { target: { value: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' } });
-    //   fireEvent.change(dom.container.querySelector('input[name="tags"]'), { target: { value: 'test' } });
-    //   fireEvent.change(dom.container.querySelector('textarea[name="content"]'), { target: { value: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' } });
+    it('submit form with valid data', async () => {
+      fireEvent.change(dom.container.querySelector('input[name="title"]'), { target: { value: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' } });
+      fireEvent.change(dom.container.querySelector('input[name="tags"]'), { target: { value: 'tag1,tag2,tag3' } });
+      fireEvent.change(dom.container.querySelector('textarea[name="content"]'), { target: { value: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.' } });
 
-    //   const file = new File(['image'], 'image.png', { type: 'image/png' });
+      const file = new File(['image'], 'image.png', { type: 'image/png' });
 
-    //   const imageInput = dom.container.querySelector('input[name="image"]');
+      const imageInput = dom.container.querySelector('input[name="imageFile"]');
 
-    //   await waitFor(() =>
-    //     fireEvent.change(imageInput, {
-    //       target: { files: [file] }
-    //     })
-    //   );
+      await waitFor(() =>
+        fireEvent.change(imageInput, {
+          target: { files: [file] }
+        })
+      );
   
-    //   act(() => {
-    //     fireEvent.click(screen.getByText('Create'));
-    //   });
+      act(() => {
+        fireEvent.click(screen.getByText('Save'));
+      });
   
-    //   expect(imageInput.files[0].name).toBe("image.png");
-    // });
+      expect(imageInput.files[0].name).toBe("image.png");
+    });
 
-    // it('does NOT submit the form with invalid title, tags or content length', async () => {
-    //   fireEvent.change(dom.container.querySelector('input[name="title"]'), { target: { value: 'Test' } });
-    //   fireEvent.change(dom.container.querySelector('input[name="tags"]'), { target: { value: 'Te' } });
-    //   fireEvent.change(dom.container.querySelector('textarea[name="content"]'), { target: { value: 'Test' } });
+    it('does NOT submit the form with invalid title, tags or content length', async () => {
+      fireEvent.change(dom.container.querySelector('input[name="title"]'), { target: { value: 'Test' } });
+      fireEvent.change(dom.container.querySelector('input[name="tags"]'), { target: { value: 'Te' } });
+      fireEvent.change(dom.container.querySelector('textarea[name="content"]'), { target: { value: 'Test' } });
 
-    //   fireEvent.click(screen.getByText('Create'));
+      fireEvent.click(screen.getByText('Save'));
   
-    //   await waitFor(() => {
-    //     expect(screen.getByText('The title should be at least 50 symbols long!')).toBeInTheDocument();
-    //     expect(screen.getByText('Please enter at least 1 tag!')).toBeInTheDocument();
-    //     expect(screen.getByText('The content should be at least 100 symbols long!')).toBeInTheDocument();
-    //   });
-    // });
+      await waitFor(() => {
+        expect(screen.getByText('The title should be at least 50 symbols long!')).toBeInTheDocument();
+        expect(screen.getByText('Please enter at least 1 tag!')).toBeInTheDocument();
+        expect(screen.getByText('The content should be at least 100 symbols long!')).toBeInTheDocument();
+      });
+    });
 });
