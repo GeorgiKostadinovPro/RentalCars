@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { AuthProvider } from "../../../contexts/AuthContext"
 
-import { UserCreatedCars } from "./UserCreatedCars"
+import { FavouriteCars } from "./FavouriteCars"
 
 jest.mock('../../../hooks/useAuthContext', () => ({
     useAuthContext: () => ({
@@ -17,24 +17,28 @@ jest.mock("../../../hooks/useCarsContext", () => ({
     cars: [
       {
         _id: "1",
-        make: "Toyota",
-        model: "Corolla",
-        year: 2020,
-        createdOn: new Date().toISOString()
+        car: {
+          make: "Toyota",
+          model: "Corolla",
+          year: 2020,
+          createdOn: new Date().toISOString(),
+        }
       },
       {
         _id: "2",
-        make: "Honda",
-        model: "Civic",
-        year: 2019,
-        createdOn: new Date().toISOString()
+        car: {
+          make: "Honda",
+          model: "Civic",
+          year: 2019,
+          createdOn: new Date().toISOString(),
+        }
       }
     ],
-    getUserCars: jest.fn(),
-    deleteCarSubmitHandler: jest.fn(),
-    carIdToDelete: '1',
+    getFavouriteCars: jest.fn(),
+    deleteFavouriteSubmitHandler: jest.fn(),
+    carIdToDelete: "1",
     setCarIdToDeleteHandler: jest.fn(),
-  })
+  }),
 }));
 
 describe('UserInfo Component', () => {
@@ -43,7 +47,7 @@ describe('UserInfo Component', () => {
         render(
           <BrowserRouter>
             <AuthProvider>
-              <UserCreatedCars />
+              <FavouriteCars />
             </AuthProvider>
           </BrowserRouter>
         );
@@ -55,13 +59,12 @@ describe('UserInfo Component', () => {
       jest.clearAllMocks();
     });
 
-    it("renders user created cars correctly", async () => {
+    it("renders user favourite cars correctly", async () => {
       await waitFor(() => {
         expect(screen.getByText("Manage")).toBeInTheDocument();
-        expect(screen.getByText("Add New Car")).toBeInTheDocument();
 
         expect(screen.queryAllByRole("row")).toHaveLength(3);
-        
+
         expect(screen.getByText("Toyota")).toBeInTheDocument();
         expect(screen.getByText("Corolla")).toBeInTheDocument();
         expect(screen.getByText("2020")).toBeInTheDocument();
