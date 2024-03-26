@@ -41,7 +41,7 @@ jest.mock("../../../hooks/useCarsContext", () => ({
   }),
 }));
 
-describe('UserInfo Component', () => {
+describe('FavouriteCars Component', () => {
     beforeEach(() => {
       act(() => {
         render(
