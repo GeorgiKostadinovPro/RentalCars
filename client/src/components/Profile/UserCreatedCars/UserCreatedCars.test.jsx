@@ -32,7 +32,7 @@ jest.mock("../../../hooks/useCarsContext", () => ({
     ],
     getUserCars: jest.fn(),
     deleteCarSubmitHandler: jest.fn(),
-    carIdToDelete: null,
+    carIdToDelete: '1',
     setCarIdToDeleteHandler: jest.fn(),
   })
 }));
@@ -69,5 +69,13 @@ describe('UserInfo Component', () => {
         expect(screen.getByText("Civic")).toBeInTheDocument();
         expect(screen.getByText("2019")).toBeInTheDocument();
       });
+    });
+
+    it('renders modal when carIdToDelete is set', () => {
+      expect(screen.getByText('Are you sure?')).toBeInTheDocument();
+      expect(screen.getByText('This action cannot be undone.')).toBeInTheDocument();
+  
+      expect(screen.getByText('Close')).toBeInTheDocument();
+      expect(screen.getByText('Delete')).toBeInTheDocument();
     });
 });
