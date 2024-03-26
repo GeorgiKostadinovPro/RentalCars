@@ -49,7 +49,7 @@ describe('ManageCars Component', () => {
       jest.clearAllMocks();
     });
 
-    it("renders user created cars correctly", async () => {
+    it("renders manage cars correctly", async () => {
       await waitFor(() => {
         expect(screen.getByText("Manage")).toBeInTheDocument();
 
