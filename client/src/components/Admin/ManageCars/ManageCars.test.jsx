@@ -4,13 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { AuthProvider } from "../../../contexts/AuthContext"
 
-import { UserCreatedCars } from "./UserCreatedCars"
-
-jest.mock('../../../hooks/useAuthContext', () => ({
-    useAuthContext: () => ({
-        userId: 'User123'
-    })
-}));
+import { ManageCars } from "./ManageCars"
 
 jest.mock("../../../hooks/useCarsContext", () => ({
   useCarsContext: () => ({
@@ -30,20 +24,20 @@ jest.mock("../../../hooks/useCarsContext", () => ({
         createdOn: new Date().toISOString()
       }
     ],
-    getUserCars: jest.fn(),
+    getAllCars: jest.fn(),
     deleteCarSubmitHandler: jest.fn(),
     carIdToDelete: '1',
     setCarIdToDeleteHandler: jest.fn(),
   })
 }));
 
-describe('UserCreatedCars Component', () => {
+describe('ManageCars Component', () => {
     beforeEach(() => {
       act(() => {
         render(
           <BrowserRouter>
             <AuthProvider>
-              <UserCreatedCars />
+              <ManageCars />
             </AuthProvider>
           </BrowserRouter>
         );
@@ -55,10 +49,9 @@ describe('UserCreatedCars Component', () => {
       jest.clearAllMocks();
     });
 
-    it("renders user created cars correctly", async () => {
+    it("renders manage cars correctly", async () => {
       await waitFor(() => {
         expect(screen.getByText("Manage")).toBeInTheDocument();
-        expect(screen.getByText("Add New Car")).toBeInTheDocument();
 
         expect(screen.queryAllByRole("row")).toHaveLength(3);
         
