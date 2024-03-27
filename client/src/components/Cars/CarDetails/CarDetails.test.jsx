@@ -78,7 +78,7 @@ jest.mock('../../../services/carService', () => ({
     })
 }));
 
-describe('PostDetails Component', () => {
+describe('CarDetails Component', () => {
     let dom;
 
     beforeEach(() => {
