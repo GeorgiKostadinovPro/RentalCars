@@ -124,7 +124,7 @@ export const CarDetails = () => {
                       className="fa-solid fa-heart"
                       style={{ color: "#ce1515" }}
                     ></i>
-                    Remove from Favoutires
+                    Remove from Favourites
                   </a>
                 ) : (
                   <a
@@ -132,7 +132,7 @@ export const CarDetails = () => {
                     type="submit"
                     className="fav-btn"
                   >
-                    <i className="fa-solid fa-heart"></i>Add to Favoutires
+                    <i className="fa-solid fa-heart"></i>Add to Favourites
                   </a>
                 )}
               </div>
@@ -250,7 +250,7 @@ export const CarDetails = () => {
                       ? carDetails.author?.profilePictureUrl
                       : "https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
                   }
-                  alt=""
+                  alt="User profile"
                 />
                 <div className="onwer-content">
                   <p>Username: {carDetails.author?.username}</p>
