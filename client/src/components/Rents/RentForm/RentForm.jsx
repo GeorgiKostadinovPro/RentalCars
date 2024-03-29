@@ -9,8 +9,8 @@ import { addDays, differenceInDays } from 'date-fns'
 import * as carService from '../../../services/carService'
 import * as rentService from '../../../services/rentService'
 
-import { PaymentForm } from '../PaymentForm/PaymentForm'
 import { useAuthContext } from '../../../hooks/useAuthContext'
+import { PaymentForm } from '../PaymentForm/PaymentForm'
 import { Constants } from '../../../utilities/constants'
 
 import './RentForm.css'

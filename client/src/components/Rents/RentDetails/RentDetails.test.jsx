@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { act, cleanup, render, screen, waitFor } from '@testing-library/react'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -41,8 +41,8 @@ jest.mock('../../../services/rentService', () => ({
           _createdOn: 1614260681375,
           location: "Sofia, Bulgaria",
           gallery: [
-              "https://res.cloudinary.com/de1i8aava/image/upload/v1708179184/RentalCars/assets/cars-gallery-pictures/ford-mustang_c0ldko.jpg",
-              "https://res.cloudinary.com/de1i8aava/image/upload/v1708179184/RentalCars/assets/cars-gallery-pictures/ford-mustang-interior_qlfqou.jpg"
+              "ford1.png",
+              "ford1.png"
           ]
         }
     })

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-import { Path } from '../../../utilities/Path'
+import { Path } from '../../../../utilities/Path'
 
 export const SuccessfulPayment = ({ rentId }) => {
     const [showSuccess, setShowSuccess] = useState(rentId);

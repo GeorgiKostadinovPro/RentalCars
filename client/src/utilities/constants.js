@@ -20,8 +20,8 @@ const Constants = {
   fullName: {
     required: "This field is required!",
     pattern: {
-      value: /^[A-Z]{1}[A-z]{3,} [A-Z]{1}[A-z]{2,}$/g,
-      message: "This full name is invalid",
+      value: /^[A-Z]{1}[A-z]{2,} [A-Z]{1}[A-z]{2,}$/g,
+      message: "This full name is invalid!",
     },
   },
   car: {
@@ -162,7 +162,7 @@ const Constants = {
       required: "The expiration date is required!",
       pattern: {
         value: /^[0-9]{2}\/[1-9]{2}$/g,
-        message: "The expiriation date is inavlid!",
+        message: "The expiration date is invalid!",
       },
     },
   },
