@@ -8,6 +8,7 @@ import Modal from 'react-bootstrap/Modal'
 import Form from 'react-bootstrap/Form'
 
 import * as rentService from '../../../services/rentService'
+
 import { SuccessfulPayment } from './SuccessfulPayment'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import { Constants } from '../../../utilities/constants'
@@ -23,7 +24,7 @@ const defaultValues = {
 };
 
 export const PaymentForm = ({ rentInfo }) => {
-    const [rent, setRentInfo] = useState(rentInfo);
+    const [rent, setRent] = useState(rentInfo);
     const [show, setShow] = useState(rentInfo); 
 
     const { email, username } = useAuthContext();
@@ -39,7 +40,7 @@ export const PaymentForm = ({ rentInfo }) => {
         try {
             const result = await rentService.createRent(rent);
 
-            setRentInfo(result);
+            setRent(result);
 
             reset();
 
