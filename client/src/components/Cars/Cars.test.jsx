@@ -92,6 +92,11 @@ describe('Cars Component', () => {
       jest.clearAllMocks();
     });
 
+    it('should render without crashing', () => {
+        expect(screen.getByText('Cars for rent')).toBeInTheDocument();
+        expect(screen.getByText('Review the wide range collection of cars')).toBeInTheDocument();
+    });
+
     it('should render cars', () => {
         const carElements = dom.container.querySelectorAll('.cars .service-item');
         expect(carElements.length).toBe(3);

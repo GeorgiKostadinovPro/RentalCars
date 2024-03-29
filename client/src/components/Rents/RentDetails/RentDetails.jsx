@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 
-import * as carService from '../../../services/carService'
 import * as rentService from '../../../services/rentService'
 
 import { Path } from '../../../utilities/Path'
@@ -12,7 +11,6 @@ import './RentDetails.css'
 export const RentDetails = () => {
   const { rentId } = useParams();
 
-  const [car, setCar] = useState({});
   const [rent, setRent] = useState({});
 
   useEffect(() => {
@@ -21,10 +19,6 @@ export const RentDetails = () => {
         const rentDetails = await rentService.getById(rentId);
 
         setRent(rentDetails);
-
-        const carDetails = await carService.getById(rentDetails.carId);
-
-        setCar(carDetails);
       } catch (error) {
         console.log(error.message);
       }
@@ -52,17 +46,17 @@ export const RentDetails = () => {
         <h2>Rent Information</h2>
         <div className="details-content">
           <div className="car-information">
-            <p>car: {car.make} {car.model}</p>
-            <p>year of manufactoring: {car.year}</p>
-            <p>price per day: ${car.pricePerDay}</p>
-            <p>owner: {car.author?.email}</p>
+            <p>car: {rent.car?.make} {rent.car?.model}</p>
+            <p>year of manufactoring: {rent.car?.year}</p>
+            <p>price per day: ${rent.car?.pricePerDay}</p>
+            <p>owner: {rent.author?.email}</p>
           </div>
 
           <hr />
 
           <div className="rent-information">
             <h3>Payment</h3>
-            <p>Pick-up location: {car.location}</p>
+            <p>Pick-up location: {rent.car?.location}</p>
             <p>
               Pick-up date: {dateFormatter(rent.pickUpDateAndTime)}
             </p>
@@ -70,7 +64,7 @@ export const RentDetails = () => {
               Returning date: {dateFormatter(rent.returningDateAndTime)}
             </p>
             <p>Total days: {rent.totalDays}</p>
-            <p>Total price: {rent.totalDays} * ${car.pricePerDay} = ${rent.totalPrice}</p>
+            <p>Total price: {rent.totalDays} * ${rent.car?.pricePerDay} = ${rent.totalPrice}</p>
           </div>
 
           <hr />
