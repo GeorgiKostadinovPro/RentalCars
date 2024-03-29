@@ -17,7 +17,7 @@ jest.mock("../../../utilities/env", () => ({
 }));
 
 jest.mock('@emailjs/browser', () => ({
-  send: jest.fn(() => Promise.resolve()),
+  send: jest.fn(() => Promise.resolve())
 }));
 
 jest.spyOn(window, 'alert').mockImplementation(() => {});

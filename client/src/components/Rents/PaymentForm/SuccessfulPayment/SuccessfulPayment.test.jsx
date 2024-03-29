@@ -1,4 +1,4 @@
-import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -7,18 +7,14 @@ import { AuthProvider } from "../../../../contexts/AuthContext"
 import { SuccessfulPayment } from "./SuccessfulPayment"
 
 describe('SuccessfulPayment Component', () => {
-    let dom;
-
     beforeEach(() => {
-      act(() => {
-        dom = render(
-          <BrowserRouter>
-            <AuthProvider>
-              <SuccessfulPayment rentId={'1'} />
-            </AuthProvider>
-          </BrowserRouter>
-        );
-      });
+      render(
+        <BrowserRouter>
+           <AuthProvider>
+            <SuccessfulPayment rentId={'1'} />
+          </AuthProvider>
+        </BrowserRouter>
+      );
     });
 
     afterEach(() => {
