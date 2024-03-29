@@ -67,4 +67,26 @@ describe('RentDetails Component', () => {
       cleanup();
       jest.clearAllMocks();
     });
+
+    it('renders rent details without crashing', () => {
+      expect(screen.getByText('Rent Details')).toBeInTheDocument();
+      expect(screen.getByText('The rent details are sent directly to your email address')).toBeInTheDocument();
+      expect(screen.getByText('Rent Information')).toBeInTheDocument();
+      expect(screen.getByText('Payment')).toBeInTheDocument();
+      expect(screen.getByText('Back to Cars')).toBeInTheDocument();
+    });
+
+    it('displays correct rent details', async () => {
+      await waitFor(() => {
+        expect(screen.getByText('car: Ford Mustang')).toBeInTheDocument();
+        expect(screen.getByText('year of manufactoring: 2022')).toBeInTheDocument();
+        expect(screen.getByText('price per day: $60')).toBeInTheDocument();
+        expect(screen.getByText('owner: user@abv.bg')).toBeInTheDocument();
+        expect(screen.getByText('Pick-up location: Sofia, Bulgaria')).toBeInTheDocument();
+        expect(screen.getByText('Pick-up date: 2024-03-04T15:19')).toBeInTheDocument();
+        expect(screen.getByText('Returning date: 2024-03-08T15:19')).toBeInTheDocument();
+        expect(screen.getByText('Total days: 4')).toBeInTheDocument();
+        expect(screen.getByText('Total price: 4 * $60 = $240')).toBeInTheDocument();
+      });
+    });
 });
