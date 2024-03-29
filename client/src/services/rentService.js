@@ -5,7 +5,9 @@ const baseUrl = '/data/rents';
 const request = requestFactory();
 
 const getById = async (rentId) => {
-    const result = await request.get(`${baseUrl}/${rentId}`);
+    const query = `load=${encodeURIComponent('car=carId:cars,author=_ownerId:users')}`;
+
+    const result = await request.get(`${baseUrl}/${rentId}?${query}`);
 
     return result;
 }
