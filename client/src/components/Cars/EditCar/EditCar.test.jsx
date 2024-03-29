@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 
 import { AuthProvider } from "../../../contexts/AuthContext"
 
-import { CreateCar } from "./CreateCar"
+import { EditCar } from "./EditCar"
 
 jest.mock("../../../services/cloudinaryService", () => ({
   uploadFiles: jest.fn().mockResolvedValue([
@@ -14,10 +14,37 @@ jest.mock("../../../services/cloudinaryService", () => ({
 }));
 
 jest.mock('../../../services/carService', () => ({
-    createCar: jest.fn()
+    getById: jest.fn().mockResolvedValue({
+        _id: '1',
+        make: "Ford",
+        model: "Mustang",
+        type: "Coupe",
+        year: 2022,
+        pricePerDay: 60,
+        transmission: "Automatic",
+        doors: 2,
+        luggageCapacity: 2,
+        maxPeople: 4,
+        horsePower: 450,
+        fuelType: "Petrol",
+        mileAge: 16000,
+        description: "Experience the power and style of the Ford Mustang, a classic coupe with a thrilling performance.",
+        _createdOn: 1614260681375,
+        location: "Sofia, Bulgaria",
+        gallery: [
+            "ford1.png",
+            "ford2.png"
+        ],
+        author: {
+            username: 'User1',
+            email: 'user1@abv.bg',
+            profilePictureUrl: 'user1.png'
+        }
+    }),
+    editCar: jest.fn()
 }));
 
-describe('CreateCar Component', () => {
+describe('EditCar Component', () => {
     let dom;
 
     beforeEach(() => {
@@ -25,7 +52,7 @@ describe('CreateCar Component', () => {
         dom = render(
           <BrowserRouter>
             <AuthProvider>
-              <CreateCar />
+              <EditCar />
             </AuthProvider>
           </BrowserRouter>
         );
@@ -37,7 +64,18 @@ describe('CreateCar Component', () => {
       jest.clearAllMocks();
     });
 
-    it("should submit form with valid data", async () => {
+    it('renders the form with pre-populated data upon inital render successfully', async () => {
+        await waitFor(() => {
+            expect(screen.getByDisplayValue('Ford')).toBeInTheDocument();
+            expect(screen.getByDisplayValue('Mustang')).toBeInTheDocument();
+            expect(screen.getByDisplayValue('Coupe')).toBeInTheDocument();
+            expect(screen.getByDisplayValue('2022')).toBeInTheDocument();
+            expect(screen.getByDisplayValue('Automatic')).toBeInTheDocument();
+            expect(screen.getByDisplayValue('Petrol')).toBeInTheDocument();
+        });
+    });
+
+    it("should submit form with new valid data", async () => {
       fireEvent.change(dom.container.querySelector('input[name="make"]'), { target: { value: 'Toyota' } });
       fireEvent.change(dom.container.querySelector('input[name="model"]'), { target: { value: 'Corolla' } });
       fireEvent.change(dom.container.querySelector('input[name="year"]'), { target: { value: '2020' } });
@@ -58,7 +96,7 @@ describe('CreateCar Component', () => {
         new File(["image2"], "image2.png", { type: "image/png" }),
       ];
 
-      const galleryInput = dom.container.querySelector('input[name="gallery"]');
+      const galleryInput = dom.container.querySelector('input[name="galleryFiles"]');
 
       await waitFor(() =>
         fireEvent.change(galleryInput, {
@@ -66,24 +104,13 @@ describe('CreateCar Component', () => {
         })
       );
 
-      const createButton = dom.container.querySelector(".create-btn");
+      const editButton = dom.container.querySelector(".edit-btn");
 
       act(() => {
-        fireEvent.click(createButton);
+        fireEvent.click(editButton);
       });
 
       expect(galleryInput.files.length).toBe(2);
-    });
-
-    it("does NOT submit the form with empty data", async () => {
-      fireEvent.click(screen.getByText("Create"));
-
-      await waitFor(() => {
-        expect(screen.getByText("Please enter a valid make!")).toBeInTheDocument();
-        expect(screen.getByText("Please enter a valid model!")).toBeInTheDocument();
-        expect(screen.getByText("Please enter a valid year!")).toBeInTheDocument();
-        expect(screen.getByText("Please choose at least two pictures!")).toBeInTheDocument();
-      });
     });
 
     it("does NOT submit the form with invalid data", async () => {
@@ -94,22 +121,10 @@ describe('CreateCar Component', () => {
         fireEvent.change(dom.container.querySelector('input[name="horsePower"]'), { target: { value: '50' } });
         fireEvent.change(dom.container.querySelector('input[name="pricePerDay"]'), { target: { value: '9' } });
   
-        const files = [
-          new File(["image1"], "image1.png", { type: "image/png" })
-        ];
-  
-        const galleryInput = dom.container.querySelector('input[name="gallery"]');
-  
-        await waitFor(() =>
-          fireEvent.change(galleryInput, {
-            target: { files: files }
-          })
-        );
-  
-        const createButton = dom.container.querySelector(".create-btn");
+        const editButton = dom.container.querySelector(".edit-btn");
   
         act(() => {
-          fireEvent.click(createButton);
+          fireEvent.click(editButton);
         });
 
         await waitFor(() => {
@@ -117,7 +132,6 @@ describe('CreateCar Component', () => {
             expect(screen.getByText("The mileage cannot be above 300 000 km!")).toBeInTheDocument();
             expect(screen.getByText("The horsepower must be at least 75 hp!")).toBeInTheDocument();
             expect(screen.getByText("The price must be at least $10!")).toBeInTheDocument();
-            expect(screen.getByText("Please choose at least two pictures!")).toBeInTheDocument();
         });
     });
 });
