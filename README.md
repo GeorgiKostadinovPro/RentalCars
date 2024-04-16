@@ -3,6 +3,12 @@ RentalCars is an easy-to-use platform for car rentals where users can rent cars,
 
 <hr />
 
+### Deployment
+<img alt="Static Badge" src="https://img.shields.io/badge/Status-Deployed-4AC41C">
+
+<strong>View Demo</strong> - <a href="https://rental-cars-fe.web.app">rental-cars-fe.web.app</a>
+<hr />
+
 ### Status
 <img alt="Static Badge" src="https://img.shields.io/badge/Status-In_Progess-%234AC41C">
 
