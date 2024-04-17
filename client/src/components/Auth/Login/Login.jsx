@@ -24,7 +24,7 @@ export const Login = () => {
   return (
     <div id="form_wrapper">
       <div id="form_left">
-        <img src="../../../../public/assets/images/login.jpg" />
+        <img src="assets/images/login.jpg" />
       </div>
       <form id="form_right" onSubmit={handleSubmit(loginSubmitHandler)}>
         <h1>Login</h1>

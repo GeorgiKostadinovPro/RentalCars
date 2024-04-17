@@ -105,7 +105,7 @@ export const Register = () => {
         </span>
       </form>
       <div id="form_left">
-        <img src="../../../../public/assets/images/login.jpg" />
+        <img src="assets/images/login.jpg" />
       </div>
     </div>
   );
