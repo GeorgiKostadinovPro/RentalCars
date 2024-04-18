@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 
+import NavDropdown from 'react-bootstrap/NavDropdown'
+
 import { Path } from '../../../utilities/Path'
 import { useAuthContext } from "../../../hooks/useAuthContext"
 
@@ -43,29 +45,21 @@ export const Header = () => {
                     Cars
                   </Link>
                 </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="dropdown-toggle nav-link"
-                    data-toggle="dropdown"
-                    href="#"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    About
-                  </a>
-                  <div className="dropdown-menu">
-                    <Link to={Path.about} className="dropdown-item">
-                      About Us
-                    </Link>
-                    <Link to={Path.blog} className="dropdown-item">
-                      Blog
-                    </Link>
-                    <Link to={Path.terms} className="dropdown-item">
-                      Terms
-                    </Link>
-                  </div>
-                </li>
+                <NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title="About"
+                  menuVariant="light"
+                >
+                  <NavDropdown.Item as={Link} to={Path.about}>
+                    About us
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={Path.blog}>
+                    Blog
+                  </NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to={Path.terms}>
+                    Terms
+                  </NavDropdown.Item>
+                </NavDropdown>
                 <li className="nav-item">
                   <Link to={Path.contact} className="nav-link">
                     Contact Us
