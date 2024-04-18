@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom'
 
+import NavDropdown from 'react-bootstrap/NavDropdown'
+
 import { Path } from '../../utilities/Path'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
@@ -61,29 +63,21 @@ export const Profile = () => {
             </li>
 
             {isAdmin && (
-              <li className="nav-item dropdown">
-                <a
-                  className="dropdown-toggle nav-link"
-                  data-toggle="dropdown"
-                  href="#"
-                  role="button"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  Manage
-                </a>
-                <div className="dropdown-menu">
-                  <Link to={Path.ManageUsers} className="dropdown-item">
-                    Users
-                  </Link>
-                  <Link to={Path.ManageCars} className="dropdown-item">
-                    Cars
-                  </Link>
-                  <Link to={Path.ManagePosts} className="dropdown-item">
-                    Posts
-                  </Link>
-                </div>
-              </li>
+              <NavDropdown
+                id="nav-dropdown-dark-example"
+                title="Manage"
+                menuVariant="light"
+              >
+                <NavDropdown.Item as={Link} to={Path.ManageUsers}>
+                  Users
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={Path.ManageCars}>
+                  Cars
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to={Path.ManagePosts}>
+                  Posts
+                </NavDropdown.Item>
+              </NavDropdown>
             )}
           </ul>
         </div>
